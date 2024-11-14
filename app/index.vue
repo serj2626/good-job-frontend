@@ -2,8 +2,6 @@
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-
-
   <!-- <UContainer>
     <UCard class="mt-10">
       <template #header>
