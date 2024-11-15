@@ -15,7 +15,8 @@
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@pinia/nuxt": "^0.7.0",
     "@samk-dev/nuxt-vcalendar": "^1.0.4",
-    "nuxt": "^3.14.159"
+    "nuxt": "^3.14.159",
+    "sass": "^1.81.0"
   },
   "dependencies": {
     "@vueuse/core": "^11.2.0",

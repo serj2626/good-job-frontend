@@ -12,4 +12,8 @@ export default defineNuxtConfig({
   ],
 
   compatibilityDate: "2024-11-10",
+  // components: false,
+  // typescript: {
+  //   typeCheck: true
+  // },
 });
