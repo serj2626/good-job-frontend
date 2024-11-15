@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { LeftSidebar } from "~/src/widgets/sidebar";
+import { DefaultSidebar } from "~/src/widgets/DefaultSideBar";
 </script>
 <template>
-    <div class="grid grid-cols-[minmax(0,300px),1fr] h-screen">
+    <div class="grid grid-cols-[minmax(0,300px),1fr] h-screen py-12">
       <div class="left-sidebar">
-        <LeftSidebar />
+        <DefaultSidebar />
       </div>
       <div class="right-sidebar bg-gray-50">
         <slot></slot>
