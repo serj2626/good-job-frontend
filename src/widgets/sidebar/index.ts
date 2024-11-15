@@ -1,1 +1,1 @@
-export { default as Sidebar } from "./ui/index.vue";
+export { default as LeftSidebar } from "./ui/index.vue";
