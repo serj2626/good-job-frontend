@@ -1,7 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-   <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
       <div class="layout-container flex h-full grow flex-col">
 
         <div class="px-40 flex flex-1 justify-center py-5">
@@ -191,4 +191,4 @@
       </div>
     </div>
 </template>
-<style scoped></style>
+<style scoped lang="scss"></style>

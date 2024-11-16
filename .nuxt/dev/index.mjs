@@ -166,7 +166,7 @@ const errorHandler = (async function errorhandler(error, event) {
 
 const rootDir = "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"Nuxt App"}],"link":[],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
 
 const appRootTag = "div";
 

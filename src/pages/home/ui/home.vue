@@ -6,18 +6,17 @@
         <p
           class="text-[#111418] tracking-light text-[32px] font-bold leading-tight"
         >
-          Find your next job
+        Найдите свою следующую работу
         </p>
         <p class="text-[#637588] text-sm font-normal leading-normal">
-          Search hundreds of thousands of job listings to find the perfect job
-          for you
+          Просмотрите сотни тысяч объявлений о вакансиях, чтобы найти идеальную работу для себя
         </p>
       </div>
     </div>
     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
       <label class="flex flex-col min-w-40 flex-1">
         <input
-          placeholder="Job title, keywords, or company"
+          placeholder="Название компании, вакансии или ключевое слово"
           class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
           value=""
         />
@@ -26,7 +25,7 @@
     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
       <label class="flex flex-col min-w-40 flex-1">
         <input
-          placeholder="City, state, or zip code"
+          placeholder="Город или страна"
           class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
           value=""
         />
@@ -37,19 +36,24 @@
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
         >
-          <span class="truncate">Remote</span>
+          <span class="truncate">Удалённая работа</span>
         </button>
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
         >
-          <span class="truncate">Full-time</span>
+          <span class="truncate">Полная занятость</span>
+        </button>
+        <button
+          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
+        >
+          <span class="truncate">Частичная занятость</span>
         </button>
       </div>
     </div>
     <h3
       class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
     >
-      Filter by
+      Фильтры
     </h3>
     <div class="flex flex-wrap gap-3 p-4">
       <label
@@ -268,12 +272,12 @@
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-transparent text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
         >
-          <span class="truncate">Clear filters</span>
+          <span class="truncate">Очистить</span>
         </button>
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#3289e7] text-white text-sm font-bold leading-normal tracking-[0.015em]"
         >
-          <span class="truncate">Apply</span>
+          <span class="truncate">Применить</span>
         </button>
       </div>
     </div>

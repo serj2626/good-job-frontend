@@ -10,7 +10,27 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
   ],
-
+  app: {
+    head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      title: "Good Job",
+      meta: [
+        {
+          name: "description",
+          content: "Nuxt App",
+        },
+      ],
+    },
+  },
+  // css: ["./app/style"],
+  alias: {
+    "@": "./src",
+  },
+  dir: {
+    layouts: "./app/layouts",
+    pages: "./app/routes",
+  },
   compatibilityDate: "2024-11-10",
   // components: false,
   // typescript: {
