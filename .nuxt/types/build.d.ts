@@ -151,6 +151,8 @@ declare module "#build/tailwind.config/content/transform.mjs";
 declare module "#build/tailwind.config/content.mjs";
 declare module "#build/tailwind.config/darkMode.mjs";
 declare module "#build/tailwind.config/safelist.mjs";
+declare module "#build/tailwind.config/postcss/plugins.mjs";
+declare module "#build/tailwind.config/postcss.mjs";
 declare module "#build/tailwind.config/variants/aspectRatio.mjs";
 declare module "#build/tailwind.config/variants.mjs";
 declare module "#build/tailwind.config/presets.mjs";
