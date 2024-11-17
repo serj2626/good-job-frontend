@@ -1,1 +1,1 @@
-export { default as AuthResetPage } from "./ui/index.vue";
+export { default as AuthResetPage } from "./ui/reset-page.vue";
