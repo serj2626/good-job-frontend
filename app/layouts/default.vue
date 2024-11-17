@@ -6,7 +6,7 @@ import { DefaultSidebar } from "~/src/widgets/DefaultSideBar";
       <div class="left-sidebar">
         <DefaultSidebar />
       </div>
-      <div class="right-sidebar bg-gray-50">
+      <div class="right-sidebar bg-gray-200">
         <slot></slot>
       </div>
     </div>

@@ -1144,12 +1144,12 @@ const _g6s46C = defineCachedEventHandler(async (event) => {
         collection,
         icons
       );
-      consola.debug(`[Icon] serving ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from bundled collection`);
+      console.debug(`[Icon] serving ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from bundled collection`);
       return data;
     }
   } else {
     if (collectionName && !warnOnceSet.has(collectionName) && apiEndPoint === DEFAULT_ENDPOINT) {
-      consola.warn([
+      console.warn([
         `[Icon] Collection \`${collectionName}\` is not found locally`,
         `We suggest to install it via \`npm i -D @iconify-json/${collectionName}\` to provide the best end-user experience.`
       ].join("\n"));
@@ -1158,7 +1158,7 @@ const _g6s46C = defineCachedEventHandler(async (event) => {
   }
   if (options.fallbackToApi === true || options.fallbackToApi === "server-only") {
     const apiUrl = new URL("./" + basename(url.pathname) + url.search, apiEndPoint);
-    consola.debug(`[Icon] fetching ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from iconify api`);
+    console.debug(`[Icon] fetching ${(icons || []).map((i) => "`" + collectionName + ":" + i + "`").join(",")} from iconify api`);
     if (apiUrl.host !== new URL(apiEndPoint).host) {
       return createError({ status: 400, message: "Invalid icon request" });
     }

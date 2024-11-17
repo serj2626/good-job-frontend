@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
+    "@nuxt/icon",
   ],
   app: {
     head: {
