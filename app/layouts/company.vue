@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CompanySidebar } from "~/src/widgets/CompanySideBar";
+import { CompanySidebar } from "~/src/widgets/company-sidebar";
 </script>
 <template>
     <div class="grid grid-cols-[minmax(0,300px),1fr] h-screen py-12">
