@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ResumeDetailPage } from "~/src/pages/resume-id";
+</script>
 <template>
-  <div>
-   route params {{ $route.params.id }}
-  </div>
+  <ResumeDetailPage />
 </template>
 <style scoped lang="scss"></style>
