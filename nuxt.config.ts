@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "@nuxt/icon",
+    "nuxt-rating",
   ],
   app: {
     head: {
@@ -24,7 +25,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["~/app/style/tailwind/main.scss"],
+  css: ["~/app/styles/tailwind/index.scss"],
   alias: {
     "@": "./src",
   },
