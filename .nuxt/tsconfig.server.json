@@ -150,6 +150,7 @@
     "../node_modules/@samk-dev/nuxt-vcalendar/runtime/server",
     "../node_modules/nuxt-swiper/runtime/server",
     "../node_modules/@pinia/nuxt/runtime/server",
+    "../node_modules/nuxt-rating/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
     "../**/*",
