@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import { VacancyCreatePage } from '~/src/pages/vacancy-create';
 </script>
 <template>
-  <div>
-    <h1>resume create</h1>
-    <slot></slot>
-  </div>
+  <VacancyCreatePage />
 </template>
 <style scoped lang="scss"></style>
