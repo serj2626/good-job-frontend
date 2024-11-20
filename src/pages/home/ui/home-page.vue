@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+  <div class="layout-content-container flex flex-col max-w-[960px] px-3 flex-1">
     <div class="flex flex-wrap justify-between gap-3 p-4">
       <div class="flex min-w-72 flex-col gap-3">
         <p
