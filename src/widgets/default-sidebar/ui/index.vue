@@ -217,7 +217,7 @@ const items = [
    
   </div> -->
   <UDropdown
-    class="fixed top-10 left-10 mb-4 mr-4"
+    class="fixed bottom-6 left-10 mb-4 mr-4"
     :items="items"
     :ui="{ item: { disabled: 'cursor-text select-text' } }"
     :popper="{ placement: 'bottom-start' }"

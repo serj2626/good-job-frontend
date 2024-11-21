@@ -14,4 +14,7 @@ header {
 h1{
   text-shadow: 8px 2px 1px rgba(0, 0, 0, 0.190);
 }
+p{
+  text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.190);
+}
 </style>
