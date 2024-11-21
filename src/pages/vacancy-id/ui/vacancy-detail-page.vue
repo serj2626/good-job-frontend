@@ -46,7 +46,7 @@
         </div>
         <div class="shrink-0">
           <p class="text-[#111418] text-base font-normal leading-normal">
-            $200k - $300k
+            40000 - 60000 &#8381
           </p>
         </div>
       </div>
@@ -71,7 +71,7 @@
       <h3
         class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
       >
-        Required Skills
+        Необходимые навыки
       </h3>
       <div class="flex gap-3 p-3 flex-wrap pr-4">
         <div
@@ -150,7 +150,7 @@
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#1980e6] text-white text-base font-bold leading-normal tracking-[0.015em]"
         >
-          <span class="truncate">Apply</span>
+          <span class="truncate">Откликнуться</span>
         </button>
       </div>
     </div>
