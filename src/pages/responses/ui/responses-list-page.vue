@@ -1,13 +1,11 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-    <div class="flex flex-wrap justify-between gap-3 p-4">
-      <p
-        class="text-[#1C160C] tracking-light text-[32px] font-bold leading-tight min-w-72"
+  <div class="layout-content-container flex flex-col flex-1">
+    <h1
+        class="text-[#1C160C] text-center text-[32px] mb-12 font-bold "
       >
         Отклики
-      </p>
-    </div>
+      </h1>
     <div
       class="flex items-center gap-4 bg-[#FFFFFF] px-4 min-h-[72px] py-2 justify-between"
     >
