@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["~/app/styles/tailwind/index.scss"],
+  css: ["~/app/styles/main.scss"],
   alias: {
     "@": "./src",
   },
