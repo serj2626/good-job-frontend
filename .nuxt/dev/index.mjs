@@ -166,11 +166,11 @@ const errorHandler = (async function errorhandler(error, event) {
 
 const rootDir = "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"description","content":"Nuxt App"}],"link":[],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"Good Job","content":"Good Job App"}],"link":[{"rel":"icon","type":"image/x-icon","href":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"}],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
 
 const appRootTag = "div";
 
-const appRootAttrs = {"id":"__nuxt"};
+const appRootAttrs = {"id":"app"};
 
 const appTeleportTag = "div";
 
@@ -563,6 +563,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
+    "apiUrl": "http://localhost:8000",
     "vcalendar": ""
   },
   "icon": {
