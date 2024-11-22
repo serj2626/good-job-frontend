@@ -169,7 +169,7 @@ const projects = [
       </div>
 
     </section>
-    <div class="flex flex-col gap-5">
+
       <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
         <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
           Навыки
@@ -213,7 +213,7 @@ const projects = [
         mollitia esse voluptas vitae quo repellat, consectetur quibusdam nobis eius voluptates rerum pariatur natus,
         quae fugiat eaque sequi. Et?
       </section>
-    </div>
+
   </div>
   </div>
 </template>
