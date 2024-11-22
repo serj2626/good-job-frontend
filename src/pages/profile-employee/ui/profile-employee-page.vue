@@ -158,11 +158,11 @@ const projects = [
   </div>
   <div class="right-block ps-5 flex flex-col gap-8">
     <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
         Проекты
       </h3>
       <div class="flex gap-3 items-center">
-        <div class="project" v-for="project in projects" :key="project.id">
+        <div class="project text-center flex flex-col gap-3" v-for="project in projects" :key="project.id">
           <img src="https://cdn.usegalileo.ai/stability/37c54038-755b-4fdd-bffb-3b5b2334dfcc.png">
           {{ project.title }}
         </div>
@@ -171,7 +171,7 @@ const projects = [
     </section>
     <div class="flex flex-col gap-5">
       <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
           Навыки
         </h3>
         <div class="flex items-center gap-3 flex-wrap">
@@ -182,7 +182,7 @@ const projects = [
         </div>
       </section>
       <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
           Образование
         </h3>
         Сфера IT мне очень интересна, тк в ней я буду развиваться как в
@@ -199,7 +199,7 @@ const projects = [
         улучшении качества продуктов своей будущей компании.
       </section>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
           Обо мне
         </h3>
         Сфера IT мне очень интересна, тк в ней я буду развиваться как в
