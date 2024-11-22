@@ -40,7 +40,7 @@
             <p
               class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
             >
-              Профиль
+              Личная информация
             </p>
           </a>
           <a
@@ -91,6 +91,16 @@
               class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
             >
               Ссылки
+            </p>
+          </a>
+          <a
+            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
+            href="#"
+          >
+            <p
+              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              О себе
             </p>
           </a>
         </div>
