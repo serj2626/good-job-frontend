@@ -12,20 +12,31 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "nuxt-rating",
   ],
+
   app: {
+    rootId: "app",
+    layoutTransition: true,
+    pageTransition: true,
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+        },
+      ],
       title: "Good Job",
       meta: [
         {
-          name: "description",
-          content: "Nuxt App",
+          name: "Good Job",
+          content: "Good Job App",
         },
       ],
     },
   },
-  css: ["~/app/styles/main.scss"],
+  css: ["~/app/styles/tailwind/index.scss"],
   alias: {
     "@": "./src",
   },
@@ -38,4 +49,9 @@ export default defineNuxtConfig({
   // typescript: {
   //   typeCheck: true
   // },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.NUXT_ENV_API_URL
+    }
+  },
 });
