@@ -16,7 +16,7 @@
         </div>
       </div>
       <h2
-        class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+        class="text-[#111418] text-[22px] underline font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
       >
         Личные данные
       </h2>
@@ -105,7 +105,7 @@
        <!-- ОПЫТ РАБОТЫ -->
 
       <h2
-        class="text-[#111418] text-[22px] text-center font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+        class="text-[#111418] text-[22px] underline font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
       >
         Опыт работы
       </h2>
@@ -197,7 +197,7 @@
         </label>
       </div>
       <h2
-        class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
       >
         Образование
       </h2>
@@ -238,7 +238,7 @@
       </div>
 
       <h2
-        class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
       >
         Технологии
       </h2>
@@ -254,7 +254,7 @@
         </label>
       </div>
       <h2
-        class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
       >
         Проекты
       </h2>
