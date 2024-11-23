@@ -125,7 +125,7 @@ const projects = [
 ]
 </script>
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr]">
+  <div class="grid grid-cols-[minmax(0,300px),1fr] gap-3">
     <div class="left-block flex flex-col gap-4"">
       <section id=" profile" class="bg-gray-100 text-center shadow-md p-3">
       <div class="flex justify-between items-center mb-2">
@@ -190,7 +190,7 @@ const projects = [
       <p><span>Мои резюме:</span> 3</p>
     </section>
   </div>
-  <div class="right-block ps-5 flex flex-col gap-8">
+  <div class="right-block flex flex-col gap-8">
     <section id="resumes" class="bg-gray-100 p-3 rounded-md shadow-2xl">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
         Мои резюме
