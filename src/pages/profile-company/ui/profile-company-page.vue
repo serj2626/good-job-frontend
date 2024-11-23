@@ -30,6 +30,8 @@ const vacancies = [
       <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-3 p-3">
         <p><span>Страна:</span> Россия</p>
         <p><span>Город:</span> Москва</p>
+        <p><span>Почта:</span> eKx0U@example.com</p>
+        <p><span>Телефон:</span> +7 (123) 456-78-90</p>
         <p><span>Кол-во сотрудников:</span> 14</p>
         <p><span>Кол-во вакансий:</span> 5</p>
         <p><span>Сайт:</span> acme.com</p>
@@ -53,7 +55,6 @@ const vacancies = [
             {{ item.title }}
           </div>
         </div>
-
       </section>
 
       <section id="reviews" class="bg-gray-100 p-3 rounded-md shadow-2xl">
