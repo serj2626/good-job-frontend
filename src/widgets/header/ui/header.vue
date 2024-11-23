@@ -13,8 +13,8 @@ const menu = [
     url: "/company/list",
   },
   {
-    title: "Профили",
-    url: "/profile/list",
+    title: "Резюме",
+    url: "/resume/list",
   },
   {
     title: "Посты и события",
@@ -27,7 +27,7 @@ const menu = [
     <h1 class="font-bold my-4 text-slate-600 text-6xl">GJ</h1>
     <p class="text-slate-500">Good Job - Сайт для программистов и дизайнеров</p>
 
-    <menu class="flex justify-center items-center gap-10 py-3  mt-2 ">
+    <menu class="flex justify-center flex-wrap items-center gap-3 sm:gap-10 py-3  mt-2 ">
       <a v-for="link in menu" :key="link.title" :href="link.url" class="menu-link py-2">
         {{ link.title }}
       </a>
