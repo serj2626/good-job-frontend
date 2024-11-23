@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="px-3 flex flex-1 justify-center pb-5">
-    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+  <div class="px-3 flex flex-1 justify-center pb-5 shadow-sm">
+    <div class="flex flex-col max-w-[960px] flex-1">
       <div class="flex flex-wrap justify-between gap-3 p-4">
         <p
           class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72"
@@ -40,7 +40,7 @@
             <p
               class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
             >
-              Remote
+              Удалённо
             </p>
           </div>
         </div>
@@ -53,20 +53,12 @@
       <h3
         class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
       >
-        Job Description
+        Описание
       </h3>
       <p
         class="text-[#111418] text-base font-normal leading-normal pb-3 pt-1 px-4"
       >
-        We are looking for a Senior Software Engineer to produce and implement
-        functional software solutions. You will work with upper management to
-        define software requirements and take the lead on operational and
-        technical projects. In this role, you should be able to work
-        independently with little supervision. You should have excellent
-        organization and problem-solving skills. If you also have hands-on
-        experience in software development and agile methodologies, we’d like to
-        meet you. Your goal will be to develop high-quality software that is
-        aligned with user needs and business goals.
+      Мы ищем старшего инженера-программиста для разработки и внедрения функциональных программных решений. Вы будете работать с высшим руководством над определением требований к программному обеспечению и возглавлять операционные и технические проекты. На этой должности вы должны уметь работать независимо, без особого контроля. Вы должны обладать отличными организаторскими способностями и навыками решения проблем. Если у вас также есть практический опыт разработки программного обеспечения и гибких методологий, мы будем рады с вами познакомиться. Вашей целью будет разработка высококачественного программного обеспечения, соответствующего потребностям пользователей и бизнес-целям.
       </p>
       <h3
         class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
