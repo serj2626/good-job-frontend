@@ -18,6 +18,10 @@ declare module '@nuxt/schema' {
      */
     ["ui"]: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
+     * Configuration for `@primevue/nuxt-module`
+     */
+    ["primevue"]: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `@vueuse/nuxt`
      */
     ["vueuse"]: typeof import("@vueuse/nuxt").default extends NuxtModule<infer O> ? O : Record<string, any>
@@ -37,6 +41,10 @@ declare module '@nuxt/schema' {
      * Configuration for `nuxt-rating`
      */
     ["nuxtRating"]: typeof import("nuxt-rating").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/image`
+     */
+    ["image"]: typeof import("@nuxt/image").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
      * Configuration for `@nuxt/telemetry`
      */
@@ -60,6 +68,10 @@ declare module '@nuxt/schema' {
      */
     ["ui"]?: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@primevue/nuxt-module`
+     */
+    ["primevue"]?: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@vueuse/nuxt`
      */
     ["vueuse"]?: typeof import("@vueuse/nuxt").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
@@ -80,10 +92,14 @@ declare module '@nuxt/schema' {
      */
     ["nuxtRating"]?: typeof import("nuxt-rating").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@nuxt/image`
+     */
+    ["image"]?: typeof import("@nuxt/image").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@nuxt/telemetry`
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@vueuse/nuxt", Exclude<NuxtConfig["vueuse"], boolean>] | ["@samk-dev/nuxt-vcalendar", Exclude<NuxtConfig["vcalendar"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-rating", Exclude<NuxtConfig["nuxtRating"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@primevue/nuxt-module", Exclude<NuxtConfig["primevue"], boolean>] | ["@vueuse/nuxt", Exclude<NuxtConfig["vueuse"], boolean>] | ["@samk-dev/nuxt-vcalendar", Exclude<NuxtConfig["vcalendar"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-rating", Exclude<NuxtConfig["nuxtRating"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
 }
 declare module 'nuxt/schema' {
@@ -109,6 +125,11 @@ declare module 'nuxt/schema' {
      */
     ["ui"]: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
+     * Configuration for `@primevue/nuxt-module`
+     * @see https://www.npmjs.com/package/@primevue/nuxt-module
+     */
+    ["primevue"]: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `@vueuse/nuxt`
      * @see https://www.npmjs.com/package/@vueuse/nuxt
      */
@@ -133,6 +154,11 @@ declare module 'nuxt/schema' {
      * @see https://www.npmjs.com/package/nuxt-rating
      */
     ["nuxtRating"]: typeof import("nuxt-rating").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
+     * Configuration for `@nuxt/image`
+     * @see https://www.npmjs.com/package/@nuxt/image
+     */
+    ["image"]: typeof import("@nuxt/image").default extends NuxtModule<infer O> ? O : Record<string, any>
     /**
      * Configuration for `@nuxt/telemetry`
      * @see https://www.npmjs.com/package/@nuxt/telemetry
@@ -161,6 +187,11 @@ declare module 'nuxt/schema' {
      */
     ["ui"]?: typeof import("@nuxt/ui").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@primevue/nuxt-module`
+     * @see https://www.npmjs.com/package/@primevue/nuxt-module
+     */
+    ["primevue"]?: typeof import("@primevue/nuxt-module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@vueuse/nuxt`
      * @see https://www.npmjs.com/package/@vueuse/nuxt
      */
@@ -186,11 +217,16 @@ declare module 'nuxt/schema' {
      */
     ["nuxtRating"]?: typeof import("nuxt-rating").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     /**
+     * Configuration for `@nuxt/image`
+     * @see https://www.npmjs.com/package/@nuxt/image
+     */
+    ["image"]?: typeof import("@nuxt/image").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `@nuxt/telemetry`
      * @see https://www.npmjs.com/package/@nuxt/telemetry
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@vueuse/nuxt", Exclude<NuxtConfig["vueuse"], boolean>] | ["@samk-dev/nuxt-vcalendar", Exclude<NuxtConfig["vcalendar"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-rating", Exclude<NuxtConfig["nuxtRating"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxtjs/tailwindcss", Exclude<NuxtConfig["tailwindcss"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@primevue/nuxt-module", Exclude<NuxtConfig["primevue"], boolean>] | ["@vueuse/nuxt", Exclude<NuxtConfig["vueuse"], boolean>] | ["@samk-dev/nuxt-vcalendar", Exclude<NuxtConfig["vcalendar"], boolean>] | ["nuxt-swiper", Exclude<NuxtConfig["swiper"], boolean>] | ["@pinia/nuxt", Exclude<NuxtConfig["pinia"], boolean>] | ["nuxt-rating", Exclude<NuxtConfig["nuxtRating"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
@@ -213,6 +249,50 @@ declare module 'nuxt/schema' {
   }
   interface PublicRuntimeConfig {
    apiUrl: string,
+
+   primevue: {
+      usePrimeVue: boolean,
+
+      autoImport: boolean,
+
+      resolvePath: any,
+
+      importPT: any,
+
+      importTheme: any,
+
+      loadStyles: boolean,
+
+      options: any,
+
+      components: Array<{
+
+      }>,
+
+      directives: Array<{
+
+      }>,
+
+      composables: Array<{
+
+      }>,
+
+      config: Array<{
+
+      }>,
+
+      services: Array<{
+
+      }>,
+
+      styles: Array<{
+
+      }>,
+
+      injectStylesAsString: Array<any>,
+
+      injectStylesAsStringToTop: Array<string>,
+   },
 
    vcalendar: any,
   }

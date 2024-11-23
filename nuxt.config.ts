@@ -4,6 +4,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/ui",
+    "@primevue/nuxt-module",
     "@vueuse/nuxt",
     "@samk-dev/nuxt-vcalendar",
     "nuxt-swiper",
@@ -11,8 +12,11 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/icon",
     "nuxt-rating",
+    "@nuxt/image",
   ],
-
+  alias: {
+    "@": "./src",
+  },
   app: {
     rootId: "app",
     layoutTransition: true,
@@ -20,38 +24,30 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
+      title: "Good Job",
       link: [
         {
           rel: "icon",
-          type: "image/x-icon",
-          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+          type: "image/svg",
+          href: "/image/title.png",
+          sizes: "64x64",
         },
-      ],
-      title: "Good Job",
-      meta: [
-        {
-          name: "Good Job",
-          content: "Good Job App",
-        },
-      ],
+      ]
     },
   },
   css: ["~/app/styles/tailwind/index.scss"],
-  alias: {
-    "@": "./src",
-  },
   dir: {
     layouts: "./app/layouts",
     pages: "./app/routes",
   },
-  compatibilityDate: "2024-11-10",
   // components: false,
   // typescript: {
   //   typeCheck: true
   // },
   runtimeConfig: {
     public: {
-      apiUrl: process.env.NUXT_ENV_API_URL
-    }
+      apiUrl: process.env.NUXT_ENV_API_URL,
+    },
   },
+  compatibilityDate: "2024-11-10",
 });

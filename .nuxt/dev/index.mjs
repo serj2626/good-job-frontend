@@ -1,4 +1,4 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getQuery as getQuery$1, getRequestURL, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getResponseStatusText } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/h3/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getQuery as getQuery$1, getRequestURL, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, readBody, getResponseStatusText } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -24,10 +24,13 @@ import { AsyncLocalStorage } from 'node:async_hooks';
 import { consola } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/consola/dist/index.mjs';
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/errx/dist/index.js';
 import { isVNode, version, unref } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/vue/index.mjs';
-import { basename } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/pathe/dist/index.mjs';
+import BaseStyle from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/@primevue/core/base/style/index.mjs';
+import { basename, isAbsolute } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/pathe/dist/index.mjs';
 import { getIcons } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/@iconify/utils/lib/index.mjs';
 import { hash } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/ohash/dist/index.mjs';
 import { collections } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/.nuxt/nuxt-icon-server-bundle.mjs';
+import { fileURLToPath } from 'node:url';
+import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/ipx/dist/index.mjs';
 import { createServerHead as createServerHead$1, CapoPlugin } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/unhead/dist/index.mjs';
 import { defineHeadPlugin } from 'file:///home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/node_modules/@unhead/shared/dist/index.mjs';
 
@@ -166,7 +169,7 @@ const errorHandler = (async function errorhandler(error, event) {
 
 const rootDir = "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"Good Job","content":"Good Job App"}],"link":[{"rel":"icon","type":"image/x-icon","href":"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"}],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","type":"image/svg","href":"/image/title.png","sizes":"64x64"}],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
 
 const appRootTag = "div";
 
@@ -259,11 +262,6 @@ const _JiPWOSWWxR = (function(nitro) {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
-
-const plugins = [
-  _fi3qn0FDQB,
-_JiPWOSWWxR
-];
 
 const defineAppConfig = (config) => config;
 
@@ -564,10 +562,1112 @@ const _inlineRuntimeConfig = {
   },
   "public": {
     "apiUrl": "http://localhost:8000",
+    "primevue": {
+      "usePrimeVue": true,
+      "autoImport": true,
+      "resolvePath": "",
+      "importPT": "",
+      "importTheme": "",
+      "loadStyles": true,
+      "options": {},
+      "components": [
+        {
+          "name": "AutoComplete",
+          "as": "AutoComplete",
+          "from": "primevue/autocomplete",
+          "export": "default",
+          "filePath": "primevue/autocomplete",
+          "global": true
+        },
+        {
+          "name": "Calendar",
+          "as": "Calendar",
+          "from": "primevue/calendar",
+          "export": "default",
+          "filePath": "primevue/calendar",
+          "global": true
+        },
+        {
+          "name": "CascadeSelect",
+          "as": "CascadeSelect",
+          "from": "primevue/cascadeselect",
+          "export": "default",
+          "filePath": "primevue/cascadeselect",
+          "global": true
+        },
+        {
+          "name": "Checkbox",
+          "as": "Checkbox",
+          "from": "primevue/checkbox",
+          "export": "default",
+          "filePath": "primevue/checkbox",
+          "global": true
+        },
+        {
+          "name": "CheckboxGroup",
+          "as": "CheckboxGroup",
+          "from": "primevue/checkboxgroup",
+          "export": "default",
+          "filePath": "primevue/checkboxgroup",
+          "global": true
+        },
+        {
+          "name": "Chips",
+          "as": "Chips",
+          "from": "primevue/chips",
+          "export": "default",
+          "filePath": "primevue/chips",
+          "global": true
+        },
+        {
+          "name": "ColorPicker",
+          "as": "ColorPicker",
+          "from": "primevue/colorpicker",
+          "export": "default",
+          "filePath": "primevue/colorpicker",
+          "global": true
+        },
+        {
+          "name": "DatePicker",
+          "as": "DatePicker",
+          "from": "primevue/datepicker",
+          "export": "default",
+          "filePath": "primevue/datepicker",
+          "global": true
+        },
+        {
+          "name": "Dropdown",
+          "as": "Dropdown",
+          "from": "primevue/dropdown",
+          "export": "default",
+          "filePath": "primevue/dropdown",
+          "global": true
+        },
+        {
+          "name": "FloatLabel",
+          "as": "FloatLabel",
+          "from": "primevue/floatlabel",
+          "export": "default",
+          "filePath": "primevue/floatlabel",
+          "global": true
+        },
+        {
+          "name": "Fluid",
+          "as": "Fluid",
+          "from": "primevue/fluid",
+          "export": "default",
+          "filePath": "primevue/fluid",
+          "global": true
+        },
+        {
+          "name": "IconField",
+          "as": "IconField",
+          "from": "primevue/iconfield",
+          "export": "default",
+          "filePath": "primevue/iconfield",
+          "global": true
+        },
+        {
+          "name": "IftaLabel",
+          "as": "IftaLabel",
+          "from": "primevue/iftalabel",
+          "export": "default",
+          "filePath": "primevue/iftalabel",
+          "global": true
+        },
+        {
+          "name": "InputChips",
+          "as": "InputChips",
+          "from": "primevue/inputchips",
+          "export": "default",
+          "filePath": "primevue/inputchips",
+          "global": true
+        },
+        {
+          "name": "InputGroup",
+          "as": "InputGroup",
+          "from": "primevue/inputgroup",
+          "export": "default",
+          "filePath": "primevue/inputgroup",
+          "global": true
+        },
+        {
+          "name": "InputGroupAddon",
+          "as": "InputGroupAddon",
+          "from": "primevue/inputgroupaddon",
+          "export": "default",
+          "filePath": "primevue/inputgroupaddon",
+          "global": true
+        },
+        {
+          "name": "InputIcon",
+          "as": "InputIcon",
+          "from": "primevue/inputicon",
+          "export": "default",
+          "filePath": "primevue/inputicon",
+          "global": true
+        },
+        {
+          "name": "InputMask",
+          "as": "InputMask",
+          "from": "primevue/inputmask",
+          "export": "default",
+          "filePath": "primevue/inputmask",
+          "global": true
+        },
+        {
+          "name": "InputNumber",
+          "as": "InputNumber",
+          "from": "primevue/inputnumber",
+          "export": "default",
+          "filePath": "primevue/inputnumber",
+          "global": true
+        },
+        {
+          "name": "InputOtp",
+          "as": "InputOtp",
+          "from": "primevue/inputotp",
+          "export": "default",
+          "filePath": "primevue/inputotp",
+          "global": true
+        },
+        {
+          "name": "InputSwitch",
+          "as": "InputSwitch",
+          "from": "primevue/inputswitch",
+          "export": "default",
+          "filePath": "primevue/inputswitch",
+          "global": true
+        },
+        {
+          "name": "InputText",
+          "as": "InputText",
+          "from": "primevue/inputtext",
+          "export": "default",
+          "filePath": "primevue/inputtext",
+          "global": true
+        },
+        {
+          "name": "Knob",
+          "as": "Knob",
+          "from": "primevue/knob",
+          "export": "default",
+          "filePath": "primevue/knob",
+          "global": true
+        },
+        {
+          "name": "Listbox",
+          "as": "Listbox",
+          "from": "primevue/listbox",
+          "export": "default",
+          "filePath": "primevue/listbox",
+          "global": true
+        },
+        {
+          "name": "MultiSelect",
+          "as": "MultiSelect",
+          "from": "primevue/multiselect",
+          "export": "default",
+          "filePath": "primevue/multiselect",
+          "global": true
+        },
+        {
+          "name": "Password",
+          "as": "Password",
+          "from": "primevue/password",
+          "export": "default",
+          "filePath": "primevue/password",
+          "global": true
+        },
+        {
+          "name": "RadioButton",
+          "as": "RadioButton",
+          "from": "primevue/radiobutton",
+          "export": "default",
+          "filePath": "primevue/radiobutton",
+          "global": true
+        },
+        {
+          "name": "RadioButtonGroup",
+          "as": "RadioButtonGroup",
+          "from": "primevue/radiobuttongroup",
+          "export": "default",
+          "filePath": "primevue/radiobuttongroup",
+          "global": true
+        },
+        {
+          "name": "Rating",
+          "as": "Rating",
+          "from": "primevue/rating",
+          "export": "default",
+          "filePath": "primevue/rating",
+          "global": true
+        },
+        {
+          "name": "Select",
+          "as": "Select",
+          "from": "primevue/select",
+          "export": "default",
+          "filePath": "primevue/select",
+          "global": true
+        },
+        {
+          "name": "SelectButton",
+          "as": "SelectButton",
+          "from": "primevue/selectbutton",
+          "export": "default",
+          "filePath": "primevue/selectbutton",
+          "global": true
+        },
+        {
+          "name": "Slider",
+          "as": "Slider",
+          "from": "primevue/slider",
+          "export": "default",
+          "filePath": "primevue/slider",
+          "global": true
+        },
+        {
+          "name": "Textarea",
+          "as": "Textarea",
+          "from": "primevue/textarea",
+          "export": "default",
+          "filePath": "primevue/textarea",
+          "global": true
+        },
+        {
+          "name": "ToggleButton",
+          "as": "ToggleButton",
+          "from": "primevue/togglebutton",
+          "export": "default",
+          "filePath": "primevue/togglebutton",
+          "global": true
+        },
+        {
+          "name": "ToggleSwitch",
+          "as": "ToggleSwitch",
+          "from": "primevue/toggleswitch",
+          "export": "default",
+          "filePath": "primevue/toggleswitch",
+          "global": true
+        },
+        {
+          "name": "TreeSelect",
+          "as": "TreeSelect",
+          "from": "primevue/treeselect",
+          "export": "default",
+          "filePath": "primevue/treeselect",
+          "global": true
+        },
+        {
+          "name": "Button",
+          "as": "Button",
+          "from": "primevue/button",
+          "export": "default",
+          "filePath": "primevue/button",
+          "global": true
+        },
+        {
+          "name": "ButtonGroup",
+          "as": "ButtonGroup",
+          "from": "primevue/buttongroup",
+          "export": "default",
+          "filePath": "primevue/buttongroup",
+          "global": true
+        },
+        {
+          "name": "SpeedDial",
+          "as": "SpeedDial",
+          "from": "primevue/speeddial",
+          "export": "default",
+          "filePath": "primevue/speeddial",
+          "global": true
+        },
+        {
+          "name": "SplitButton",
+          "as": "SplitButton",
+          "from": "primevue/splitbutton",
+          "export": "default",
+          "filePath": "primevue/splitbutton",
+          "global": true
+        },
+        {
+          "name": "Column",
+          "as": "Column",
+          "from": "primevue/column",
+          "export": "default",
+          "filePath": "primevue/column",
+          "global": true
+        },
+        {
+          "name": "Row",
+          "as": "Row",
+          "from": "primevue/row",
+          "export": "default",
+          "filePath": "primevue/row",
+          "global": true
+        },
+        {
+          "name": "ColumnGroup",
+          "as": "ColumnGroup",
+          "from": "primevue/columngroup",
+          "export": "default",
+          "filePath": "primevue/columngroup",
+          "global": true
+        },
+        {
+          "name": "DataTable",
+          "as": "DataTable",
+          "from": "primevue/datatable",
+          "export": "default",
+          "filePath": "primevue/datatable",
+          "global": true
+        },
+        {
+          "name": "DataView",
+          "as": "DataView",
+          "from": "primevue/dataview",
+          "export": "default",
+          "filePath": "primevue/dataview",
+          "global": true
+        },
+        {
+          "name": "OrderList",
+          "as": "OrderList",
+          "from": "primevue/orderlist",
+          "export": "default",
+          "filePath": "primevue/orderlist",
+          "global": true
+        },
+        {
+          "name": "OrganizationChart",
+          "as": "OrganizationChart",
+          "from": "primevue/organizationchart",
+          "export": "default",
+          "filePath": "primevue/organizationchart",
+          "global": true
+        },
+        {
+          "name": "Paginator",
+          "as": "Paginator",
+          "from": "primevue/paginator",
+          "export": "default",
+          "filePath": "primevue/paginator",
+          "global": true
+        },
+        {
+          "name": "PickList",
+          "as": "PickList",
+          "from": "primevue/picklist",
+          "export": "default",
+          "filePath": "primevue/picklist",
+          "global": true
+        },
+        {
+          "name": "Tree",
+          "as": "Tree",
+          "from": "primevue/tree",
+          "export": "default",
+          "filePath": "primevue/tree",
+          "global": true
+        },
+        {
+          "name": "TreeTable",
+          "as": "TreeTable",
+          "from": "primevue/treetable",
+          "export": "default",
+          "filePath": "primevue/treetable",
+          "global": true
+        },
+        {
+          "name": "Timeline",
+          "as": "Timeline",
+          "from": "primevue/timeline",
+          "export": "default",
+          "filePath": "primevue/timeline",
+          "global": true
+        },
+        {
+          "name": "VirtualScroller",
+          "as": "VirtualScroller",
+          "from": "primevue/virtualscroller",
+          "export": "default",
+          "filePath": "primevue/virtualscroller",
+          "global": true
+        },
+        {
+          "name": "Accordion",
+          "as": "Accordion",
+          "from": "primevue/accordion",
+          "export": "default",
+          "filePath": "primevue/accordion",
+          "global": true
+        },
+        {
+          "name": "AccordionPanel",
+          "as": "AccordionPanel",
+          "from": "primevue/accordionpanel",
+          "export": "default",
+          "filePath": "primevue/accordionpanel",
+          "global": true
+        },
+        {
+          "name": "AccordionHeader",
+          "as": "AccordionHeader",
+          "from": "primevue/accordionheader",
+          "export": "default",
+          "filePath": "primevue/accordionheader",
+          "global": true
+        },
+        {
+          "name": "AccordionContent",
+          "as": "AccordionContent",
+          "from": "primevue/accordioncontent",
+          "export": "default",
+          "filePath": "primevue/accordioncontent",
+          "global": true
+        },
+        {
+          "name": "AccordionTab",
+          "as": "AccordionTab",
+          "from": "primevue/accordiontab",
+          "export": "default",
+          "filePath": "primevue/accordiontab",
+          "global": true
+        },
+        {
+          "name": "Card",
+          "as": "Card",
+          "from": "primevue/card",
+          "export": "default",
+          "filePath": "primevue/card",
+          "global": true
+        },
+        {
+          "name": "DeferredContent",
+          "as": "DeferredContent",
+          "from": "primevue/deferredcontent",
+          "export": "default",
+          "filePath": "primevue/deferredcontent",
+          "global": true
+        },
+        {
+          "name": "Divider",
+          "as": "Divider",
+          "from": "primevue/divider",
+          "export": "default",
+          "filePath": "primevue/divider",
+          "global": true
+        },
+        {
+          "name": "Fieldset",
+          "as": "Fieldset",
+          "from": "primevue/fieldset",
+          "export": "default",
+          "filePath": "primevue/fieldset",
+          "global": true
+        },
+        {
+          "name": "Panel",
+          "as": "Panel",
+          "from": "primevue/panel",
+          "export": "default",
+          "filePath": "primevue/panel",
+          "global": true
+        },
+        {
+          "name": "ScrollPanel",
+          "as": "ScrollPanel",
+          "from": "primevue/scrollpanel",
+          "export": "default",
+          "filePath": "primevue/scrollpanel",
+          "global": true
+        },
+        {
+          "name": "Splitter",
+          "as": "Splitter",
+          "from": "primevue/splitter",
+          "export": "default",
+          "filePath": "primevue/splitter",
+          "global": true
+        },
+        {
+          "name": "SplitterPanel",
+          "as": "SplitterPanel",
+          "from": "primevue/splitterpanel",
+          "export": "default",
+          "filePath": "primevue/splitterpanel",
+          "global": true
+        },
+        {
+          "name": "Stepper",
+          "as": "Stepper",
+          "from": "primevue/stepper",
+          "export": "default",
+          "filePath": "primevue/stepper",
+          "global": true
+        },
+        {
+          "name": "StepList",
+          "as": "StepList",
+          "from": "primevue/steplist",
+          "export": "default",
+          "filePath": "primevue/steplist",
+          "global": true
+        },
+        {
+          "name": "Step",
+          "as": "Step",
+          "from": "primevue/step",
+          "export": "default",
+          "filePath": "primevue/step",
+          "global": true
+        },
+        {
+          "name": "StepItem",
+          "as": "StepItem",
+          "from": "primevue/stepitem",
+          "export": "default",
+          "filePath": "primevue/stepitem",
+          "global": true
+        },
+        {
+          "name": "StepPanels",
+          "as": "StepPanels",
+          "from": "primevue/steppanels",
+          "export": "default",
+          "filePath": "primevue/steppanels",
+          "global": true
+        },
+        {
+          "name": "StepPanel",
+          "as": "StepPanel",
+          "from": "primevue/steppanel",
+          "export": "default",
+          "filePath": "primevue/steppanel",
+          "global": true
+        },
+        {
+          "name": "TabView",
+          "as": "TabView",
+          "from": "primevue/tabview",
+          "export": "default",
+          "filePath": "primevue/tabview",
+          "global": true
+        },
+        {
+          "name": "Tabs",
+          "as": "Tabs",
+          "from": "primevue/tabs",
+          "export": "default",
+          "filePath": "primevue/tabs",
+          "global": true
+        },
+        {
+          "name": "TabList",
+          "as": "TabList",
+          "from": "primevue/tablist",
+          "export": "default",
+          "filePath": "primevue/tablist",
+          "global": true
+        },
+        {
+          "name": "Tab",
+          "as": "Tab",
+          "from": "primevue/tab",
+          "export": "default",
+          "filePath": "primevue/tab",
+          "global": true
+        },
+        {
+          "name": "TabPanels",
+          "as": "TabPanels",
+          "from": "primevue/tabpanels",
+          "export": "default",
+          "filePath": "primevue/tabpanels",
+          "global": true
+        },
+        {
+          "name": "TabPanel",
+          "as": "TabPanel",
+          "from": "primevue/tabpanel",
+          "export": "default",
+          "filePath": "primevue/tabpanel",
+          "global": true
+        },
+        {
+          "name": "Toolbar",
+          "as": "Toolbar",
+          "from": "primevue/toolbar",
+          "export": "default",
+          "filePath": "primevue/toolbar",
+          "global": true
+        },
+        {
+          "name": "ConfirmDialog",
+          "use": {
+            "as": "ConfirmationService"
+          },
+          "as": "ConfirmDialog",
+          "from": "primevue/confirmdialog",
+          "export": "default",
+          "filePath": "primevue/confirmdialog",
+          "global": true
+        },
+        {
+          "name": "ConfirmPopup",
+          "use": {
+            "as": "ConfirmationService"
+          },
+          "as": "ConfirmPopup",
+          "from": "primevue/confirmpopup",
+          "export": "default",
+          "filePath": "primevue/confirmpopup",
+          "global": true
+        },
+        {
+          "name": "Dialog",
+          "as": "Dialog",
+          "from": "primevue/dialog",
+          "export": "default",
+          "filePath": "primevue/dialog",
+          "global": true
+        },
+        {
+          "name": "Drawer",
+          "as": "Drawer",
+          "from": "primevue/drawer",
+          "export": "default",
+          "filePath": "primevue/drawer",
+          "global": true
+        },
+        {
+          "name": "DynamicDialog",
+          "use": {
+            "as": "DialogService"
+          },
+          "as": "DynamicDialog",
+          "from": "primevue/dynamicdialog",
+          "export": "default",
+          "filePath": "primevue/dynamicdialog",
+          "global": true
+        },
+        {
+          "name": "OverlayPanel",
+          "as": "OverlayPanel",
+          "from": "primevue/overlaypanel",
+          "export": "default",
+          "filePath": "primevue/overlaypanel",
+          "global": true
+        },
+        {
+          "name": "Popover",
+          "as": "Popover",
+          "from": "primevue/popover",
+          "export": "default",
+          "filePath": "primevue/popover",
+          "global": true
+        },
+        {
+          "name": "Sidebar",
+          "as": "Sidebar",
+          "from": "primevue/sidebar",
+          "export": "default",
+          "filePath": "primevue/sidebar",
+          "global": true
+        },
+        {
+          "name": "FileUpload",
+          "as": "FileUpload",
+          "from": "primevue/fileupload",
+          "export": "default",
+          "filePath": "primevue/fileupload",
+          "global": true
+        },
+        {
+          "name": "Breadcrumb",
+          "as": "Breadcrumb",
+          "from": "primevue/breadcrumb",
+          "export": "default",
+          "filePath": "primevue/breadcrumb",
+          "global": true
+        },
+        {
+          "name": "ContextMenu",
+          "as": "ContextMenu",
+          "from": "primevue/contextmenu",
+          "export": "default",
+          "filePath": "primevue/contextmenu",
+          "global": true
+        },
+        {
+          "name": "Dock",
+          "as": "Dock",
+          "from": "primevue/dock",
+          "export": "default",
+          "filePath": "primevue/dock",
+          "global": true
+        },
+        {
+          "name": "Menu",
+          "as": "Menu",
+          "from": "primevue/menu",
+          "export": "default",
+          "filePath": "primevue/menu",
+          "global": true
+        },
+        {
+          "name": "Menubar",
+          "as": "Menubar",
+          "from": "primevue/menubar",
+          "export": "default",
+          "filePath": "primevue/menubar",
+          "global": true
+        },
+        {
+          "name": "MegaMenu",
+          "as": "MegaMenu",
+          "from": "primevue/megamenu",
+          "export": "default",
+          "filePath": "primevue/megamenu",
+          "global": true
+        },
+        {
+          "name": "PanelMenu",
+          "as": "PanelMenu",
+          "from": "primevue/panelmenu",
+          "export": "default",
+          "filePath": "primevue/panelmenu",
+          "global": true
+        },
+        {
+          "name": "Steps",
+          "as": "Steps",
+          "from": "primevue/steps",
+          "export": "default",
+          "filePath": "primevue/steps",
+          "global": true
+        },
+        {
+          "name": "TabMenu",
+          "as": "TabMenu",
+          "from": "primevue/tabmenu",
+          "export": "default",
+          "filePath": "primevue/tabmenu",
+          "global": true
+        },
+        {
+          "name": "TieredMenu",
+          "as": "TieredMenu",
+          "from": "primevue/tieredmenu",
+          "export": "default",
+          "filePath": "primevue/tieredmenu",
+          "global": true
+        },
+        {
+          "name": "Message",
+          "as": "Message",
+          "from": "primevue/message",
+          "export": "default",
+          "filePath": "primevue/message",
+          "global": true
+        },
+        {
+          "name": "InlineMessage",
+          "as": "InlineMessage",
+          "from": "primevue/inlinemessage",
+          "export": "default",
+          "filePath": "primevue/inlinemessage",
+          "global": true
+        },
+        {
+          "name": "Toast",
+          "use": {
+            "as": "ToastService"
+          },
+          "as": "Toast",
+          "from": "primevue/toast",
+          "export": "default",
+          "filePath": "primevue/toast",
+          "global": true
+        },
+        {
+          "name": "Carousel",
+          "as": "Carousel",
+          "from": "primevue/carousel",
+          "export": "default",
+          "filePath": "primevue/carousel",
+          "global": true
+        },
+        {
+          "name": "Galleria",
+          "as": "Galleria",
+          "from": "primevue/galleria",
+          "export": "default",
+          "filePath": "primevue/galleria",
+          "global": true
+        },
+        {
+          "name": "Image",
+          "as": "Image",
+          "from": "primevue/image",
+          "export": "default",
+          "filePath": "primevue/image",
+          "global": true
+        },
+        {
+          "name": "ImageCompare",
+          "as": "ImageCompare",
+          "from": "primevue/imagecompare",
+          "export": "default",
+          "filePath": "primevue/imagecompare",
+          "global": true
+        },
+        {
+          "name": "Avatar",
+          "as": "Avatar",
+          "from": "primevue/avatar",
+          "export": "default",
+          "filePath": "primevue/avatar",
+          "global": true
+        },
+        {
+          "name": "AvatarGroup",
+          "as": "AvatarGroup",
+          "from": "primevue/avatargroup",
+          "export": "default",
+          "filePath": "primevue/avatargroup",
+          "global": true
+        },
+        {
+          "name": "Badge",
+          "as": "Badge",
+          "from": "primevue/badge",
+          "export": "default",
+          "filePath": "primevue/badge",
+          "global": true
+        },
+        {
+          "name": "BlockUI",
+          "as": "BlockUI",
+          "from": "primevue/blockui",
+          "export": "default",
+          "filePath": "primevue/blockui",
+          "global": true
+        },
+        {
+          "name": "Chip",
+          "as": "Chip",
+          "from": "primevue/chip",
+          "export": "default",
+          "filePath": "primevue/chip",
+          "global": true
+        },
+        {
+          "name": "Inplace",
+          "as": "Inplace",
+          "from": "primevue/inplace",
+          "export": "default",
+          "filePath": "primevue/inplace",
+          "global": true
+        },
+        {
+          "name": "MeterGroup",
+          "as": "MeterGroup",
+          "from": "primevue/metergroup",
+          "export": "default",
+          "filePath": "primevue/metergroup",
+          "global": true
+        },
+        {
+          "name": "OverlayBadge",
+          "as": "OverlayBadge",
+          "from": "primevue/overlaybadge",
+          "export": "default",
+          "filePath": "primevue/overlaybadge",
+          "global": true
+        },
+        {
+          "name": "ScrollTop",
+          "as": "ScrollTop",
+          "from": "primevue/scrolltop",
+          "export": "default",
+          "filePath": "primevue/scrolltop",
+          "global": true
+        },
+        {
+          "name": "Skeleton",
+          "as": "Skeleton",
+          "from": "primevue/skeleton",
+          "export": "default",
+          "filePath": "primevue/skeleton",
+          "global": true
+        },
+        {
+          "name": "ProgressBar",
+          "as": "ProgressBar",
+          "from": "primevue/progressbar",
+          "export": "default",
+          "filePath": "primevue/progressbar",
+          "global": true
+        },
+        {
+          "name": "ProgressSpinner",
+          "as": "ProgressSpinner",
+          "from": "primevue/progressspinner",
+          "export": "default",
+          "filePath": "primevue/progressspinner",
+          "global": true
+        },
+        {
+          "name": "Tag",
+          "as": "Tag",
+          "from": "primevue/tag",
+          "export": "default",
+          "filePath": "primevue/tag",
+          "global": true
+        },
+        {
+          "name": "Terminal",
+          "as": "Terminal",
+          "from": "primevue/terminal",
+          "export": "default",
+          "filePath": "primevue/terminal",
+          "global": true
+        },
+        {
+          "name": "Form",
+          "from": "@primevue/forms/form",
+          "as": "Form",
+          "export": "default",
+          "filePath": "@primevue/forms/form",
+          "global": true
+        },
+        {
+          "name": "FormField",
+          "from": "@primevue/forms/formfield",
+          "as": "FormField",
+          "export": "default",
+          "filePath": "@primevue/forms/formfield",
+          "global": true
+        }
+      ],
+      "directives": [
+        {
+          "name": "badge",
+          "as": "BadgeDirective",
+          "from": "primevue/badgedirective"
+        },
+        {
+          "name": "tooltip",
+          "as": "Tooltip",
+          "from": "primevue/tooltip"
+        },
+        {
+          "name": "ripple",
+          "as": "Ripple",
+          "from": "primevue/ripple"
+        },
+        {
+          "name": "styleclass",
+          "as": "StyleClass",
+          "from": "primevue/styleclass"
+        },
+        {
+          "name": "focustrap",
+          "as": "FocusTrap",
+          "from": "primevue/focustrap"
+        },
+        {
+          "name": "animateonscroll",
+          "as": "AnimateOnScroll",
+          "from": "primevue/animateonscroll"
+        },
+        {
+          "name": "keyfilter",
+          "as": "KeyFilter",
+          "from": "primevue/keyfilter"
+        }
+      ],
+      "composables": [
+        {
+          "name": "usePrimeVue",
+          "as": "usePrimeVue",
+          "from": "primevue/config"
+        },
+        {
+          "name": "useStyle",
+          "as": "useStyle",
+          "from": "primevue/usestyle"
+        },
+        {
+          "name": "useConfirm",
+          "as": "useConfirm",
+          "from": "primevue/useconfirm"
+        },
+        {
+          "name": "useToast",
+          "as": "useToast",
+          "from": "primevue/usetoast"
+        },
+        {
+          "name": "useDialog",
+          "as": "useDialog",
+          "from": "primevue/usedialog"
+        }
+      ],
+      "config": [
+        {
+          "name": "PrimeVue",
+          "as": "PrimeVue",
+          "from": "primevue/config"
+        }
+      ],
+      "services": [
+        {
+          "name": "ConfirmationService",
+          "as": "ConfirmationService",
+          "from": "primevue/confirmationservice"
+        },
+        {
+          "name": "DialogService",
+          "as": "DialogService",
+          "from": "primevue/dialogservice"
+        },
+        {
+          "name": "ToastService",
+          "as": "ToastService",
+          "from": "primevue/toastservice"
+        }
+      ],
+      "styles": [
+        {
+          "name": "BaseStyle",
+          "as": "BaseStyle",
+          "from": "@primevue/core/base/style"
+        }
+      ],
+      "injectStylesAsString": [],
+      "injectStylesAsStringToTop": [
+        ""
+      ]
+    },
     "vcalendar": ""
   },
   "icon": {
     "serverKnownCssClasses": []
+  },
+  "ipx": {
+    "baseURL": "/_ipx",
+    "alias": {},
+    "fs": {
+      "dir": [
+        "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/public"
+      ]
+    },
+    "http": {
+      "domains": []
+    }
   }
 };
 const envOptions = {
@@ -1128,6 +2228,41 @@ function publicAssetsURL(...path) {
   return path.length ? joinRelativeURL(publicBase, ...path) : publicBase;
 }
 
+const runtimeConfig = useRuntimeConfig();
+runtimeConfig?.public?.primevue ?? {};
+
+const stylesToTop = [].join('');
+const styleProps = {
+    
+};
+const styles$2 = [
+    ,
+    BaseStyle && BaseStyle.getStyleSheet ? BaseStyle.getStyleSheet(undefined, styleProps) : ''
+].join('');
+
+
+
+const themes = 
+[
+    BaseStyle && BaseStyle.getCommonThemeStyleSheet ? BaseStyle.getCommonThemeStyleSheet(undefined, styleProps) : '',
+    BaseStyle && BaseStyle.getThemeStyleSheet ? BaseStyle.getThemeStyleSheet(undefined, styleProps) : ''
+].join('');
+
+const defineNitroPlugin = (def) => def;
+const _0xx7xCUmlg = defineNitroPlugin(async (nitroApp) => {
+  nitroApp.hooks.hook("render:html", (html) => {
+    html.head.unshift(stylesToTop);
+    html.head.push(styles$2);
+    html.head.push(themes);
+  });
+});
+
+const plugins = [
+  _fi3qn0FDQB,
+_JiPWOSWWxR,
+_0xx7xCUmlg
+];
+
 const warnOnceSet = /* @__PURE__ */ new Set();
 const DEFAULT_ENDPOINT = "https://api.iconify.design";
 const _g6s46C = defineCachedEventHandler(async (event) => {
@@ -1188,11 +2323,30 @@ const _g6s46C = defineCachedEventHandler(async (event) => {
   // 1 week
 });
 
+const _uY0BuE = lazyEventHandler(() => {
+  const opts = useRuntimeConfig().ipx || {};
+  const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
+  const fsStorage = opts.fs?.dir ? ipxFSStorage({ ...opts.fs, dir: fsDir }) : void 0;
+  const httpStorage = opts.http?.domains ? ipxHttpStorage({ ...opts.http }) : void 0;
+  if (!fsStorage && !httpStorage) {
+    throw new Error("IPX storage is not configured!");
+  }
+  const ipxOptions = {
+    ...opts,
+    storage: fsStorage || httpStorage,
+    httpStorage
+  };
+  const ipx = createIPX(ipxOptions);
+  const ipxHandler = createIPXH3Handler(ipx);
+  return useBase(opts.baseURL, ipxHandler);
+});
+
 const _lazy_GsnakS = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '/__nuxt_error', handler: _lazy_GsnakS, lazy: true, middleware: false, method: undefined },
   { route: '/api/_nuxt_icon/:collection', handler: _g6s46C, lazy: false, middleware: false, method: undefined },
+  { route: '/_ipx/**', handler: _uY0BuE, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_GsnakS, lazy: true, middleware: false, method: undefined }
 ];
 
