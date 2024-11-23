@@ -32,7 +32,7 @@ const experience = [
 </script>
 
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr] gap-2">
+  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-2">
     <div class="left-block flex flex-col gap-8"">
     <section id=" search" class="bg-gray-100 text-center shadow-md p-3 flex flex-col gap-2">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
