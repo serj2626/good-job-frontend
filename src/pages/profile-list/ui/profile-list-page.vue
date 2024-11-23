@@ -36,7 +36,7 @@ const experience = [
     <div class="left-block flex flex-col gap-8"">
     <section id=" search" class="bg-gray-100 text-center shadow-md p-3 flex flex-col gap-2">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
-        Поиск вакансий
+        Поиск специалистов
       </h3>
       <UInput color="white" variant="outline" placeholder="Введите название должности..." />
       <USelect color="white" variant="outline" :options="['United States', 'Canada', 'Mexico']" />
@@ -53,7 +53,7 @@ const experience = [
       <section id="sorting"></section>
     </div>
     <div class="right-block px-5 flex flex-col gap-8 shadow-md bg-gray-100">
-      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">Вакансии</h3>
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">Специалисты</h3>
       <UAccordion color="teal" variant="solid" size="xl" open-icon="i-heroicons-plus" close-icon="i-heroicons-minus"
         :items="[
           {
