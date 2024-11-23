@@ -1,0 +1,1 @@
+export { default as ProfileListPage } from "./ui/profile-list-page.vue";
