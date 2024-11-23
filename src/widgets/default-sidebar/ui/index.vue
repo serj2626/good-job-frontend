@@ -19,14 +19,6 @@ const items = [
       icon: "i-heroicons-heart",
     },
     {
-      label: "Мои резюмé",
-      icon: "i-heroicons-clipboard-document",
-    },
-    {
-      label: "Мои вакансии",
-      icon: "i-heroicons-briefcase",
-    },
-    {
       label: "Отклики",
       icon: "i-heroicons-clipboard-document-list",
     },
@@ -35,8 +27,8 @@ const items = [
       icon: "i-heroicons-user",
     },
     {
-      label: "Мои проекты",
-      icon: "i-heroicons-squares-2x2",
+      label: "Сообщения",
+      icon: "i-heroicons-chat-bubble-left-right",
     },
     {
       label: "Обратная связь",
