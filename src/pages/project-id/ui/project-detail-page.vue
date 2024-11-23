@@ -84,7 +84,7 @@ const stacks = [
 
 </script>
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr]">
+  <div class="grid grid-cols-[minmax(0,300px),1fr] gap-4">
     <div class="left-block flex flex-col gap-4"">
       <section id=" profile" class="bg-gray-100 text-center shadow-md p-3">
       <div class="flex justify-between items-center mb-2">
@@ -149,14 +149,19 @@ const stacks = [
       <p><span>Мои резюме:</span> 3</p>
     </section>
   </div>
-  <div class="right-block ps-5 flex flex-col gap-8">
+  <div class="right-block flex flex-col gap-8">
     <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-3">
+        <div class="flex justify-between items-center">
         <h3 class="">
           Проект: DV-Fitness
         </h3>
+        <span>10-01-2023</span>
+        </div>
+   
         <p>Категория: Frontend</p>
         <p>Понравилось: 2</p>
+        <p>Ссылка: https://dv-fitness.ru</p>
         <div class="flex gap-2 items-center">
           <UIcon name="i-heroicons-hand-thumb-up" class="w-5 h-5" />
           <UIcon name="i-heroicons-hand-thumb-down"  class="w-5 h-5" />
@@ -168,7 +173,7 @@ const stacks = [
     </section>
     <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-        Навыки
+        Стек
       </h3>
       <div class="flex items-center gap-3 flex-wrap">
         <div v-for="stack in stacks" :key="stack.id">
