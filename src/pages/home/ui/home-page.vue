@@ -12,7 +12,11 @@
         работу для себя
       </p>
     </div>
-    <UButton label="Найти работу" size="xl" color="teal" variant="solid" />
+    <UButton label="Найти работу"  size="xl" color="teal" variant="solid">
+    <template #trailing>
+      <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
+    </template>
+  </UButton>
   </div>
 </template>
 <style scoped lang="scss"></style>
