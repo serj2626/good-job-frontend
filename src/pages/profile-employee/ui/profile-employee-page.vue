@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 const stacks = [
   {
     id: 1,
@@ -81,8 +82,41 @@ const stacks = [
     title: "PHP",
   },
 ];
-
-
+const rusumeList = [
+  {
+    id: 1,
+    title: "Frontend Developer",
+    fullName: "John Doe",
+    city: "New York",
+    country: "USA",
+    salary: "50000 - 10000",
+    experience: "2 years",
+    stacks: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "SASS"],
+    description: "I am a frontend developer with 2 years of experience.",
+  },
+  {
+    id: 2,
+    title: "Backend Developer",
+    fullName: "John Doe",
+    city: "New York",
+    country: "USA",
+    salary: "50000 - 10000",
+    experience: "2 years",
+    stacks: ["Node.js", "Express", "MongoDB"],
+    description: "I am a backend developer with 2 years of experience.",
+  },
+  {
+    id: 3,
+    title: "Fullstack Developer",
+    fullName: "John Doe",
+    city: "New York",
+    country: "USA",
+    salary: "50000 - 10000",
+    experience: "2 years",
+    stacks: ["React", "Node.js", "Express", "MongoDB"],
+    description: "I am a fullstack developer with 2 years of experience.",
+  },
+]
 const projects = [
   { id: 1, title: "Connect" },
   { id: 2, title: "Fitness" },
@@ -93,7 +127,7 @@ const projects = [
 <template>
   <div class="grid grid-cols-[minmax(0,300px),1fr]">
     <div class="left-block flex flex-col gap-4"">
-      <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
+      <section id=" profile" class="bg-gray-100 text-center shadow-md p-3">
       <div class="flex justify-between items-center mb-2">
         <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
           Ищу работу
@@ -116,31 +150,31 @@ const projects = [
         <h4>Контакты</h4>
         <div class=" flex flex-col gap-2">
         <div class="flex items-center justify-between">
-          <i class="fa-solid fa-phone fa-lg" style="color: #B197FC;"></i>
+          <UIcon name="i-heroicons-phone" class="w-5 h-5" />
           <p class="text-[#111418] text-base font-medium leading-normal">
             +7 (999) 999-99-99
           </p>
         </div>
         <div class="flex items-center justify-between">
-          <i class="fa-brands fa-github fa-lg"></i>
+          <UIcon name="i-heroicons-github" class="w-5 h-5" />
           <p class="text-[#111418] text-base font-medium leading-normal">
             Github
           </p>
         </div>
         <div class="flex items-center justify-between">
-          <i class="fa-brands fa-telegram fa-lg" style="color: #74C0FC;"></i>
+          <UIcon name="i-heroicons-user" class="w-5 h-5" />
           <p class="text-[#111418] text-base font-medium leading-normal">
             serj2626
           </p>
         </div>
         <div class="flex items-center justify-between">
-          <i class="fa-solid fa-envelope fa-lg" style="color: #74C0FC;"></i>
+          <UIcon name="i-heroicons-mail" class="w-5 h-5" />
           <p class="text-[#111418] text-base font-medium leading-normal">
             serj2626@mail.ru
           </p>
         </div>
         <div class="flex items-center justify-between">
-          <i class="fa-brands fa-linkedin fa-lg" style="color: #058df5;"></i>
+          <UIcon name="i-heroicons-linkedin" class="w-5 h-5" />
           <p class="text-[#111418] text-base font-medium leading-normal">
             serj2626
           </p>
@@ -157,6 +191,21 @@ const projects = [
     </section>
   </div>
   <div class="right-block ps-5 flex flex-col gap-8">
+    <section id="resumes" class="bg-gray-100 p-3 rounded-md shadow-2xl">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
+        Мои резюме
+      </h3>
+      <div class="grid grid-cols-3 gap-4">
+        <UCard v-for="resume in rusumeList" :key="resume.id">
+          <template #header>
+            <img src="https://cdn.usegalileo.ai/stability/37c54038-755b-4fdd-bffb-3b5b2334dfcc.png">
+          </template>
+          <template #footer>
+            {{ resume.title }}
+          </template>
+        </UCard>
+      </div>
+    </section>
     <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
         Проекты
@@ -169,50 +218,49 @@ const projects = [
       </div>
 
     </section>
-
-      <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-          Навыки
-        </h3>
-        <div class="flex items-center gap-3 flex-wrap">
-          <div v-for="stack in stacks" :key="stack.id">
-            <UButton disabled color="teal" size="md" ariant="solid">
-              {{ stack.title }}</UButton>
-          </div>
+    <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
+        Навыки
+      </h3>
+      <div class="flex items-center gap-3 flex-wrap">
+        <div v-for="stack in stacks" :key="stack.id">
+          <UButton disabled color="teal" size="md" ariant="solid">
+            {{ stack.title }}</UButton>
         </div>
-      </section>
-      <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-          Образование
-        </h3>
-        Сфера IT мне очень интересна, тк в ней я буду развиваться как в
-        знания, я смогу внести свой вклад в
-        улучшении качества продуктов своей будущей компании.
-      </section>
-      <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
-          Опыт работы
-        </h3>
-        Сфера IT мне очень интересна, тк в ней я буду развиваться как в
-        проаспределять свой рабочий день.
-        Уверен, получив все необходимые знания, я смогу внести свой вклад в
-        улучшении качества продуктов своей будущей компании.
-      </section>
-      <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-          Обо мне
-        </h3>
-        Сфера IT мне очень интересна, тк в ней я буду развиваться как в
-        профессиональном се необходимые знания, я смогу внести свой вклад в
-        улучшении качества продуктов своей будущей компании. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quasi, neque. Quas sequi tempora sint quisquam ad perspiciatis in veniam iure molestias iusto asperiores quia at
-        alias voluptate rerum deleniti, illo, culpa totam. Inventore, ullam quasi, incidunt, rem obcaecati eligendi enim
-        laboriosam excepturi ex repellendus doloremque totam voluptatibus vero! Sunt placeat eum assumenda animi in
-        neque quasi similique quaerat commodi dignissimos? Nobis, voluptates quos accusamus dolores quia nihil facilis
-        vitae recusandae possimus nostrum minima non ut. Itaque impedit similique doloremque exercitationem officia
-        mollitia esse voluptas vitae quo repellat, consectetur quibusdam nobis eius voluptates rerum pariatur natus,
-        quae fugiat eaque sequi. Et?
-      </section>
+      </div>
+    </section>
+    <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
+        Образование
+      </h3>
+      Сфера IT мне очень интересна, тк в ней я буду развиваться как в
+      знания, я смогу внести свой вклад в
+      улучшении качества продуктов своей будущей компании.
+    </section>
+    <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">
+        Опыт работы
+      </h3>
+      Сфера IT мне очень интересна, тк в ней я буду развиваться как в
+      проаспределять свой рабочий день.
+      Уверен, получив все необходимые знания, я смогу внести свой вклад в
+      улучшении качества продуктов своей будущей компании.
+    </section>
+    <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
+      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
+        Обо мне
+      </h3>
+      Сфера IT мне очень интересна, тк в ней я буду развиваться как в
+      профессиональном се необходимые знания, я смогу внести свой вклад в
+      улучшении качества продуктов своей будущей компании. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Quasi, neque. Quas sequi tempora sint quisquam ad perspiciatis in veniam iure molestias iusto asperiores quia at
+      alias voluptate rerum deleniti, illo, culpa totam. Inventore, ullam quasi, incidunt, rem obcaecati eligendi enim
+      laboriosam excepturi ex repellendus doloremque totam voluptatibus vero! Sunt placeat eum assumenda animi in
+      neque quasi similique quaerat commodi dignissimos? Nobis, voluptates quos accusamus dolores quia nihil facilis
+      vitae recusandae possimus nostrum minima non ut. Itaque impedit similique doloremque exercitationem officia
+      mollitia esse voluptas vitae quo repellat, consectetur quibusdam nobis eius voluptates rerum pariatur natus,
+      quae fugiat eaque sequi. Et?
+    </section>
 
   </div>
   </div>
