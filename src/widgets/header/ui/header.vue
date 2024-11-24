@@ -28,9 +28,9 @@ const menu = [
     <p class="text-slate-500">Good Job - Сайт для программистов и дизайнеров</p>
 
     <menu class="flex justify-center flex-wrap items-center gap-3 sm:gap-10 py-3  mt-2 ">
-      <a v-for="link in menu" :key="link.title" :href="link.url" class="menu-link py-2">
+      <NuxtLink v-for="link in menu" :key="link.title" :to="link.url" class="menu-link py-2">
         {{ link.title }}
-      </a>
+      </NuxtLink>
     </menu>
   </header>
 </template>
