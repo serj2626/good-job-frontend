@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const config = useRuntimeConfig();
+const { data: categories } = await useFetch(config.public.apiUrl + "/api/category");
+console.log("categories", categories.value);
+</script>
 <template>
   <div class="flex flex-col justify-center items-center gap-8">
     <div class="flex min-w-72 flex-col gap-3 items-center">
@@ -12,11 +16,14 @@
         работу для себя
       </p>
     </div>
-    <UButton label="Найти работу"  size="xl" color="teal" variant="solid">
-    <template #trailing>
-      <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
-    </template>
-  </UButton>
+    {{ $config.public.apiUrl }}
+    <NuxtLink :to="'/company/sad'">
+      <UButton label="Найти работу" size="xl" color="teal" variant="solid">
+        <template #trailing>
+          <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
+        </template>
+      </UButton>
+    </NuxtLink>
   </div>
 </template>
 <style scoped lang="scss"></style>
