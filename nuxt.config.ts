@@ -1,10 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-
+  devtools: { enabled: true },
   modules: [
     "@nuxt/ui",
-    "@primevue/nuxt-module",
     "@vueuse/nuxt",
     "@samk-dev/nuxt-vcalendar",
     "nuxt-swiper",
@@ -19,8 +17,8 @@ export default defineNuxtConfig({
   },
   app: {
     rootId: "app",
-    layoutTransition: true,
-    pageTransition: true,
+    // layoutTransition: true,
+    // pageTransition: true,
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
@@ -46,7 +44,7 @@ export default defineNuxtConfig({
   // },
   runtimeConfig: {
     public: {
-      apiUrl: process.env.NUXT_ENV_API_URL,
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
   compatibilityDate: "2024-11-10",

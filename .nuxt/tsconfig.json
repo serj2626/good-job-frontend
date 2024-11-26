@@ -107,9 +107,6 @@
       "#color-mode-options": [
         "./color-mode-options.mjs"
       ],
-      "#primevue-style": [
-        "./primevue-style.mjs"
-      ],
       "#image": [
         "../node_modules/@nuxt/image/dist/runtime"
       ],
@@ -177,8 +174,6 @@
     "../node_modules/@nuxtjs/tailwindcss/dist/runtime",
     "../node_modules/@nuxt/ui/runtime",
     "../node_modules/@nuxt/ui/dist/runtime",
-    "../node_modules/@primevue/nuxt-module/runtime",
-    "../node_modules/@primevue/nuxt-module/dist/runtime",
     "../node_modules/@vueuse/nuxt/runtime",
     "../node_modules/@vueuse/nuxt/dist/runtime",
     "../node_modules/@samk-dev/nuxt-vcalendar/runtime",
@@ -191,6 +186,8 @@
     "../node_modules/nuxt-rating/dist/runtime",
     "../node_modules/@nuxt/image/runtime",
     "../node_modules/@nuxt/image/dist/runtime",
+    "../node_modules/@nuxt/devtools/runtime",
+    "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     "../node_modules/@nuxt/telemetry/dist/runtime",
     ".."
@@ -207,8 +204,6 @@
     "../node_modules/@nuxtjs/tailwindcss/dist/runtime/server",
     "../node_modules/@nuxt/ui/runtime/server",
     "../node_modules/@nuxt/ui/dist/runtime/server",
-    "../node_modules/@primevue/nuxt-module/runtime/server",
-    "../node_modules/@primevue/nuxt-module/dist/runtime/server",
     "../node_modules/@vueuse/nuxt/runtime/server",
     "../node_modules/@vueuse/nuxt/dist/runtime/server",
     "../node_modules/@samk-dev/nuxt-vcalendar/runtime/server",
@@ -221,6 +216,8 @@
     "../node_modules/nuxt-rating/dist/runtime/server",
     "../node_modules/@nuxt/image/runtime/server",
     "../node_modules/@nuxt/image/dist/runtime/server",
+    "../node_modules/@nuxt/devtools/runtime/server",
+    "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../node_modules/@nuxt/telemetry/dist/runtime/server",
     "../.output"

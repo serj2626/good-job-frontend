@@ -219,7 +219,6 @@ declare global {
   const useClipboardItems: typeof import('@vueuse/core')['useClipboardItems']
   const useCloned: typeof import('@vueuse/core')['useCloned']
   const useColorMode: typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']
-  const useConfirm: typeof import('primevue/useconfirm')['useConfirm']
   const useConfirmDialog: typeof import('@vueuse/core')['useConfirmDialog']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCopyToClipboard: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCopyToClipboard')['useCopyToClipboard']
@@ -238,7 +237,6 @@ declare global {
   const useDeviceOrientation: typeof import('@vueuse/core')['useDeviceOrientation']
   const useDevicePixelRatio: typeof import('@vueuse/core')['useDevicePixelRatio']
   const useDevicesList: typeof import('@vueuse/core')['useDevicesList']
-  const useDialog: typeof import('primevue/usedialog')['useDialog']
   const useDisplayMedia: typeof import('@vueuse/core')['useDisplayMedia']
   const useDocumentVisibility: typeof import('@vueuse/core')['useDocumentVisibility']
   const useDraggable: typeof import('@vueuse/core')['useDraggable']
@@ -304,6 +302,7 @@ declare global {
   const useNow: typeof import('@vueuse/core')['useNow']
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
+  const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
   const useObjectUrl: typeof import('@vueuse/core')['useObjectUrl']
   const useOffsetPagination: typeof import('@vueuse/core')['useOffsetPagination']
   const useOnline: typeof import('@vueuse/core')['useOnline']
@@ -325,7 +324,6 @@ declare global {
   const usePreferredReducedMotion: typeof import('@vueuse/core')['usePreferredReducedMotion']
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
   const usePrevious: typeof import('@vueuse/core')['usePrevious']
-  const usePrimeVue: typeof import('primevue/config')['usePrimeVue']
   const useProjection: typeof import('../../node_modules/@vueuse/math')['useProjection']
   const useProvideButtonGroup: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup')['useProvideButtonGroup']
   const useRafFn: typeof import('@vueuse/core')['useRafFn']
@@ -388,7 +386,6 @@ declare global {
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useStepper: typeof import('@vueuse/core')['useStepper']
   const useStorageAsync: typeof import('@vueuse/core')['useStorageAsync']
-  const useStyle: typeof import('primevue/usestyle')['useStyle']
   const useStyleTag: typeof import('@vueuse/core')['useStyleTag']
   const useSum: typeof import('../../node_modules/@vueuse/math')['useSum']
   const useSupported: typeof import('@vueuse/core')['useSupported']
@@ -411,7 +408,7 @@ declare global {
   const useTimestamp: typeof import('@vueuse/core')['useTimestamp']
   const useToNumber: typeof import('@vueuse/core')['useToNumber']
   const useToString: typeof import('@vueuse/core')['useToString']
-  const useToast: typeof import('primevue/usetoast')['useToast']
+  const useToast: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']
   const useToggle: typeof import('@vueuse/core')['useToggle']
   const useTransition: typeof import('@vueuse/core')['useTransition']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
@@ -682,7 +679,6 @@ declare module 'vue' {
     readonly useClipboardItems: UnwrapRef<typeof import('@vueuse/core')['useClipboardItems']>
     readonly useCloned: UnwrapRef<typeof import('@vueuse/core')['useCloned']>
     readonly useColorMode: UnwrapRef<typeof import('../../node_modules/@nuxtjs/color-mode/dist/runtime/composables')['useColorMode']>
-    readonly useConfirm: UnwrapRef<typeof import('primevue/useconfirm')['useConfirm']>
     readonly useConfirmDialog: UnwrapRef<typeof import('@vueuse/core')['useConfirmDialog']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCopyToClipboard: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useCopyToClipboard')['useCopyToClipboard']>
@@ -701,7 +697,6 @@ declare module 'vue' {
     readonly useDeviceOrientation: UnwrapRef<typeof import('@vueuse/core')['useDeviceOrientation']>
     readonly useDevicePixelRatio: UnwrapRef<typeof import('@vueuse/core')['useDevicePixelRatio']>
     readonly useDevicesList: UnwrapRef<typeof import('@vueuse/core')['useDevicesList']>
-    readonly useDialog: UnwrapRef<typeof import('primevue/usedialog')['useDialog']>
     readonly useDisplayMedia: UnwrapRef<typeof import('@vueuse/core')['useDisplayMedia']>
     readonly useDocumentVisibility: UnwrapRef<typeof import('@vueuse/core')['useDocumentVisibility']>
     readonly useDraggable: UnwrapRef<typeof import('@vueuse/core')['useDraggable']>
@@ -767,6 +762,7 @@ declare module 'vue' {
     readonly useNow: UnwrapRef<typeof import('@vueuse/core')['useNow']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
+    readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
     readonly useObjectUrl: UnwrapRef<typeof import('@vueuse/core')['useObjectUrl']>
     readonly useOffsetPagination: UnwrapRef<typeof import('@vueuse/core')['useOffsetPagination']>
     readonly useOnline: UnwrapRef<typeof import('@vueuse/core')['useOnline']>
@@ -788,7 +784,6 @@ declare module 'vue' {
     readonly usePreferredReducedMotion: UnwrapRef<typeof import('@vueuse/core')['usePreferredReducedMotion']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly usePrevious: UnwrapRef<typeof import('@vueuse/core')['usePrevious']>
-    readonly usePrimeVue: UnwrapRef<typeof import('primevue/config')['usePrimeVue']>
     readonly useProjection: UnwrapRef<typeof import('../../node_modules/@vueuse/math')['useProjection']>
     readonly useProvideButtonGroup: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup')['useProvideButtonGroup']>
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
@@ -851,7 +846,6 @@ declare module 'vue' {
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useStepper: UnwrapRef<typeof import('@vueuse/core')['useStepper']>
     readonly useStorageAsync: UnwrapRef<typeof import('@vueuse/core')['useStorageAsync']>
-    readonly useStyle: UnwrapRef<typeof import('primevue/usestyle')['useStyle']>
     readonly useStyleTag: UnwrapRef<typeof import('@vueuse/core')['useStyleTag']>
     readonly useSum: UnwrapRef<typeof import('../../node_modules/@vueuse/math')['useSum']>
     readonly useSupported: UnwrapRef<typeof import('@vueuse/core')['useSupported']>
@@ -874,7 +868,7 @@ declare module 'vue' {
     readonly useTimestamp: UnwrapRef<typeof import('@vueuse/core')['useTimestamp']>
     readonly useToNumber: UnwrapRef<typeof import('@vueuse/core')['useToNumber']>
     readonly useToString: UnwrapRef<typeof import('@vueuse/core')['useToString']>
-    readonly useToast: UnwrapRef<typeof import('primevue/usetoast')['useToast']>
+    readonly useToast: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']>
     readonly useToggle: UnwrapRef<typeof import('@vueuse/core')['useToggle']>
     readonly useTransition: UnwrapRef<typeof import('@vueuse/core')['useTransition']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ProfilePage } from "~/src/pages/profile-employee";
 </script>
 <template>
-<ProfilePage />
+  <div>
+ 
+  </div>
 </template>
 <style scoped lang="scss"></style>

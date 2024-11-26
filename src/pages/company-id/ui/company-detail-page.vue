@@ -1,126 +1,109 @@
 <script setup lang="ts">
-import type { IProject } from '../model/project.type';
+
 const config = useRuntimeConfig();
-const {
-  data: project,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<IProject>("project", () =>
-  $fetch(
-    config.public.apiUrl +
-      `/api/employees/projects/${useRoute().params.id}/`
-  )
+const { data: resume } = await useFetch(
+  config.public.apiUrl + "/api/employees/resume/"
 );
-console.log("project", project.value);
 </script>
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr] gap-4">
-    <div class="left-block flex flex-col gap-4"">
-      <section id=" profile" class="bg-gray-100 text-center shadow-md p-3">
-      <div class="flex justify-between items-center mb-2">
-        <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
-          Ищу работу
-        </p>
-        <UToggle size="xl" color="teal" :model-value="true" />
-      </div>
+  <div class="grid grid-cols-[minmax(0,300px),1fr]">
+    <div class="left-sidebar flex flex-col gap-3">
+      <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
+            Ищу работу
+          </p>
 
-      <img src="https://cdn.usegalileo.ai/stability/37c54038-755b-4fdd-bffb-3b5b2334dfcc.png"
-        class="w-3/4 mx-auto rounded-full" />
-      <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
-        Сергей Бойцов
-      </h3>
-      <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
-        Frontend Developer
-      </p>
-      <UIButton />
-      <UButton size="xl" color="fuchsia" variant="solid">Подписаться</UButton>
-      </section>
-      <section id="contacts" class="bg-gray-100 shadow-md p-3"">
-        <h4>Контакты</h4>
-        <div class=" flex flex-col gap-2">
-        <div class="flex items-center justify-between">
-          <i class="fa-solid fa-phone fa-lg" style="color: #B197FC;"></i>
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            +7 (999) 999-99-99
-          </p>
+          <UToggle size="xl" color="teal" :model-value="true" />
         </div>
-        <div class="flex items-center justify-between">
-          <i class="fa-brands fa-github fa-lg"></i>
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            Github
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <i class="fa-brands fa-telegram fa-lg" style="color: #74C0FC;"></i>
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <i class="fa-solid fa-envelope fa-lg" style="color: #74C0FC;"></i>
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626@mail.ru
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <i class="fa-brands fa-linkedin fa-lg" style="color: #058df5;"></i>
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626
-          </p>
-        </div>
-    </div>
-    </section>
-    <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-2 p-3">
-      <p><span>Возраст:</span> 31</p>
-      <p><span>Страна:</span> Россия</p>
-      <p><span>Город:</span> Москва</p>
-      <p><span>Пол:</span> Мужской</p>
-      <p><span>Опыт:</span> 3 года</p>
-      <p><span>Мои резюме:</span> 3</p>
-    </section>
-  </div>
-  <div class="right-block flex flex-col gap-8">
-    <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-      <div class="flex flex-col gap-3">
-        <div class="flex justify-between items-center">
-        <h3 class="">
-          Проект: {{ project?.title }}
+        <img
+          src="https://cdn.usegalileo.ai/stability/37c54038-755b-4fdd-bffb-3b5b2334dfcc.png"
+          class="w-3/4 mx-auto rounded-full"
+        />
+        <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
+          Acme Inc.
         </h3>
-        <span>{{ project?.time_ago }}</span>
+        <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
+          Компания
+        </p>
+        <UButton size="xl" color="teal" variant="solid"
+          >Добавить в друзья</UButton
+        >
+      </section>
+      <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-3 p-3">
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Страна:</span>
+          <p>Россия</p>
         </div>
-   
-        <p>Категория: Frontend</p>
-        <p>Понравилось: {{ project?.likes?.length ? project.likes.length : 0 }}</p>
-        <p>Ссылка: {{ project?.link }}</p>
-        <div class="flex gap-2 items-center">
-          <UIcon name="i-heroicons-hand-thumb-up" class="w-5 h-5" />
-          <UIcon name="i-heroicons-hand-thumb-down"  class="w-5 h-5" />
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Город:</span>
+          <p>Москва</p>
         </div>
-        <img class="w-full h-auto block"
-        :src="project?.image" alt="">
-      </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Почта:</span>
+          <p>eKx0U@example.com</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Телефон:</span>
+          <p>+7 (123) 456-78-90</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2"
+            >Кол-во сотрудников</span
+          >
+          <p>14</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2"
+            >Кол-во вакансий</span
+          >
+          <p>5</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Кол-во друзей</span>
+          <p>26</p>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="bg-slate-200 rounded-2xl px-3 py-2">Сайт</span>
+          <p>acme.com</p>
+        </div>
+      </section>
+    </div>
+    <div class="right-block ps-5 flex flex-col gap-8">
+      <section id="about" class="bg-gray-100 p-3 rounded-md shadow-2xl">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
+          О компании
+        </h3>
+        Сфера IT мне очень интересна, Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Ea ratione distinctio sed quia, beatae aut, harum
+        accusamus nisi magni illum totam ex quaerat inventore deserunt quas.
+        Eius facere sit totam enim quod, saepe voluptate officiis officia eos?
+        Quibusdam, eos mollitia deleniti architecto qui perferendis quae. Nobis
+        aperiam sint delectus modi debitis eius officia. Dolor ullam animi rem,
+        inventore omnis error repellendus hic dicta. Tenetur suscipit tempore
+        similique libero officiis fugiat ab eligendi placeat tempora. Facilis,
+        veniam! Exercitationem blanditiis dignissimos animi voluptate totam, sed
+        perspiciatis, libero est doloribus impedit, iusto voluptatum..
+      </section>
 
-    </section>
-    <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
-      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-        Стек
-      </h3>
-      <div class="flex items-center gap-3 flex-wrap">
-        <div v-for="(stack, index) in project?.stacks" :key="index">
-          <UButton disabled color="teal" size="md" ariant="solid">
-            {{ stack }}</UButton>
+      <section id="vacancies" class="bg-gray-100 p-3 rounded-md shadow-2xl">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
+          Активные вакансии
+        </h3>
+        <div class="grid grid-cols-4 gap-4 py-5">
+          <div
+            class="project text-center flex flex-col gap-3 flex-wrap"
+            v-for="item in resume"
+            :key="item.id"
+          >
+          <NuxtImg class="h-24 w-24 rounded-3xl bg-center object-cover mx-auto" format="webp" :src="item.avatar" />
+            {{ item?.position }}
+          </div>
         </div>
-      </div>
-    </section>
-    <section id="description" class="bg-gray-100 p-3 rounded-md shadow-md">
-      <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-        Описание
-      </h3>
-      {{ project?.description? project?.description : 'Описание отсутствует' }}
-    </section>
-    <section id="reviews" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">Комментарии</h3>
+      </section>
+
+      <section id="reviews" class="bg-gray-100 p-3 rounded-md shadow-2xl">
+        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">Отзывы</h3>
         <div class="flex w-full flex-row items-start justify-start gap-3 p-4">
           <div
             class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0"
@@ -492,6 +475,6 @@ console.log("project", project.value);
         >
         </UPagination>
       </section>
-  </div>
+    </div>
   </div>
 </template>

@@ -2,9 +2,10 @@
 import type { NuxtError } from "#app";
 
 defineProps<{ error: NuxtError }>();
+console.log("error", error);
 </script>
 <template>
-  <h1>{{ error.message }}</h1>
-  <pre>{{ error }}</pre>
+  <h1>{{ error }}</h1>
+  <pre>{{ error.statusCode }}</pre>
 </template>
 <style scoped lang="scss"></style>

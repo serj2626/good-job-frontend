@@ -1,4 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const config = useRuntimeConfig();
+const {
+  data: resume,
+  pending,
+  error,
+  refresh,
+} = await useAsyncData("resume", () =>
+  $fetch(
+    config.public.apiUrl +
+      `/api/employees/resume/${useRoute().params.id}/`
+  )
+);
+
+console.log("resume", resume.value);
+</script>
 <template>
   <div class="px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
     <div class="flex flex-col max-w-[960px]">
@@ -6,18 +21,18 @@
         <div class="flex gap-4">
           <div
             class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/stability/976b11b3-bd5c-42da-8bd2-5ec029e0a372.png');
-            "
+            :style="{
+              backgroundImage: 'url(' + resume.avatar + ')',
+            }"
           ></div>
           <div class="flex flex-col justify-center">
             <p
               class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]"
             >
-              Сергей Бойцов
+              {{ resume.full_name }}
             </p>
             <p class="text-[#637588] text-base font-normal leading-normal">
-              Frontend Developer
+              {{ resume.position }}
             </p>
           </div>
         </div>
@@ -115,10 +130,10 @@
         <div class="flex gap-4 bg-white px-4 py-3">
           <div class="flex flex-1 flex-col justify-center">
             <p class="text-[#111418] text-base font-medium leading-normal">
-              Сергей Бойцов
+              {{ resume.full_name }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              Frontend Developer
+              {{ resume.position }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
               June 2020 - Present
@@ -326,55 +341,20 @@
         </div>
       </section>
 
-      <section id="skills">
+      <section id="skills" class="pb-5">
         <h2
           class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
         >
           Стек
         </h2>
-        <div class="flex gap-3 p-3 flex-wrap pr-4">
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">
-              Python
-            </p>
-          </div>
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">
-              Java
-            </p>
-          </div>
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">
-              JavaScript
-            </p>
-          </div>
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">C++</p>
-          </div>
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">
-              React
-            </p>
-          </div>
-          <div
-            class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-          >
-            <p class="text-[#111418] text-sm font-medium leading-normal">
-              Node.js
-            </p>
+        <div class="flex items-center gap-3 flex-wrap ps-3">
+          <div v-for="(stack, index) in resume.stacks" :key="index">
+            <UButton disabled color="teal" size="md" ariant="solid">
+              {{ stack }}</UButton
+            >
           </div>
         </div>
-        <div class="flex px-4 py-3 justify-start">
+        <div class="flex px-4 py-3 justify-start my-3">
           <button
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
           >
@@ -407,87 +387,24 @@
         >
           Проекты
         </h2>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/stability/ad0a124e-2a95-47b3-9bca-bf23f247c39c.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Personal Finance Tracker
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Developed a web app for tracking personal finances
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              April 2021
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/stability/c4bb0cbb-48e6-46d3-9900-7d7f83e3c8b0.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Chat App
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Designed and implemented a simple chat application
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              January 2021
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/stability/4b9db1ac-b725-47b8-8a6a-f0502205fe17.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Minesweeper
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Created a web-based version of the classic game, Minesweeper
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              November 2020
-            </p>
-          </div>
-        </div>
-        <div class="flex px-4 py-3 justify-start">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
-          >
+        <div class="flex flex-col gap-3">
+          <div class="flex gap-4 bg-white px-4 py-3" v-for="project in resume.projects" :key="project" >
             <div
-              class="text-[#111418]"
-              data-icon="Plus"
-              data-size="20px"
-              data-weight="regular"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
-                ></path>
-              </svg>
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+              :style="
+                'background-image: url(' + project.image + ');'
+              "
+            ></div>
+            <div class="flex flex-1 flex-col gap-1 justify-center">
+              <p class="text-[#111418] text-base font-medium leading-normal">
+                {{ project.title }}
+              </p>
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ project.description.slice(0, 60) + '...' }}
+              </p>
+              <a class="text-[#637588] text-sm font-normal leading-normal" href="">{{ project.link }}</a>
             </div>
-            <span class="truncate">Добавить проект</span>
-          </button>
+          </div>
         </div>
       </section>
 
@@ -659,10 +576,7 @@
           Обо мне
         </h2>
         <div class="px-4 py-3">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, eum.
-          Saepe quia nihil distinctio quasi ratione ut blanditiis error! Sit
-          libero, saepe quisquam vel ut ipsa, placeat, rerum architecto incidunt
-          earum mollitia totam!
+          {{ resume.about ? resume.about : "Данные отсутствуют" }}
         </div>
       </section>
     </div>

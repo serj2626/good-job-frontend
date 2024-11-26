@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ProfileCompanyPage } from '~/src/pages/profile-company';
+import { CompanyDetailPage } from '~/src/pages/company-id';
 </script>
 <template>
-<ProfileCompanyPage />
+    <CompanyDetailPage />
 </template>
 <style scoped lang="scss"></style>

@@ -40,15 +40,12 @@ export { createPopper, usePopper } from '../node_modules/@nuxt/ui/dist/runtime/c
 export { _useShortcuts, useShortcuts } from '../node_modules/@nuxt/ui/dist/runtime/composables/useShortcuts';
 export { slidOverInjectionKey, useSlideover } from '../node_modules/@nuxt/ui/dist/runtime/composables/useSlideover';
 export { useTimer } from '../node_modules/@nuxt/ui/dist/runtime/composables/useTimer';
+export { useToast } from '../node_modules/@nuxt/ui/dist/runtime/composables/useToast';
 export { useUI } from '../node_modules/@nuxt/ui/dist/runtime/composables/useUI';
 export { useColorMode } from '../node_modules/@nuxtjs/color-mode/dist/runtime/composables';
-export { usePrimeVue } from 'primevue/config';
-export { useStyle } from 'primevue/usestyle';
-export { useConfirm } from 'primevue/useconfirm';
-export { useToast } from 'primevue/usetoast';
-export { useDialog } from 'primevue/usedialog';
 export { useSwiper, useSwiperSlide } from 'swiper/vue';
 export { A11y as SwiperA11y, Autoplay as SwiperAutoplay, Controller as SwiperController, EffectCards as SwiperEffectCards, EffectCoverflow as SwiperEffectCoverflow, EffectCreative as SwiperEffectCreative, EffectCube as SwiperEffectCube, EffectFade as SwiperEffectFade, EffectFlip as SwiperEffectFlip, FreeMode as SwiperFreeMode, Grid as SwiperGrid, HashNavigation as SwiperHashNavigation, History as SwiperHistory, Keyboard as SwiperKeyboard, Manipulation as SwiperManipulation, Mousewheel as SwiperMousewheel, Navigation as SwiperNavigation, Pagination as SwiperPagination, Parallax as SwiperParallax, Scrollbar as SwiperScrollbar, Thumbs as SwiperThumbs, Virtual as SwiperVirtual, Zoom as SwiperZoom } from 'swiper/modules';
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
+export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
