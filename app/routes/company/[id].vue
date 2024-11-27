@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CompanyDetailPage } from '~/src/pages/company-id';
+import { CompanyDetailPage } from '~/src/pages/company-detail';
 </script>
 <template>
     <CompanyDetailPage />
