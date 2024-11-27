@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import type { IResume } from "../model/resume.type";
 const config = useRuntimeConfig();
 const {
   data: resume,
   pending,
   error,
   refresh,
-} = await useAsyncData("resume", () =>
+} = await useAsyncData<IResume>("resume", () =>
   $fetch(
-    config.public.apiUrl +
-      `/api/employees/resume/${useRoute().params.id}/`
+    config.public.apiUrl + `/api/employees/resume/${useRoute().params.id}/`
   )
 );
 
@@ -20,19 +20,19 @@ console.log("resume", resume.value);
       <div class="flex justify-between items-center py-5">
         <div class="flex gap-4">
           <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+            class="bg-no-repeat aspect-square bg-cover bg-center rounded-full min-h-32 w-32"
             :style="{
-              backgroundImage: 'url(' + resume.avatar + ')',
+              backgroundImage: 'url(' + resume?.avatar + ')',
             }"
           ></div>
           <div class="flex flex-col justify-center">
             <p
               class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]"
             >
-              {{ resume.full_name }}
+              {{ resume?.full_name }}
             </p>
             <p class="text-[#637588] text-base font-normal leading-normal">
-              {{ resume.position }}
+              {{ resume?.position }}
             </p>
           </div>
         </div>
@@ -130,10 +130,10 @@ console.log("resume", resume.value);
         <div class="flex gap-4 bg-white px-4 py-3">
           <div class="flex flex-1 flex-col justify-center">
             <p class="text-[#111418] text-base font-medium leading-normal">
-              {{ resume.full_name }}
+              {{ resume?.full_name }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              {{ resume.position }}
+              {{ resume?.position }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
               June 2020 - Present
@@ -348,7 +348,7 @@ console.log("resume", resume.value);
           Стек
         </h2>
         <div class="flex items-center gap-3 flex-wrap ps-3">
-          <div v-for="(stack, index) in resume.stacks" :key="index">
+          <div v-for="(stack, index) in resume?.stacks" :key="index">
             <UButton disabled color="teal" size="md" ariant="solid">
               {{ stack }}</UButton
             >
@@ -388,21 +388,27 @@ console.log("resume", resume.value);
           Проекты
         </h2>
         <div class="flex flex-col gap-3">
-          <div class="flex gap-4 bg-white px-4 py-3" v-for="project in resume.projects" :key="project" >
+          <div
+            class="flex gap-4 bg-white px-4 py-3"
+            v-for="project in resume?.projects"
+            :key="project.id"
+          >
             <div
               class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-              :style="
-                'background-image: url(' + project.image + ');'
-              "
+              :style="'background-image: url(' + project.image + ');'"
             ></div>
             <div class="flex flex-1 flex-col gap-1 justify-center">
               <p class="text-[#111418] text-base font-medium leading-normal">
                 {{ project.title }}
               </p>
               <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ project.description.slice(0, 60) + '...' }}
+                {{ project.description.slice(0, 60) + "..." }}
               </p>
-              <a class="text-[#637588] text-sm font-normal leading-normal" href="">{{ project.link }}</a>
+              <a
+                class="text-[#637588] text-sm font-normal leading-normal"
+                href=""
+                >{{ project.link }}</a
+              >
             </div>
           </div>
         </div>
@@ -576,7 +582,7 @@ console.log("resume", resume.value);
           Обо мне
         </h2>
         <div class="px-4 py-3">
-          {{ resume.about ? resume.about : "Данные отсутствуют" }}
+          {{ resume?.about ? resume.about : "Данные отсутствуют" }}
         </div>
       </section>
     </div>
