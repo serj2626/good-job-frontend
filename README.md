@@ -1,3 +1,5 @@
+[![Nuxt Logo](./public/screen.png)](https://nuxt.com/)
+
 ## Как развернуть проект
 
 1. Используйте node `20.12.1`
