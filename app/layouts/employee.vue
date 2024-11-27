@@ -18,7 +18,6 @@
         <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
           frontend dev
         </p>
-        <UIButton />
         <UButton size="xl" variant="solid">Добавить в друзья</UButton>
         </section>
         <section id="contacts" class="bg-gray-100 shadow-md p-3"">
