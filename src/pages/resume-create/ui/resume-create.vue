@@ -1,11 +1,11 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="px-3 flex flex-1 justify-center pb-5">
-    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-      <div class="flex flex-wrap justify-between gap-3 p-4">
-        <div class="flex min-w-72 flex-col gap-3">
+  <div class="flex flex-col shadow-2xl rounded-md px-3 py-12">
+    <div class="max-w-[960px] mx-auto">
+      <section id="header">
+        <div class="flex min-w-72 flex-col gap-3 mb-6 text-center">
           <p
-            class="text-[#111418] text-4xl text-center mb-5 font-black leading-tight tracking-[-0.033em]"
+            class="text-[#111418] text-4xl mb-5 font-black leading-tight tracking-[-0.033em]"
           >
             Составить резюме
           </p>
@@ -14,287 +14,130 @@
             советов о том, как составить отличное резюме.
           </p>
         </div>
+        <UAlert
+          icon="i-heroicons-information-circle"
+          color="lime"
+          variant="solid"
+          title="Внимание!"
+          description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
+          Изменить или добавить их можно в своем профиле."
+        />
+      </section>
+
+      <div class="flex items-center justify-center w-full my-5">
+        <label
+          for="dropzone-file"
+          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+        >
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg
+              class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 16"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+              />
+            </svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              <span class="font-semibold"
+                >Кликните здесь для загрузки аватара</span
+              >
+              или перетащите файл
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              SVG, PNG, JPG or GIF (MAX. 800x400px)
+            </p>
+          </div>
+          <input id="dropzone-file" type="file" class="hidden" />
+        </label>
       </div>
-      <h2
-        class="text-[#111418] text-[22px] underline font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-      >
-        Личные данные
-      </h2>
 
-
-      <!-- ФИО -->
-      <div class="flex flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Фамилия
-          </p>
-          <input
-            placeholder="Бойцов"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
+      <section id="main" class="flex flex-col gap-8 mt-5">
+        <div class="flex items-center gap-3">
+          <span class="text-[#111418] text-base font-bold"
+            >Желаемая должность</span
+          >
+          <UInput
+            size="xl"
+            class="flex-grow"
+            color="white"
+            variant="outline"
+            placeholder="Начните вводить..."
           />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Имя
-          </p>
-          <input
-            placeholder="Сергей"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Отчество
-          </p>
-          <input
-            placeholder="Валерьевич"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-
-
-
-     <!-- СТРАНА ГОРОД  -->
-
-      <div class="flex flex-wrap items-end gap-2 ">
-        <div class="flex flex-wrap items-end gap-4 px-4 py-3">
+        </div>
+        <div class="flex items-center justify-around">
+          <div class="flex items-center gap-3">
+            <span class="text-[#111418] text-base font-bold">Категория</span>
+            <USelect
+              size="xl"
+              placeholder="Выберите..."
+              :options="['United States', 'Canada', 'Mexico']"
+            />
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-[#111418] text-base font-bold"
+              >График работы</span
+            >
+            <USelect
+              size="xl"
+              placeholder="Выберите..."
+              :options="[
+                'Удалённая работа',
+                'Гибридная работа',
+                'Полная занятость',
+              ]"
+            />
+          </div>
+        </div>
+      </section>
+      <section id="footer">
+        <div class="flex flex-wrap items-end gap-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-              Город
+              Минимальная зарплата
             </p>
-            <input
-              placeholder="Москва"
-              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-              value=""
+            <UInput
+              type="number"
+              size="xl"
+              color="white"
+              variant="outline"
+              placeholder="...."
+            />
+          </label>
+          <label class="flex flex-col min-w-40 flex-1">
+            <p class="text-[#111418] text-base font-medium leading-normal pb-2">
+              Максимальная зарплата
+            </p>
+            <UInput
+              type="number"
+              size="xl"
+              color="white"
+              variant="outline"
+              placeholder="...."
             />
           </label>
         </div>
-        <div class="flex  flex-wrap items-end gap-4 px-4 py-3">
-          <label class="flex flex-col min-w-40 flex-1">
-            <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-              Страна
-            </p>
-            <input
-              placeholder="Россия"
-              class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-              value=""
-            />
-          </label>
-        </div>
-      </div>
-
-       <!-- О СЕБЕ -->
-
-      <div class="flex w-full flex-wrap items-end gap-4 my-5 px-4 py-3">
+      </section>
+      <div class="flex w-full flex-wrap items-end gap-4 my-5py-3">
         <label class="flex flex-col min-w-40 flex-1">
           <p class="text-[#111418] text-base font-medium leading-normal pb-2">
             О себе
           </p>
-          <textarea
+          <UTextarea
+            :rows="6"
             placeholder="Напишите о себе"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none min-h-36 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-          ></textarea>
-        </label>
-      </div>
-
-
-       <!-- ОПЫТ РАБОТЫ -->
-
-      <h2
-        class="text-[#111418] text-[22px] underline font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-      >
-        Опыт работы
-      </h2>
-
-       <!-- КОМПАНИЯ ГОРОД СТРАНА -->
-
-      <div class="flex w-full flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Позиция
-          </p>
-          <input
-            placeholder="JavaScript Developer"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
+            color="white"
+            variant="outline"
           />
         </label>
-      </div>
-      <div class="flex  flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Компания
-          </p>
-          <input
-            placeholder="Google"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Город
-          </p>
-          <input
-            placeholder="Moсква"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Страна
-          </p>
-          <input
-            placeholder="Россия"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-
-      <!-- НАЧАЛО - КОНЕЦ -->
-
-      <div class="flex max-w-[480px]  justify-center gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Начало
-          </p>
-          <input
-            placeholder="June 2022"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Конец
-          </p>
-          <input
-            placeholder="June 2023"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-
-      <!-- ОПИСАНИЕ  -->
-
-      <div class="flex flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Описание
-          </p>
-          <textarea
-            placeholder="Напишите о своей работе здесь"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none min-h-36 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-          ></textarea>
-        </label>
-      </div>
-      <h2
-        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-      >
-        Образование
-      </h2>
-      <div class="flex  flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Институт
-          </p>
-          <input
-            placeholder="МГУ"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-
-      <div class="flex flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Факультет
-          </p>
-          <input
-            placeholder="Факультет информационных технологий"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Дата окончания учебы
-          </p>
-          <input
-            placeholder="June 2018"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-
-      <h2
-        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-      >
-        Технологии
-      </h2>
-      <div class="flex flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Стек
-          </p>
-          <textarea
-            placeholder="Python, Java, React, JavaScript."
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none min-h-36 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-          ></textarea>
-        </label>
-      </div>
-      <h2
-        class="text-[#111418] underline text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-      >
-        Проекты
-      </h2>
-      <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Название проекта
-          </p>
-          <input
-            placeholder="E-commerce website"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-        <label class="flex flex-col min-w-40 flex-1">
-          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            Ссылка
-          </p>
-          <input
-            placeholder="https://example.com"
-            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal"
-            value=""
-          />
-        </label>
-      </div>
-      <div class="flex justify-stretch">
-        <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
-          >
-            <span class="truncate">Предпросмотр</span>
-          </button>
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#3289e7] text-white text-sm font-bold leading-normal tracking-[0.015em]"
-          >
-            <span class="truncate">Сохранить</span>
-          </button>
-        </div>
       </div>
     </div>
   </div>
 </template>
-<style scoped lang="scss"></style>
