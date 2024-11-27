@@ -185,7 +185,7 @@ const _ZPEv0SCCQ7 = (function(nitro) {
 
 const rootDir = "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend";
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","type":"image/svg","href":"/image/title.png","sizes":"64x64"}],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","type":"image/svg","href":"/image/title.jpg","sizes":"64x64"}],"style":[],"script":[],"noscript":[],"charset":"utf-8","viewport":"width=device-width, initial-scale=1","title":"Good Job"};
 
 const appRootTag = "div";
 
@@ -584,7 +584,19 @@ const _inlineRuntimeConfig = {
   },
   "public": {
     "apiUrl": "http://localhost:8000",
-    "vcalendar": ""
+    "vcalendar": "",
+    "pdf": {
+      "defaultDocOptions": {
+        "size": "A4",
+        "bufferPages": true,
+        "margins": {
+          "top": 25,
+          "left": 25,
+          "right": 25,
+          "bottom": 25
+        }
+      }
+    }
   },
   "icon": {
     "serverKnownCssClasses": []

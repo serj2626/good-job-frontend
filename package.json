@@ -18,6 +18,7 @@
     "@pinia/nuxt": "^0.7.0",
     "@primevue/nuxt-module": "^4.2.2",
     "@samk-dev/nuxt-vcalendar": "^1.0.4",
+    "@sidebase/nuxt-pdf": "^1.0.0-alpha.0",
     "autoprefixer": "^10.4.20",
     "nuxt": "^3.14.159",
     "postcss": "^8.4.49",

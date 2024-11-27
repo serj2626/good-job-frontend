@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "nuxt-rating",
     "@nuxt/image",
+    '@sidebase/nuxt-pdf'
   ],
   alias: {
     "@": "./src",
@@ -27,10 +28,10 @@ export default defineNuxtConfig({
         {
           rel: "icon",
           type: "image/svg",
-          href: "/image/title.png",
+          href: "/image/title.jpg",
           sizes: "64x64",
         },
-      ]
+      ],
     },
   },
   css: ["~/app/styles/tailwind/index.scss"],
