@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
 const { data: categories } = await useFetch(config.public.apiUrl + "/api/category");
-console.log("categories", categories.value);
 </script>
 <template>
+  {{ categories }}
   <div class="flex flex-col justify-center items-center gap-8">
     <div class="flex min-w-72 flex-col gap-3 items-center">
       <p
@@ -17,7 +17,7 @@ console.log("categories", categories.value);
       </p>
     </div>
     {{ $config.public.apiUrl }}
-    <NuxtLink :to="'/company/sad'">
+    <NuxtLink :to="'/company/1'">
       <UButton label="Найти работу" size="xl" color="teal" variant="solid">
         <template #trailing>
           <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
