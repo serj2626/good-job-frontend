@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const config = useRuntimeConfig();
 const { data: resume } = await useFetch(
   config.public.apiUrl + "/api/employees/resume/"
@@ -96,14 +95,31 @@ const { data: resume } = await useFetch(
             v-for="item in resume"
             :key="item.id"
           >
-          <NuxtImg class="h-24 w-24 rounded-3xl bg-center object-cover mx-auto" format="webp" :src="item.avatar" />
+            <NuxtImg
+              class="h-24 w-24 rounded-3xl bg-center object-cover mx-auto"
+              format="webp"
+              :src="item.avatar"
+            />
             {{ item?.position }}
           </div>
         </div>
       </section>
 
       <section id="reviews" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4">Отзывы</h3>
+        <div class="flex justify-between mb-8">
+          <h3 class="text-[#111418] text-lg font-bold px-4">
+            Отзывы
+          </h3>
+          <UButton
+            icon="i-heroicons-plus"
+            size="md"
+            color="amber"
+            variant="outline"
+            >Оставить отзыв
+          </UButton
+          >
+        </div>
+
         <div class="flex w-full flex-row items-start justify-start gap-3 p-4">
           <div
             class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0"
