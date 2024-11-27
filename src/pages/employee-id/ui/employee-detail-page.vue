@@ -10,7 +10,6 @@ const showModal = ref<boolean>(false);
 const selectDescr = ref<string>("");
 const selectRequir = ref<string>("");
 
-
 const setRequirements = (data: string) => {
   alert(data);
   showModal.value = true;
@@ -20,20 +19,19 @@ const setDescription = (data: string) => {
   alert(data);
   showModal.value = true;
   selectRequir.value = data;
-}
+};
 
+const deleteEducation = (id: number) => {
+  showModal.value = true;
+};
 
-const deleteEducation = (id:number) => {
-  showModal.value = true
-}
-
-const deleteExperience = (id:number) => {
-  showModal.value = true
-}
+const deleteExperience = (id: number) => {
+  showModal.value = true;
+};
 </script>
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr] gap-3">
-    <div class="left-block flex flex-col gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-5">
+    <div class="left-block flex flex-col gap-6">
       <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
         <div class="flex justify-between items-center mb-2">
           <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
@@ -49,46 +47,52 @@ const deleteExperience = (id:number) => {
         <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
           {{ data?.position }}
         </p>
-        <UIButton />
         <UButton size="xl" variant="solid">Добавить в друзья</UButton>
       </section>
-      <section id="contacts" class="bg-gray-100 shadow-md p-3"">
-      <h4>Контакты</h4>
-      <div class="flex flex-col gap-2">
-        <div class="flex items-center justify-between">
-          <Icon name="i-heroicons-phone" class="w-5 h-5" />
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            {{ data?.phone }}
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <UIcon name="i-heroicons-github" class="w-5 h-5" />
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            Github
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <UIcon name="i-heroicons-user" class="w-5 h-5" />
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <UIcon name="i-heroicons-mail" class="w-5 h-5" />
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626@mail.ru
-          </p>
-        </div>
-        <div class="flex items-center justify-between">
-          <UIcon name="i-heroicons-linkedin" class="w-5 h-5" />
-          <p class="text-[#111418] text-base font-medium leading-normal">
-            serj2626
-          </p>
-        </div>
-      </div>
-      </section>
 
+      <section id="contacts" class="bg-gray-100 shadow-md p-3">
+        <h4 class="text-[#111418] text-lg font-bold mb-3 pb-2">Контакты</h4>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <Icon name="bi:telephone-fill" class="w-5 h-5 text-amber-800" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              {{ data?.phone }}
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <UIcon name="bi:github" class="w-5 h-5" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              Github
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <UIcon name="bi:gitlab" class="w-5 h-5 text-rose-600" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              Gitlab
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <UIcon name="bi:envelope-at-fill" class="w-5 h-5 text-sky-500" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              serj2626@mail.ru
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <UIcon name="bi:linkedin" class="w-5 h-5 text-sky-700" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              serj2626
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            <UIcon name="bi:telegram" class="w-5 h-5 text-sky-700" />
+            <p class="text-[#111418] text-base font-medium leading-normal">
+              Telegram
+            </p>
+          </div>
+        </div>
+      </section>
       <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-2 p-3">
+        <h4 class="text-[#111418] text-lg font-bold pb-2 mb-3">Доп. информация</h4>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Возраст</span>
           <p>{{ data?.age }}</p>
@@ -127,22 +131,23 @@ const deleteExperience = (id:number) => {
         </div>
       </section>
     </div>
-    <div class="right-block flex flex-col gap-8">
+    <main id="right" class="right-block flex flex-col gap-8">
       <section id="resumes" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex justify-between items-center mb-3">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Мои резюме
           </h3>
           <UButton
             icon="i-heroicons-plus"
             size="md"
+            :to="'/resume/create'"
             color="amber"
             variant="outline"
             >Добавить резюме</UButton
           >
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <NuxtLink
             v-for="item in data?.resumes"
             :key="item.id"
@@ -151,8 +156,7 @@ const deleteExperience = (id:number) => {
             <UCard class="">
               <template #header>
                 <img
-                  class="rounded-md inline-block h-52 object-center w-full 
-                  hover:scale-105 transition-all duration-300 cursor-pointer ease-in"
+                  class="rounded-md inline-block h-52 object-center w-full hover:scale-105 transition-all duration-300 cursor-pointer ease-in"
                   :src="item.avatar"
                 />
               </template>
@@ -164,13 +168,14 @@ const deleteExperience = (id:number) => {
         </div>
       </section>
       <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex justify-between items-center mb-3">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Мои проекты
           </h3>
           <UButton
             icon="i-heroicons-plus"
             size="md"
+            :to="'/projects/create'"
             color="amber"
             variant="outline"
             >Добавить проект</UButton
@@ -196,8 +201,8 @@ const deleteExperience = (id:number) => {
           </NuxtLink>
         </div>
       </section>
-      <section id="stack" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex justify-between items-center mb-3">
+      <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
             Навыки
           </h3>
@@ -218,7 +223,7 @@ const deleteExperience = (id:number) => {
         </div>
       </section>
       <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex justify-between items-center mb-3">
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
             Образование
           </h3>
@@ -263,17 +268,26 @@ const deleteExperience = (id:number) => {
               <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
                 >Окончание:
               </span>
-              {{ edu.end_date ? edu.end_date :"по настоящее время" }}
+              {{ edu.end_date ? edu.end_date : "по настоящее время" }}
             </p>
             <div class="flex gap-3 ps-3">
-              <Icon name="i-heroicons-pencil-square" class="cursor-pointer text-green-600" size="24" />
-              <Icon @click="deleteEducation(edu.id)" name="i-heroicons-trash" class="cursor-pointer text-red-600" size="24" />
+              <Icon
+                name="i-heroicons-pencil-square"
+                class="cursor-pointer text-green-600"
+                size="24"
+              />
+              <Icon
+                @click="deleteEducation(edu.id)"
+                name="i-heroicons-trash"
+                class="cursor-pointer text-red-600"
+                size="24"
+              />
             </div>
           </div>
         </div>
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex justify-between items-center mb-3">
+        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Опыт работы
           </h3>
@@ -311,17 +325,17 @@ const deleteExperience = (id:number) => {
                 </div>
               </div>
               <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Начало работы:
-              </span>
-              {{ exp.start_date }}
-            </p>
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Окончание:
-              </span>
-              {{ exp.end_date ? exp.end_date :"по настоящее время" }}
-            </p>
+                <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
+                  >Начало работы:
+                </span>
+                {{ exp.start_date }}
+              </p>
+              <p>
+                <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
+                  >Окончание:
+                </span>
+                {{ exp.end_date ? exp.end_date : "по настоящее время" }}
+              </p>
               <div class="flex items-center gap-3 flex-wrap">
                 <div v-for="(stack, index) in exp.stacks" :key="index">
                   <UButton disabled color="cyan" size="md" ariant="solid">
@@ -330,15 +344,24 @@ const deleteExperience = (id:number) => {
                 </div>
               </div>
               <div class="flex gap-3 ps-3 mt-4">
-              <Icon name="i-heroicons-pencil-square" class="cursor-pointer text-green-600" size="24" />
-              <Icon @click="deleteExperience(exp.id)" name="i-heroicons-trash"  class="cursor-pointer text-red-600" size="24" />
-            </div>
+                <Icon
+                  name="i-heroicons-pencil-square"
+                  class="cursor-pointer text-green-600"
+                  size="24"
+                />
+                <Icon
+                  @click="deleteExperience(exp.id)"
+                  name="i-heroicons-trash"
+                  class="cursor-pointer text-red-600"
+                  size="24"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex justify-between items-center mb-3">
+        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Обо мне
           </h3>
@@ -351,40 +374,42 @@ const deleteExperience = (id:number) => {
             {{ data?.about ? "Редактировать" : "Добавить" }}
           </UButton>
         </div>
-        <p class="tracking-wide">{{ data?.about }}</p>
+        <ClientOnly>
+          <p class="tracking-wide">{{ data?.about }}</p>
+        </ClientOnly>
+        
       </section>
-    </div>
+    </main>
+    <UModal v-model="showModal" :overlay="false">
+      <UCard>
+        <template #header>
+          <h3 class="text-[#111418] text-lg font-bold">
+            Вы действительно хотите удалить ?
+          </h3>
+        </template>
+
+        <template #footer>
+          <div class="flex justify-between">
+            <UButton
+              color="gray"
+              size="md"
+              variant="solid"
+              @click="showModal = false"
+              icon="i-heroicons-x-mark"
+              >Отменить
+            </UButton>
+            <UButton
+              color="red"
+              size="md"
+              variant="solid"
+              icon="i-heroicons-trash"
+              @click="showModal = false"
+              >Удалить
+            </UButton>
+          </div>
+        </template>
+      </UCard>
+    </UModal>
   </div>
-
-  <UModal v-model="showModal" :overlay="false">
-    <UCard>
-    <template #header>
-      <h3 class="text-[#111418] text-lg font-bold">
-        Вы действительно хотите удалить ?
-      </h3>
-       
-    </template>
-
-    <template #footer>
-      <div class="flex justify-between">
-        <UButton
-          color="gray"
-          size="md"
-          variant="solid"
-          @click="showModal = false"
-          icon="i-heroicons-x-mark"
-          >Отменить</UButton
-        >
-        <UButton
-          color="red"
-          size="md"
-          variant="solid"
-          icon="i-heroicons-trash"
-          @click="showModal = false"
-          >Удалить</UButton
-        >
-      </div>
-    </template>
-  </UCard>
-              </UModal>
 </template>
+<style lang="scss" scoped></style>
