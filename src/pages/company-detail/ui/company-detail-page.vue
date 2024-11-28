@@ -11,23 +11,23 @@ const {
 </script>
 <template>
   <div class="grid grid-cols-[minmax(0,300px),1fr]">
-    <div class="left-sidebar flex flex-col gap-3">
+    <div class="left-sidebar flex flex-col gap-8">
       <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
         <div class="flex justify-between items-center mb-2">
-          <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
+          <div class="text-base font-bold px-4 pb-2 text-start text-teal-500">
             <div class="flex items-center gap-1">
               <span>Проверена</span>
               <Icon name="i-heroicons-check-circle" class="w-6 h-6" />
             </div>
-          </p>
+          </div>
 
           <UToggle size="xl" color="teal" :model-value="true" />
         </div>
-        <img :src="company?.avatar" :alt="company?.name" class="rounded-xl my-2" />
-        <!-- <img
-          src="https://cdn.usegalileo.ai/stability/37c54038-755b-4fdd-bffb-3b5b2334dfcc.png"
-          class="w-3/4 mx-auto rounded-full"
-        /> -->
+        <img
+          :src="company?.avatar"
+          :alt="company?.name"
+          class="rounded-xl my-2"
+        />
         <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
           {{ company?.name }}
         </h3>
@@ -79,7 +79,9 @@ const {
     </div>
     <div class="right-block ps-5 flex flex-col gap-8">
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             О компании
           </h3>
@@ -94,12 +96,14 @@ const {
         </div>
 
         <ClientOnly>
-          {{ company?.about }}
+          {{ company?.about ? company?.about : "Описание отсутствует......." }}
         </ClientOnly>
       </section>
 
       <section id="vacancies" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Активные вакансии
           </h3>
