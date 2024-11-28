@@ -3,7 +3,7 @@ import type { IEmployee } from "../model/employee.type";
 const config = useRuntimeConfig();
 const { data, pending, error, refresh } = await useAsyncData<IEmployee>(
   "employee",
-  () => $fetch(config.public.apiUrl + "/api/employees/2/")
+  () => $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
 );
 
 const showModal = ref<boolean>(false);
@@ -375,7 +375,7 @@ const deleteExperience = (id: number) => {
           </UButton>
         </div>
         <ClientOnly>
-          <p class="tracking-wide">{{ data?.about }}</p>
+          <p class="tracking-wide">{{ data?.about ? data?.about : "Данные отсутствуют...." }}</p>
         </ClientOnly>
         
       </section>
