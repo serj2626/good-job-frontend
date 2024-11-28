@@ -6,15 +6,19 @@ const menu = [
   },
   {
     title: "Вакансии",
-    url: "/vacancy/list",
+    url: "/vacancies/list",
   },
   {
     title: "Компании",
-    url: "/company/list",
+    url: "/companies/list",
+  },
+  {
+    title: "Специалисты",
+    url: "/employees/list",
   },
   {
     title: "Резюме",
-    url: "/resume/list",
+    url: "/resumes/list",
   },
   {
     title: "Посты и события",
