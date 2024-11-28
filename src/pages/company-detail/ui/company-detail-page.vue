@@ -79,18 +79,39 @@ const {
     </div>
     <div class="right-block ps-5 flex flex-col gap-8">
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-          О компании
-        </h3>
+        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
+          <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
+            О компании
+          </h3>
+          <UButton
+            :icon="!company?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'"
+            size="md"
+            :color="company?.about ? 'teal' : 'amber'"
+            variant="outline"
+          >
+            {{ company?.about ? "Редактировать" : "Добавить" }}
+          </UButton>
+        </div>
+
         <ClientOnly>
           {{ company?.about }}
         </ClientOnly>
       </section>
 
       <section id="vacancies" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
-          Активные вакансии
-        </h3>
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
+          <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
+            Активные вакансии
+          </h3>
+          <UButton
+            icon="i-heroicons-plus"
+            size="md"
+            :to="'/vacancy/create'"
+            color="amber"
+            variant="outline"
+            >Добавить вакансию</UButton
+          >
+        </div>
         <div class="grid grid-cols-4 gap-4 py-5">
           <!-- <div
             class="project text-center flex flex-col gap-3 flex-wrap"
