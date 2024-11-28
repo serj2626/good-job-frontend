@@ -1,7 +1,6 @@
-<script setup lang="ts"></script>
 <template>
   <div class="flex flex-col shadow-2xl rounded-md px-3 py-12">
-    <div class="max-w-[960px] mx-auto">
+    <form id="resume-create" class="w-3/4 mx-auto">
       <section id="header">
         <div class="flex min-w-72 flex-col gap-3 mb-6 text-center">
           <p
@@ -19,7 +18,7 @@
           color="lime"
           variant="solid"
           title="Внимание!"
-          description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
+          description="Разделы с опытом работы, образованием и проектами будут добавлены в ваше резюме автоматически.
           Изменить или добавить их можно в своем профиле."
         />
       </section>
@@ -27,7 +26,7 @@
       <div class="flex items-center justify-center w-full my-5">
         <label
           for="dropzone-file"
-          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
         >
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <svg
@@ -59,7 +58,6 @@
         </label>
       </div>
 
-      <section id="main" class="flex flex-col gap-8 mt-5">
         <div class="flex items-center gap-3">
           <span class="text-[#111418] text-base font-bold"
             >Желаемая должность</span
@@ -72,19 +70,35 @@
             placeholder="Начните вводить..."
           />
         </div>
-        <div class="flex items-center justify-around">
-          <div class="flex items-center gap-3">
-            <span class="text-[#111418] text-base font-bold">Категория</span>
+
+        <div class="flex items-center justify-between gap-3">
+          <span class="text-[#111418] text-base font-bold">Должность</span>
+          <UInput
+            size="xl"
+            class="flex-grow"
+            color="white"
+            variant="outline"
+            placeholder="Начните вводить..."
+          />
+        </div>
+
+
+      <div id="footer">
+        <div class="flex flex-wrap items-end gap-4 py-3">
+          <label class="flex flex-col min-w-40 flex-1">
+            <p class="text-[#111418] text-base font-medium leading-normal pb-2">
+              Категория
+            </p>
             <USelect
               size="xl"
               placeholder="Выберите..."
               :options="['United States', 'Canada', 'Mexico']"
             />
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="text-[#111418] text-base font-bold"
-              >График работы</span
-            >
+          </label>
+          <label class="flex flex-col min-w-40 flex-1">
+            <p class="text-[#111418] text-base font-medium leading-normal pb-2">
+              График работы
+            </p>
             <USelect
               size="xl"
               placeholder="Выберите..."
@@ -94,10 +108,11 @@
                 'Полная занятость',
               ]"
             />
-          </div>
+          </label>
         </div>
-      </section>
-      <section id="footer">
+      </div>
+
+      <div id="footer">
         <div class="flex flex-wrap items-end gap-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#111418] text-base font-medium leading-normal pb-2">
@@ -124,7 +139,10 @@
             />
           </label>
         </div>
-      </section>
+      </div>
+
+
+
       <div class="flex w-full flex-wrap items-end gap-4 my-5py-3">
         <label class="flex flex-col min-w-40 flex-1">
           <p class="text-[#111418] text-base font-medium leading-normal pb-2">
@@ -138,6 +156,23 @@
           />
         </label>
       </div>
-    </div>
+      <div class="flex justify-between items-center mt-12">
+        <UButton color="red" size="xl" variant="solid" label="Отменить" />
+        <div class="flex items-center gap-2">
+          <UButton
+            color="indigo"
+            size="xl"
+            variant="solid"
+            label="Предварительный просмотр"
+          />
+          <UButton
+            color="sky"
+            size="xl"
+            variant="solid"
+            label="Сохранить"
+          />
+        </div>
+      </div>
+    </form>
   </div>
 </template>
