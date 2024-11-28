@@ -4,6 +4,7 @@ interface IUser {
 }
 
 interface ICompany {
+  id: number;
   user: IUser;
   phone: string;
   country: string;
