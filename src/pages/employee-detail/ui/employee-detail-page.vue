@@ -147,7 +147,7 @@ const deleteExperience = (id: number) => {
           >
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div v-if="data?.resumes.length"  class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <NuxtLink
             v-for="item in data?.resumes"
             :key="item.id"
@@ -166,6 +166,9 @@ const deleteExperience = (id: number) => {
             </UCard>
           </NuxtLink>
         </div>
+        <div v-else>
+          Данные отсутствуют....
+        </div>
       </section>
       <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
@@ -181,7 +184,7 @@ const deleteExperience = (id: number) => {
             >Добавить проект</UButton
           >
         </div>
-        <div class="flex gap-3">
+        <div  v-if="data?.projects.length"   class="flex gap-3">
           <NuxtLink
             v-for="item in data?.projects"
             :key="item.id"
@@ -200,6 +203,9 @@ const deleteExperience = (id: number) => {
             </UCard>
           </NuxtLink>
         </div>
+        <div v-else>
+          Данные отсутствуют....
+        </div>
       </section>
       <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-3">
@@ -214,12 +220,15 @@ const deleteExperience = (id: number) => {
             >Добавить навык</UButton
           >
         </div>
-        <div class="flex items-center gap-3 flex-wrap">
+        <div v-if="data?.stacks.length"   class="flex items-center gap-3 flex-wrap">
           <div v-for="(stack, index) in data?.stacks" :key="index">
             <UButton disabled color="teal" size="md" ariant="solid">
               {{ stack }}</UButton
             >
           </div>
+        </div>
+        <div v-else>
+          Данные отсутствуют....
         </div>
       </section>
       <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
