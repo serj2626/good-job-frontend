@@ -3,7 +3,6 @@ const config = useRuntimeConfig();
 const { data: categories } = await useFetch(config.public.apiUrl + "/api/category");
 </script>
 <template>
-  {{ categories }}
   <div class="flex flex-col justify-center items-center gap-8">
     <div class="flex min-w-72 flex-col gap-3 items-center">
       <p
@@ -16,8 +15,7 @@ const { data: categories } = await useFetch(config.public.apiUrl + "/api/categor
         работу для себя
       </p>
     </div>
-    {{ $config.public.apiUrl }}
-    <NuxtLink :to="'/company/1'">
+    <NuxtLink :to="'/vacancies/list'">
       <UButton label="Найти работу" size="xl" color="teal" variant="solid">
         <template #trailing>
           <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
