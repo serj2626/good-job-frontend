@@ -2,26 +2,24 @@
   <div class="flex flex-col shadow-2xl rounded-md px-3 py-12">
     <form id="vacancy-create" class="w-3/4 mx-auto">
       <div class="flex flex-col gap-5 mb-6 text-center">
-          <p
-            class="text-[#111418] text-4xl mb-5 font-black leading-tight tracking-[-0.033em]"
-          >
-            Создание вакансии
-          </p>
-          <p class="text-[#637588] text-base font-normal leading-normal">
-            Хорошо оформленная вакансия поможет вам выделиться.
-          </p>
-        </div>
+        <p
+          class="text-[#111418] text-4xl mb-5 font-black leading-tight tracking-[-0.033em]"
+        >
+          Создание вакансии
+        </p>
+        <p class="text-[#637588] text-base font-normal leading-normal">
+          Хорошо оформленная вакансия поможет вам выделиться.
+        </p>
+      </div>
 
-        <UAlert
-          icon="i-heroicons-information-circle"
-          color="indigo"
-          variant="solid"
-          title="Внимание!"
-          description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
+      <UAlert
+        icon="i-heroicons-information-circle"
+        color="indigo"
+        variant="solid"
+        title="Внимание!"
+        description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
           Изменить или добавить их можно в своем профиле."
-        />
-
-
+      />
 
       <div id="main" class="flex flex-col gap-5 mt-5">
         <div class="flex items-center gap-3">
@@ -145,12 +143,7 @@
             variant="solid"
             label="Предварительный просмотр"
           />
-          <UButton
-            color="sky"
-            size="xl"
-            variant="solid"
-            label="Сохранить"
-          />
+          <UButton color="sky" size="xl" variant="solid" label="Сохранить" />
         </div>
       </div>
     </form>
