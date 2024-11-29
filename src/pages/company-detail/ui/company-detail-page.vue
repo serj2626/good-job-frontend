@@ -110,7 +110,7 @@ const {
           <UButton
             icon="i-heroicons-plus"
             size="md"
-            :to="'/vacancy/create'"
+            :to="'/vacancies/create'"
             color="amber"
             variant="outline"
             >Добавить вакансию</UButton
