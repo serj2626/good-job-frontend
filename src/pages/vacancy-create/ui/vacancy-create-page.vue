@@ -14,7 +14,7 @@
 
         <UAlert
           icon="i-heroicons-information-circle"
-          color="lime"
+          color="indigo"
           variant="solid"
           title="Внимание!"
           description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
