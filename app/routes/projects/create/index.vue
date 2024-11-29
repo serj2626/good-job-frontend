@@ -1,8 +1,6 @@
 <script setup lang="ts">
+import { ProjectCreatePage } from "~/src/pages/project-create";
 </script>
 <template>
-  <div>
- 
-  </div>
+  <ProjectCreatePage />
 </template>
-<style scoped lang="scss"></style>
