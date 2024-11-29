@@ -15,7 +15,7 @@
         </div>
         <UAlert
           icon="i-heroicons-information-circle"
-          color="lime"
+          color="indigo"
           variant="solid"
           title="Внимание!"
           description="Разделы с опытом работы, образованием и проектами будут добавлены в ваше резюме автоматически.
@@ -70,18 +70,6 @@
             placeholder="Начните вводить..."
           />
         </div>
-
-        <div class="flex items-center justify-between gap-3">
-          <span class="text-[#111418] text-base font-bold">Должность</span>
-          <UInput
-            size="xl"
-            class="flex-grow"
-            color="white"
-            variant="outline"
-            placeholder="Начните вводить..."
-          />
-        </div>
-
 
       <div id="footer">
         <div class="flex flex-wrap items-end gap-4 py-3">
