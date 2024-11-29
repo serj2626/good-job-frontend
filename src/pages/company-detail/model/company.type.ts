@@ -1,3 +1,5 @@
+import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
+
 interface IUser {
   email: string;
   type: string;
@@ -5,6 +7,7 @@ interface IUser {
 
 interface ICompany {
   id: number;
+  vacancies: IVacancy[];
   user: IUser;
   phone: string;
   country: string;
