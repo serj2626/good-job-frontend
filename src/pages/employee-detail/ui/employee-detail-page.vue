@@ -144,7 +144,7 @@ const deleteExperience = (id: number) => {
           <UButton
             icon="i-heroicons-plus"
             size="md"
-            :to="'/resume/create'"
+            :to="'/resumes/create'"
             color="amber"
             variant="outline"
             >Добавить резюме</UButton
