@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IEmployee } from "../model/employee.type";
+import type { IEmployee } from '../model/employee.type'; 
 const config = useRuntimeConfig();
 const { data, pending, error, refresh } = await useAsyncData<IEmployee>(
   "employee",
@@ -92,7 +92,9 @@ const deleteExperience = (id: number) => {
         </div>
       </section>
       <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-2 p-3">
-        <h4 class="text-[#111418] text-lg font-bold pb-2 mb-3">Доп. информация</h4>
+        <h4 class="text-[#111418] text-lg font-bold pb-2 mb-3">
+          Доп. информация
+        </h4>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Возраст</span>
           <p>{{ data?.age }}</p>
@@ -133,7 +135,9 @@ const deleteExperience = (id: number) => {
     </div>
     <main id="right" class="right-block flex flex-col gap-8">
       <section id="resumes" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Мои резюме
           </h3>
@@ -147,16 +151,19 @@ const deleteExperience = (id: number) => {
           >
         </div>
 
-        <div v-if="data?.resumes.length"  class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div
+          v-if="data?.resumes.length"
+          class="grid grid-cols-1 sm:grid-cols-3 gap-4"
+        >
           <NuxtLink
             v-for="item in data?.resumes"
             :key="item.id"
-            :to="'/resume/' + item.id"
+            :to="{ name: 'resumes-id', params: { id: item.id } }"
           >
-            <UCard class="">
+            <UCard class="overflow-hidden">
               <template #header>
                 <img
-                  class="rounded-md inline-block h-52 object-center w-full hover:scale-105 transition-all duration-300 cursor-pointer ease-in"
+                  class="rounded-md inline-block h-52 object-center w-full hover:scale-105 transition-all duration-200 cursor-pointer ease-in"
                   :src="item.avatar"
                 />
               </template>
@@ -166,12 +173,12 @@ const deleteExperience = (id: number) => {
             </UCard>
           </NuxtLink>
         </div>
-        <div v-else>
-          Данные отсутствуют....
-        </div>
+        <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Мои проекты
           </h3>
@@ -184,7 +191,7 @@ const deleteExperience = (id: number) => {
             >Добавить проект</UButton
           >
         </div>
-        <div  v-if="data?.projects.length"   class="flex gap-3">
+        <div v-if="data?.projects.length" class="flex gap-3">
           <NuxtLink
             v-for="item in data?.projects"
             :key="item.id"
@@ -203,12 +210,12 @@ const deleteExperience = (id: number) => {
             </UCard>
           </NuxtLink>
         </div>
-        <div v-else>
-          Данные отсутствуют....
-        </div>
+        <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
             Навыки
           </h3>
@@ -220,19 +227,22 @@ const deleteExperience = (id: number) => {
             >Добавить навык</UButton
           >
         </div>
-        <div v-if="data?.stacks.length"   class="flex items-center gap-3 flex-wrap">
+        <div
+          v-if="data?.stacks.length"
+          class="flex items-center gap-3 flex-wrap"
+        >
           <div v-for="(stack, index) in data?.stacks" :key="index">
             <UButton disabled color="teal" size="md" ariant="solid">
               {{ stack }}</UButton
             >
           </div>
         </div>
-        <div v-else>
-          Данные отсутствуют....
-        </div>
+        <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
             Образование
           </h3>
@@ -296,7 +306,9 @@ const deleteExperience = (id: number) => {
         </div>
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Опыт работы
           </h3>
@@ -370,7 +382,9 @@ const deleteExperience = (id: number) => {
         </div>
       </section>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div class="flex flex-col sm:flex-row  justify-between items-center mb-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+        >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Обо мне
           </h3>
@@ -384,9 +398,10 @@ const deleteExperience = (id: number) => {
           </UButton>
         </div>
         <ClientOnly>
-          <p class="tracking-wide">{{ data?.about ? data?.about : "Данные отсутствуют...." }}</p>
+          <p class="tracking-wide about">
+            {{ data?.about ? data?.about : "Данные отсутствуют...." }}
+          </p>
         </ClientOnly>
-        
       </section>
     </main>
     <UModal v-model="showModal" :overlay="false">
@@ -421,4 +436,3 @@ const deleteExperience = (id: number) => {
     </UModal>
   </div>
 </template>
-<style lang="scss" scoped></style>
