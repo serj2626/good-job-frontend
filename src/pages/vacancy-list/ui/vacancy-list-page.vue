@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { IVacancy } from "../model/vacancy.type";
+
 const config = useRuntimeConfig();
 const {
   data: vacancies,
   pending,
   error,
   refresh,
-} = await useAsyncData("vacancies", () =>
+} = await useAsyncData<IVacancy[]>("vacancies", () =>
   $fetch(config.public.apiUrl + `/api/companies/vacancy/`)
 );
 
@@ -52,8 +54,8 @@ const experience = [
 </script>
 
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-2">
-    <div class="left-block flex flex-col gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-3">
+    <div class="left-block flex flex-col gap-8 rounded-md">
       <section
         id=" search"
         class="bg-gray-100 text-center shadow-md p-3 flex flex-col gap-2"
@@ -101,58 +103,76 @@ const experience = [
         </div>
         <UButton color="teal" variant="outline" size="lg">Найти</UButton>
       </section>
-      <section id="sorting"></section>
     </div>
-    <div class="right-block px-5 flex flex-col gap-8 shadow-md bg-gray-100">
+    <div
+      class="right-block px-5 flex flex-col gap-8 pb-8 rounded-md shadow-md bg-gray-100"
+    >
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
         Вакансии
       </h3>
-      <UAccordion :items="vacancies">
-        <template #item="{ item }">
-          <p class="italic text-gray-900 dark:text-white text-center">
-            {{ item.position }} - {{ item.category }}
-          </p>
-        </template>
 
-        <template #getting-started>
-      <div class="text-gray-900 dark:text-white text-center">
-        <Logo class="w-auto h-8 mx-auto" />
-
-        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
-          Fully styled and customizable components for Nuxt.
-        </p>
-      </div>
-    </template>
-
-        <template #installation="{ description }">
-          <div class="flex flex-col justify-center items-center gap-1 mb-4">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">
-              Installation
-            </h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-              Install <code>@nuxt/ui</code> dependency to your project:
-            </p>
+      <div class="flex flex-col gap-3">
+        <div class="vacancy" v-for="vacancy in vacancies" :key="vacancy.id">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold">{{ vacancy.position }}</h4>
+            <Icon name="ic:outline-favorite-border" class="w-5 h-5" />
+          </div>
+          <div class="flex gap-10 items-center">
             <p>
-           s
+              {{ vacancy.min_salary }} -
+              {{ vacancy.max_salary ? vacancy.max_salary : "Не указано" }} ₽
             </p>
+            <div class="flex items-center gap-2">
+              <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
+                {{ vacancy.work_schedule }}
+              </p>
+              <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
+                Стаж: от {{ vacancy.work_experience }} лет
+              </p>
+              <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
+                {{ vacancy.level }}
+              </p>
+              <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
+                {{ vacancy.category }}
+              </p>
+            </div>
           </div>
-
-          <div class="flex flex-col items-center">
-            <code>$ npx nuxi@latest module add ui</code>
+          <p>{{ vacancy.company.name }}</p>
+          <p>{{ vacancy.country }} / {{ vacancy.city }}</p>
+          <div class="flex items-center gap-3">
+            <UButton
+              :to="{ name: 'vacancies-id', params: { id: vacancy.id } }"
+              color="indigo"
+              size="md"
+              variant="solid"
+              label="Подробнее"
+            />
+            <UButton
+              color="sky"
+              size="md"
+              variant="solid"
+              label="Откликнуться"
+            />
           </div>
-        </template>
-      </UAccordion>
-
-
-      <UPagination
-        size="sm"
-        :model-value="1"
-        :total="100"
-        show-last
-        show-first
-        class="flex justify-center my-2"
-      >
-      </UPagination>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+.vacancy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #00000014;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.284);
+  }
+}
+</style>
