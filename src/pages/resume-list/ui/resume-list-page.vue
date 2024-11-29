@@ -180,28 +180,25 @@ const experience = [
         Резюме
       </h3>
       <section id="resumes" class="bg-gray-100 p-3 rounded-md">
-        <div class="grid grid-cols-4 gap-4 py-5">
-          <UCard v-for="resume in resumes" :key="resume.id">
-            <template #header>
-              <NuxtImg
-                class="h-48 w-full rounded-md object-cover mx-auto"
-                :src="resume.avatar"
-              />
-            </template>
-            <template #footer>
-              {{ resume.position }}
-            </template>
-          </UCard>
+        <div class="grid grid-cols-3 gap-4 py-5">
+          <NuxtLink
+            v-for="resume in resumes"
+            :key="resume.id"
+            :to="{ name: 'resumes-id', params: { id: resume.id } }"
+          >
+            <UCard class="transition-all duration-200 hover:scale-105 hover:shadow-2xl">
+              <template #header>
+                <NuxtImg
+                  class="h-56 w-full rounded-md object-cover mx-auto"
+                  :src="resume.avatar"
+                />
+              </template>
+              <template #footer>
+                {{ resume.position }}
+              </template>
+            </UCard>
+          </NuxtLink>
         </div>
-        <UPagination
-          size="sm"
-          :model-value="1"
-          :total="100"
-          show-last
-          show-first
-          class="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-        >
-        </UPagination>
       </section>
     </div>
   </div>
