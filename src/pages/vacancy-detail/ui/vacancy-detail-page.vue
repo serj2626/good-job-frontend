@@ -1,13 +1,28 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
+
+const config = useRuntimeConfig();
+const {
+  data: vacancy,
+  pending,
+  error,
+  refresh,
+} = await useAsyncData<IVacancy>("vacancy", () =>
+  $fetch(
+    config.public.apiUrl + `/api/companies/vacancy/${useRoute().params.id}/`
+  )
+);
+</script>
 <template>
-  <div class="px-3 flex flex-1 justify-center pb-5 shadow-sm">
-    <div class="flex flex-col max-w-[960px] flex-1">
-      <div class="flex flex-wrap justify-between gap-3 p-4">
+  <div class="px-3 py-8 shadow-2xl">
+    <div class="flex flex-col w-3/4 mx-auto relative">
+      <div class="flex justify-between items-center gap-3 p-4">
         <p
           class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72"
         >
-          Senior Software Engineer
+          {{ vacancy?.position }}
         </p>
+        <UButton size="md" label="Откликнуться" color="sky" />
       </div>
       <div
         class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between"
@@ -32,120 +47,142 @@
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p
+            <NuxtLink
+            :to="{name: 'companies-id', params: {id: vacancy?.company.id}}"
               class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
             >
-              Microsoft
-            </p>
+              {{ vacancy?.company.name }}
+            </NuxtLink>
             <p
               class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
             >
-              Удалённо
+              {{ vacancy?.work_schedule }}
             </p>
           </div>
         </div>
-        <div class="shrink-0">
+        <div class="">
           <p class="text-[#111418] text-base font-normal leading-normal">
-            40000 - 60000 &#8381
+            {{ vacancy?.min_salary }} - {{ vacancy?.max_salary }} ₽
           </p>
         </div>
       </div>
-      <h3
-        class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
-      >
-        Описание
-      </h3>
-      <p
-        class="text-[#111418] text-base font-normal leading-normal pb-3 pt-1 px-4"
-      >
-      Мы ищем старшего инженера-программиста для разработки и внедрения функциональных программных решений. Вы будете работать с высшим руководством над определением требований к программному обеспечению и возглавлять операционные и технические проекты. На этой должности вы должны уметь работать независимо, без особого контроля. Вы должны обладать отличными организаторскими способностями и навыками решения проблем. Если у вас также есть практический опыт разработки программного обеспечения и гибких методологий, мы будем рады с вами познакомиться. Вашей целью будет разработка высококачественного программного обеспечения, соответствующего потребностям пользователей и бизнес-целям.
+      <section id="description" class="">
+        <h3
+          class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+        >
+          Описание
+        </h3>
+        <p
+          class="text-[#111418] text-base font-normal leading-normal pb-3 pt-1 px-4"
+        >
+          {{
+            vacancy?.description ? vacancy?.description : "Описание отсутствует"
+          }}
+        </p>
+      </section>
+      <section id="requirements">
+        <h3
+          class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+        >
+          Требования
+        </h3>
+        <p
+          class="text-[#111418] text-base font-normal leading-normal pb-3 pt-1 px-4"
+        >
+          {{
+            vacancy?.description ? vacancy?.description : "Описание отсутствует"
+          }}
+        </p>
+      </section>
+      <section id="stacks">
+        <h3
+          class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
+        >
+          Необходимые навыки
+        </h3>
+        <div class="flex flex-wrap items-center gap-x-2 px-4">
+          <UButton
+            v-for="(skill, index) in vacancy?.stacks"
+            :key="index"
+            disabled
+            color="teal"
+            size="md"
+            ariant="solid"
+          >
+            {{ skill }}</UButton
+          >
+        </div>
+      </section>
+
+      <section id="contacts">
+        <h3
+          class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4 my-4"
+        >
+          Контакты
+        </h3>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-6 px-4">
+            <Icon
+              name="i-heroicons-phone"
+              class="w-5 h-5 ps-4"
+              color="#111418"
+            />
+            <p class="text-[#111418] text-base font-normal leading-normal">
+              {{ vacancy?.company.phone }}
+            </p>
+          </div>
+          <div class="flex items-center gap-6 px-4">
+            <Icon
+              name="i-heroicons-envelope"
+              class="w-5 h-5 ps-4"
+              color="#111418"
+            />
+            <p class="text-[#111418] text-base font-normal leading-normal">
+              {{ vacancy?.company.user.email }}
+            </p>
+          </div>
+          <div class="flex items-center gap-6 px-4">
+            <Icon
+              name="i-heroicons-link"
+              class="w-5 h-5 ps-4"
+              color="#111418"
+            />
+            <p class="text-[#111418] text-base font-normal leading-normal">
+              {{
+                vacancy?.company.site ? vacancy?.company.site : "Сайт не указан"
+              }}
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="info">
+        <div class="flex flex-wrap gap-3 items-center my-10 px-4">
+          <UButton color="fuchsia" size="sm" variant="solid">
+            {{vacancy?.level}}
+          </UButton>
+          <UButton color="fuchsia" size="sm" variant="solid">
+            Требуемый стаж: от {{vacancy?.work_experience}} лет
+          </UButton>
+          <UButton color="fuchsia" size="sm" variant="solid">
+            {{vacancy?.work_schedule}}
+          </UButton>
+          <UButton color="fuchsia" size="sm" variant="solid">
+            {{vacancy?.category}}
+          </UButton>
+          <UButton color="fuchsia" size="sm" variant="solid">
+            {{vacancy?.country}}
+          </UButton>
+          <UButton color="fuchsia" size="sm" variant="solid">
+            {{vacancy?.city}}
+          </UButton>
+          <UButton v-if="vacancy?.metro" color="fuchsia" size="sm" variant="solid">
+            Метро: {{vacancy?.metro }}
+          </UButton>
+        </div>
+      </section>
+      <p class="absolute bottom-0 right-0">
+        Опубликовано: {{ vacancy?.time_ago }} назад
       </p>
-      <h3
-        class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
-      >
-        Необходимые навыки
-      </h3>
-      <div class="flex gap-3 p-3 flex-wrap pr-4">
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Python
-          </p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">Java</p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">C#</p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">Agile</p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Software Development
-          </p>
-        </div>
-      </div>
-      <h3
-        class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
-      >
-        Benefits
-      </h3>
-      <div class="flex gap-3 p-3 flex-wrap pr-4">
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Health Insurance
-          </p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Retirement Plan
-          </p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Flexible Hours
-          </p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Paid Time Off
-          </p>
-        </div>
-        <div
-          class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#f0f2f4] pl-4 pr-4"
-        >
-          <p class="text-[#111418] text-sm font-medium leading-normal">
-            Remote Work
-          </p>
-        </div>
-      </div>
-      <div class="flex px-4 py-3">
-        <button
-          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#1980e6] text-white text-base font-bold leading-normal tracking-[0.015em]"
-        >
-          <span class="truncate">Откликнуться</span>
-        </button>
-      </div>
     </div>
   </div>
 </template>
-<style scoped lang="scss"></style>
