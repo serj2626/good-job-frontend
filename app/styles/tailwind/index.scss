@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+}
+
+.menu-link {
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    border-bottom-color: teal;
+  }
+}
+
+.active-link {
+  border-bottom: 4px solid rgb(23, 160, 160);
+}
