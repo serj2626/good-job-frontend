@@ -1,3 +1,5 @@
+import type { IEmployee } from "../../employee-detail/model/employee.type";
+
 export interface IProject {
   id: number;
   category: string;
@@ -28,5 +30,5 @@ export interface IResume {
   avatar: string;
   about: string;
   visibility: boolean;
-  employee: number;
+  employee?:IEmployee
 }
