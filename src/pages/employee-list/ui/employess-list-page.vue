@@ -81,7 +81,7 @@ const countEmployees = [
         >
           <div class="flex gap-4">
             <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
+              class="outline-double outline-offset-2 outline-6 outline-green-400  bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
               :style="'background-image: url(' + employee.avatar + ');'"
             ></div>
             <div class="flex flex-col justify-center">
