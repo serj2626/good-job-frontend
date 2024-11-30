@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "nuxt-rating",
     "@nuxt/image",
-    '@sidebase/nuxt-pdf'
+    "@sidebase/nuxt-pdf",
   ],
   alias: {
     "@": "./src",
@@ -39,13 +39,15 @@ export default defineNuxtConfig({
     layouts: "./app/layouts",
     pages: "./app/routes",
   },
-  // components: false,
-  // typescript: {
-  //   typeCheck: true
-  // },
   runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
+    },
+  },
+  router: {
+    options: {
+      linkActiveClass: "active-link",
+      linkExactActiveClass: "active-link",
     },
   },
   compatibilityDate: "2024-11-10",
