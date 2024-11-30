@@ -12,6 +12,15 @@ const {
     config.public.apiUrl + `/api/companies/vacancy/${useRoute().params.id}/`
   )
 );
+
+const items = [
+  [{
+    label: 'Profile',
+    avatar: {
+      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    }
+  }]
+]
 </script>
 <template>
   <div class="px-3 py-8 shadow-2xl">
@@ -22,7 +31,9 @@ const {
         >
           {{ vacancy?.position }}
         </p>
-        <UButton size="md" label="Откликнуться" color="sky" />
+        <UDropdown :items="items" mode="click" :popper="{ placement: 'bottom-start' }">
+    <UButton color="sky" size="md" label="Откликнуться" trailing-icon="i-heroicons-chevron-down-20-solid" />
+  </UDropdown>
       </div>
       <div
         class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between"
