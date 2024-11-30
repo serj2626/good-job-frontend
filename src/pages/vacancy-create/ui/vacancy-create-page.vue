@@ -1,3 +1,18 @@
+<script setup lang="ts">
+const skills = [
+  "Java",
+  "Python",
+  "C++",
+  "C#",
+  "JavaScript",
+  "TypeScript",
+  "Django",
+  "FastAPI",
+  "Vue",
+];
+
+const selected = ref([]);
+</script>
 <template>
   <div class="flex flex-col shadow-2xl rounded-md px-3 py-12">
     <form id="vacancy-create" class="w-3/4 mx-auto">
@@ -17,8 +32,8 @@
         color="indigo"
         variant="solid"
         title="Внимание!"
-        description="Разделы с опытом работы, образованием и проектами будут добавлены автоматически.
-          Изменить или добавить их можно в своем профиле."
+        description="Информация о компании, контактные данные будут добавлены автоматически после создания вакансии.
+        При необходимости можно будет изменить в любое время в своем профиле."
       />
 
       <div id="main" class="flex flex-col gap-5 mt-5">
@@ -32,6 +47,48 @@
             placeholder="Начните вводить..."
           />
         </div>
+        <section id="salary">
+          <div class="flex flex-wrap items-end gap-4 py-3">
+            <label class="flex flex-col min-w-40 flex-1">
+              <p
+                class="text-[#111418] text-base font-medium leading-normal pb-2"
+              >
+                Город
+              </p>
+              <USelect
+                size="xl"
+                placeholder="Выберите..."
+                :options="['United States', 'Canada', 'Mexico']"
+              />
+            </label>
+            <label class="flex flex-col min-w-40 flex-1">
+              <p
+                class="text-[#111418] text-base font-medium leading-normal pb-2"
+              >
+                Страна
+              </p>
+              <USelect
+                size="xl"
+                placeholder="Выберите..."
+                :options="['United States', 'Canada', 'Mexico']"
+              />
+            </label>
+            <label class="flex flex-col min-w-40 flex-1">
+              <p
+                class="text-[#111418] text-base font-medium leading-normal pb-2"
+              >
+                Метро
+              </p>
+              <UInput
+                size="xl"
+                class="flex-grow"
+                color="white"
+                variant="outline"
+                placeholder="Начните вводить..."
+              />
+            </label>
+          </div>
+        </section>
         <div class="flex items-center justify-between">
           <div class="flex flex-col items-start gap-3">
             <span class="text-[#111418] text-base font-bold">Категория</span>
@@ -71,7 +128,7 @@
             />
           </div>
           <div class="flex flex-col items-start gap-3">
-            <span class="text-[#111418] text-base font-bold">Уровень</span>
+            <span class="text-[#111418] text-base font-bold">Квалификация</span>
             <USelect
               size="xl"
               placeholder="Выберите..."
@@ -80,7 +137,7 @@
           </div>
         </div>
       </div>
-      <section id="footer">
+      <section id="salary">
         <div class="flex flex-wrap items-end gap-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#111418] text-base font-medium leading-normal pb-2">
@@ -103,12 +160,20 @@
               size="xl"
               color="white"
               variant="outline"
-              placeholder="...."
+              placeholder="Не обязательное поле"
             />
           </label>
+          <div class="flex flex-col items-start gap-3">
+            <span class="text-[#111418] text-base font-bold">Валюта</span>
+            <USelect
+              size="xl"
+              placeholder="Выберите..."
+              :options="['USD', 'EUR', 'RUB']"
+            />
+          </div>
         </div>
       </section>
-      <div class="flex w-full flex-wrap items-end gap-4 my-5py-3">
+      <div class="flex w-full flex-wrap items-end gap-4 my-5 py-3">
         <label class="flex flex-col min-w-40 flex-1">
           <p class="text-[#111418] text-base font-medium leading-normal pb-2">
             Требования
@@ -121,14 +186,28 @@
           />
         </label>
       </div>
-      <div class="flex w-full flex-wrap items-end gap-4 my-5py-3">
+      <div class="flex w-full flex-wrap items-end gap-4 my-5 py-3">
         <label class="flex flex-col min-w-40 flex-1">
           <p class="text-[#111418] text-base font-medium leading-normal pb-2">
-            О компании
+            Необходимые навыки
+          </p>
+          <USelectMenu
+            multiple
+            v-model="selected"
+            :options="skills"
+            placeholder="Select a person"
+            searchable
+          />
+        </label>
+      </div>
+      <div class="flex w-full flex-wrap items-end gap-4 my-5 py-3">
+        <label class="flex flex-col min-w-40 flex-1">
+          <p class="text-[#111418] text-base font-medium leading-normal pb-2">
+            Мы предлагаем
           </p>
           <UTextarea
             :rows="6"
-            placeholder="Напишите о компании..."
+            placeholder="Напишите о предложениях..."
             color="white"
             variant="outline"
           />
