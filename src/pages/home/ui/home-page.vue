@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
-const { data: categories } = await useFetch(config.public.apiUrl + "/api/category");
+const { data: categories } = await useFetch(
+  config.public.apiUrl + "/api/category"
+);
 </script>
 <template>
   <div class="flex flex-col justify-center items-center gap-8">
@@ -15,13 +17,17 @@ const { data: categories } = await useFetch(config.public.apiUrl + "/api/categor
         работу для себя
       </p>
     </div>
-    <NuxtLink :to="'/vacancies/list'">
-      <UButton label="Найти работу" size="xl" color="teal" variant="solid">
-        <template #trailing>
-          <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
-        </template>
-      </UButton>
-    </NuxtLink>
+    <UButton
+      :to="'/vacancies/list'"
+      label="Найти работу"
+      size="xl"
+      color="teal"
+      variant="solid"
+    >
+      <template #trailing>
+        <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
+      </template>
+    </UButton>
   </div>
 </template>
 <style scoped lang="scss"></style>
