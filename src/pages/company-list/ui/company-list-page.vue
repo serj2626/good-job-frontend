@@ -79,7 +79,7 @@ const countEmployees = [
         >
           <div class="flex gap-4">
             <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
+              class="outline-double outline-offset-2 outline-green-400 relative bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
               :style="'background-image: url(' + company.avatar + ');'"
             ></div>
             <div class="flex flex-col justify-center">
@@ -92,13 +92,13 @@ const countEmployees = [
                 {{ company.city }} / {{ company.country }}
               </p>
               <p class="text-[#637588] text-base font-normal leading-normal">
-                5 вакансий
+                {{ company.count_vacancies }} вакансий
               </p>
             </div>
           </div>
           <div>
             <UButton
-              :to="{name: 'companies-id', params: {id: company.id}}"
+              :to="{ name: 'companies-id', params: { id: company.id } }"
               label="Подробнее"
               color="gray"
               variant="solid"
@@ -119,3 +119,5 @@ const countEmployees = [
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+</style>
