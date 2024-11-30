@@ -122,7 +122,7 @@ const experience = [
               {{ vacancy.min_salary }} -
               {{ vacancy.max_salary ? vacancy.max_salary : "Не указано" }} ₽
             </p>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 text-sm">
               <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
                 {{ vacancy.work_schedule }}
               </p>
@@ -138,8 +138,8 @@ const experience = [
             </div>
           </div>
           <p>{{ vacancy.company.name }}</p>
-          <p>{{ vacancy.country }} / {{ vacancy.city }}</p>
-          <div class="flex items-center gap-3">
+          <p class="text-sm text-gray-600">{{ vacancy.country }} / {{ vacancy.city }}</p>
+          <div class="flex items-center gap-3 my-3">
             <UButton
               :to="{ name: 'vacancies-id', params: { id: vacancy.id } }"
               color="indigo"
@@ -168,7 +168,6 @@ const experience = [
   border-radius: 20px;
   padding: 20px;
   background-color: #fff;
-  cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
