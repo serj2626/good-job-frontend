@@ -20,6 +20,7 @@ interface ICompany {
   updated_at: string;
   avatar: string;
   count_employees: number;
+  count_vacancies?: number;
 }
 
 export type { IUser, ICompany };
