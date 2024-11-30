@@ -160,10 +160,10 @@ const deleteExperience = (id: number) => {
             :key="item.id"
             :to="{ name: 'resumes-id', params: { id: item.id } }"
           >
-            <UCard class="overflow-hidden">
+            <UCard class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in">
               <template #header>
                 <img
-                  class="rounded-md inline-block h-52 object-center w-full hover:scale-105 transition-all duration-200 cursor-pointer ease-in"
+                  class="rounded-md inline-block h-52 object-center w-full"
                   :src="item.avatar"
                 />
               </template>
