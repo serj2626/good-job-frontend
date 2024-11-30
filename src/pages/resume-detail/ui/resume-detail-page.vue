@@ -11,8 +11,6 @@ const {
     config.public.apiUrl + `/api/employees/resume/${useRoute().params.id}/`
   )
 );
-
-console.log("resume", resume.value);
 </script>
 <template>
   <div class="px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
@@ -26,11 +24,15 @@ console.log("resume", resume.value);
             }"
           ></div>
           <div class="flex flex-col justify-center">
-            <p
-              class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]"
+            <NuxtLink
+              :to="{
+                name: 'employees-id',
+                params: { id: resume?.employee?.id },
+              }"
+              class="text-[#111418] hover:text-emerald-600 transition-colors duration-200 cursor-pointer ease-in text-[22px] font-bold leading-tight tracking-[-0.015em]"
             >
               {{ resume?.full_name }}
-            </p>
+            </NuxtLink>
             <p class="text-[#637588] text-base font-normal leading-normal">
               {{ resume?.position }}
             </p>
@@ -49,7 +51,7 @@ console.log("resume", resume.value);
       <div class="pb-3">
         <div class="flex border-b border-[#dce0e5] px-4 gap-8">
           <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
+            class="flex flex-col items-center justify-center border-b-[3px] border-b-[#111418] text-[#111418] pb-[13px] pt-4"
             href="#"
           >
             <p
@@ -59,7 +61,7 @@ console.log("resume", resume.value);
             </p>
           </a>
           <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-[#111418] text-[#111418] pb-[13px] pt-4"
+            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
             href="experience"
           >
             <p
@@ -120,7 +122,6 @@ console.log("resume", resume.value);
           </a>
         </div>
       </div>
-
       <section id="info">
         <h2
           class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
@@ -128,16 +129,56 @@ console.log("resume", resume.value);
           Личная информация
         </h2>
         <div class="flex gap-4 bg-white px-4 py-3">
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              {{ resume?.full_name }}
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              {{ resume?.position }}
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              June 2020 - Present
-            </p>
+          <div class="flex flex-col gap-3 justify-center">
+            <div class="flex gap-3">
+              <Icon name="ic:baseline-person" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.position }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon name="material-symbols:cake" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.age }} лет
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon name="ic:baseline-location-on" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.city }}, {{ resume?.employee?.country }}
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <Icon name="ic:baseline-phone" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.phone }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon name="ic:baseline-mail" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.user.email }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon name="solar:ruble-bold" class="w-5 h-5" />
+              <p
+                v-if="resume?.max_salary"
+                class="text-[#637588] text-sm font-normal leading-normal"
+              >
+                {{ resume?.min_salary }} - {{ resume?.max_salary }}
+              </p>
+              <p
+                v-else
+                class="text-[#637588] text-sm font-normal leading-normal"
+              >
+                от {{ resume?.min_salary }}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -148,7 +189,11 @@ console.log("resume", resume.value);
         >
           Опыт работы
         </h2>
-        <div class="flex gap-4 bg-white px-4 py-3">
+        <div
+          v-for="exp in resume?.employee?.experiences"
+          :key="exp.id"
+          class="flex gap-4 bg-white px-4 py-3"
+        >
           <div
             class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
             style="
@@ -157,92 +202,17 @@ console.log("resume", resume.value);
           ></div>
           <div class="flex flex-1 flex-col justify-center">
             <p class="text-[#111418] text-base font-medium leading-normal">
-              Code Craft
+              {{ exp.position }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              Software Engineer
+              {{ exp.company }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              June 2020 - Present
+              {{ exp.start_date }} - {{ exp.end_date || "По настоящее время" }}
             </p>
           </div>
         </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/c29bc3b1-3669-4619-a019-cae2267e19d0.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Code Craft
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Software Engineering Intern
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              June 2019 - May 2020
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/06436a49-3844-49ac-b26f-32c7919b9069.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              University of California, Berkeley
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Student Software Developer
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              August 2018 - May 2019
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/3ef06137-bb3d-4a24-9aad-b509c3841523.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Code Craft
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Software Engineering Intern
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              June 2018 - August 2018
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/a6afe60b-67df-4176-b76e-9a9bbb4e0a00.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              Code Craft
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              Software Engineering Intern
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              June 2017 - August 2017
-            </p>
-          </div>
-        </div>
+
         <div class="flex px-4 py-3 justify-start">
           <button
             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
@@ -276,7 +246,12 @@ console.log("resume", resume.value);
         >
           Образование
         </h2>
-        <div class="flex gap-4 bg-white px-4 py-3">
+
+        <div
+          v-for="edu in resume?.employee?.educations"
+          :key="edu.id"
+          class="flex gap-4 bg-white px-4 py-3"
+        >
           <div
             class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
             style="
@@ -285,32 +260,13 @@ console.log("resume", resume.value);
           ></div>
           <div class="flex flex-1 flex-col justify-center">
             <p class="text-[#111418] text-base font-medium leading-normal">
-              University of California, Berkeley
+              {{ edu.university }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              Bachelor of Science, Computer Science
+              {{ edu.specialization }}
             </p>
             <p class="text-[#637588] text-sm font-normal leading-normal">
-              2017 - 2021
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 bg-white px-4 py-3">
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/6c443914-4ba2-4200-bd5e-a35c4a186c62.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              San Francisco High School
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              High School Diploma
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              2013 - 2017
+              {{ edu.start_date }} - {{ edu.end_date || "По настоящее время" }}
             </p>
           </div>
         </div>
@@ -579,7 +535,7 @@ console.log("resume", resume.value);
         <h2
           class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
         >
-          Обо мне
+          О себе
         </h2>
         <div class="px-4 py-3">
           {{ resume?.about ? resume.about : "Данные отсутствуют" }}
