@@ -86,7 +86,7 @@ const countEmployees = [
               <p
                 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]"
               >
-                {{ company.name }}
+                {{ company.full_name }}
               </p>
               <p class="text-[#637588] text-base font-normal leading-normal">
                 {{ company.city }} / {{ company.country }}
