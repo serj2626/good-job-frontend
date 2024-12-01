@@ -10,6 +10,7 @@ interface ICompany {
   vacancies: IVacancy[];
   user: IUser;
   phone: string;
+  full_name: string;
   country: string;
   city: string;
   name: string;
