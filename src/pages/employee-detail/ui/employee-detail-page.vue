@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IEmployee } from '../model/employee.type'; 
+import type { IEmployee } from "../model/employee.type";
 const config = useRuntimeConfig();
 const { data, pending, error, refresh } = await useAsyncData<IEmployee>(
   "employee",
@@ -47,7 +47,23 @@ const deleteExperience = (id: number) => {
         <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
           {{ data?.position }}
         </p>
-        <UButton size="xl" variant="solid">Добавить в друзья</UButton>
+        <div class="flex flex-col gap-2">
+          <UButton
+            class="flex justify-center"
+            size="xl"
+            variant="solid"
+            label="Подружиться"
+            loading
+          />
+          <UButton
+            class="flex justify-center"
+            size="xl"
+            color="blue"
+            variant="solid"
+            label="Написать"
+            icon="i-heroicons-chat-bubble-left-right"
+          />
+        </div>
       </section>
 
       <section id="contacts" class="bg-gray-100 shadow-md p-3">
@@ -160,7 +176,9 @@ const deleteExperience = (id: number) => {
             :key="item.id"
             :to="{ name: 'resumes-id', params: { id: item.id } }"
           >
-            <UCard class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in">
+            <UCard
+              class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in"
+            >
               <template #header>
                 <img
                   class="rounded-md inline-block h-52 object-center w-full"
