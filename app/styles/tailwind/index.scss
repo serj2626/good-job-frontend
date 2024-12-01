@@ -4,6 +4,12 @@
 
 body {
   padding: 0 calc(20px - (100vw - 100%)) 0 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .menu-link {
@@ -11,10 +17,11 @@ body {
   transition: all 0.2s ease-in;
 
   &:hover {
-    border-bottom-color: teal;
+    color: teal;
   }
 }
 
 .active-link {
   border-bottom: 4px solid rgb(23, 160, 160);
 }
+
