@@ -14,13 +14,27 @@ const {
 );
 
 const items = [
-  [{
-    label: 'Profile',
-    avatar: {
-      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
-    }
-  }]
-]
+  [
+    {
+      label: "Frontend Developer",
+      avatar: {
+        src: "https://avatars.githubusercontent.com/u/739984?v=4",
+      },
+    },
+    {
+      label: "Fullstack Developer",
+      avatar: {
+        src: "https://avatars.githubusercontent.com/u/739984?v=4",
+      },
+    },
+    {
+      label: "Backend Developer",
+      avatar: {
+        src: "https://avatars.githubusercontent.com/u/739984?v=4",
+      },
+    },
+  ],
+];
 </script>
 <template>
   <div class="px-3 py-8 shadow-2xl">
@@ -31,9 +45,18 @@ const items = [
         >
           {{ vacancy?.position }}
         </p>
-        <UDropdown :items="items" mode="click" :popper="{ placement: 'bottom-start' }">
-    <UButton color="sky" size="md" label="Откликнуться" trailing-icon="i-heroicons-chevron-down-20-solid" />
-  </UDropdown>
+        <UDropdown
+          :items="items"
+          mode="click"
+          :popper="{ placement: 'bottom-start' }"
+        >
+          <UButton
+            color="sky"
+            size="md"
+            label="Откликнуться"
+            trailing-icon="i-heroicons-chevron-down-20-solid"
+          />
+        </UDropdown>
       </div>
       <div
         class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between"
@@ -59,7 +82,10 @@ const items = [
           </div>
           <div class="flex flex-col justify-center">
             <NuxtLink
-            :to="{name: 'companies-id', params: {id: vacancy?.company.id}}"
+              :to="{
+                name: 'companies-id',
+                params: { id: vacancy?.company.id },
+              }"
               class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
             >
               {{ vacancy?.company.name }}
@@ -169,25 +195,30 @@ const items = [
       <section id="info">
         <div class="flex flex-wrap gap-3 items-center my-10 px-4">
           <UButton color="fuchsia" size="sm" variant="solid">
-            {{vacancy?.level}}
+            {{ vacancy?.level }}
           </UButton>
           <UButton color="fuchsia" size="sm" variant="solid">
-            Требуемый стаж: от {{vacancy?.work_experience}} лет
+            Требуемый стаж: от {{ vacancy?.work_experience }} лет
           </UButton>
           <UButton color="fuchsia" size="sm" variant="solid">
-            {{vacancy?.work_schedule}}
+            {{ vacancy?.work_schedule }}
           </UButton>
           <UButton color="fuchsia" size="sm" variant="solid">
-            {{vacancy?.category}}
+            {{ vacancy?.category }}
           </UButton>
           <UButton color="fuchsia" size="sm" variant="solid">
-            {{vacancy?.country}}
+            {{ vacancy?.country }}
           </UButton>
           <UButton color="fuchsia" size="sm" variant="solid">
-            {{vacancy?.city}}
+            {{ vacancy?.city }}
           </UButton>
-          <UButton v-if="vacancy?.metro" color="fuchsia" size="sm" variant="solid">
-            Метро: {{vacancy?.metro }}
+          <UButton
+            v-if="vacancy?.metro"
+            color="fuchsia"
+            size="sm"
+            variant="solid"
+          >
+            Метро: {{ vacancy?.metro }}
           </UButton>
         </div>
       </section>
