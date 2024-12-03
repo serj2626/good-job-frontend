@@ -30,7 +30,7 @@ const menu = [
   <header
     class="flex-col items-center flex text-center p-2 rounded-lg mb-3 shadow-2xl"
   >
-    <h1 class="font-bold my-4 text-slate-600 text-6xl">GJ</h1>
+    <h1 class="font-bold my-4 text-teal-600 text-6xl">GJ</h1>
     <p class="text-slate-500">Good Job - Сайт для людей из мира IT</p>
 
     <menu
