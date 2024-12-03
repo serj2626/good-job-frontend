@@ -14,14 +14,19 @@ const {
     <div class="left-sidebar flex flex-col gap-8">
       <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
         <div class="flex justify-between items-center mb-2">
-          <div class="text-base font-bold px-4 pb-2 text-start text-teal-500">
-            <div class="flex items-center gap-1">
+          <div class="text-base font-bold px-4 pb-2 text-start">
+            <div
+              v-if="company?.is_verified"
+              class="flex items-center gap-1 text-teal-500"
+            >
               <span>Проверена</span>
               <Icon name="i-heroicons-check-circle" class="w-6 h-6" />
             </div>
+            <div v-else class="flex items-center gap-1 text-red-500">
+              <span>Не проверена</span>
+              <Icon name="i-heroicons-x-circle" class="w-6 h-6" />
+            </div>
           </div>
-
-          <UToggle size="xl" color="teal" :model-value="true" />
         </div>
         <img
           :src="company?.avatar"
