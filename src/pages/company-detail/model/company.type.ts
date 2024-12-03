@@ -3,6 +3,7 @@ import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 interface IUser {
   email: string;
   type: string;
+  online: boolean;
 }
 
 interface ICompany {
@@ -22,6 +23,7 @@ interface ICompany {
   avatar: string;
   count_employees: number;
   count_vacancies?: number;
+  is_verified: boolean;
 }
 
 export type { IUser, ICompany };
