@@ -137,11 +137,7 @@ const deleteExperience = (id: number) => {
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Проекты</span>
-          <p>2</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Проекты</span>
-          <p>{{ data?.projects.length || 0 }}</p>
+          <p>{{ data?.projects.length  }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Друзья</span>
