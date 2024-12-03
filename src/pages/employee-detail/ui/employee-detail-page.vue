@@ -273,7 +273,7 @@ const deleteExperience = (id: number) => {
           >
         </div>
 
-        <div class="flex flex-col gap-3">
+        <div  v-if="data?.educations.length" class="flex flex-col gap-3">
           <div
             v-for="edu in data?.educations"
             :key="edu.id"
@@ -322,6 +322,7 @@ const deleteExperience = (id: number) => {
             </div>
           </div>
         </div>
+        <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
         <div
@@ -338,7 +339,7 @@ const deleteExperience = (id: number) => {
             >Добавить опыт</UButton
           >
         </div>
-        <div class="flex flex-col gap-2">
+        <div v-if="data?.experiences.length" class="flex flex-col gap-2">
           <div v-for="exp in data?.experiences" :key="exp.id">
             <div class="flex flex-col gap-4 border-b border-slate-300 py-3">
               <div class="flex items-center justify-between">
@@ -398,6 +399,7 @@ const deleteExperience = (id: number) => {
             </div>
           </div>
         </div>
+        <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
         <div
@@ -417,7 +419,7 @@ const deleteExperience = (id: number) => {
         </div>
         <ClientOnly>
           <p class="tracking-wide about">
-            {{ data?.about ? data?.about : "Данные отсутствуют...." }}
+            {{ data?.about ? data?.about : "Пользователь не указал информацию о себе...." }}
           </p>
         </ClientOnly>
       </section>
