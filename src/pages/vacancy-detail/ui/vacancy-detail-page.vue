@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 
 const config = useRuntimeConfig();
@@ -142,7 +143,7 @@ const items = [
             v-for="(skill, index) in vacancy?.stacks"
             :key="index"
             disabled
-            color="teal"
+            color="gray"
             size="md"
             ariant="solid"
           >
@@ -160,7 +161,7 @@ const items = [
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-6 px-4">
             <Icon
-              name="i-heroicons-phone"
+              :name="HeroIcons.PHONE"
               class="w-5 h-5 ps-4"
               color="#111418"
             />
@@ -170,7 +171,7 @@ const items = [
           </div>
           <div class="flex items-center gap-6 px-4">
             <Icon
-              name="i-heroicons-envelope"
+              :name="HeroIcons.MAIL"
               class="w-5 h-5 ps-4"
               color="#111418"
             />
@@ -180,7 +181,7 @@ const items = [
           </div>
           <div class="flex items-center gap-6 px-4">
             <Icon
-              name="i-heroicons-link"
+              :name="HeroIcons.LINK"
               class="w-5 h-5 ps-4"
               color="#111418"
             />
@@ -194,29 +195,29 @@ const items = [
       </section>
       <section id="info">
         <div class="flex flex-wrap gap-3 items-center my-10 px-4">
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.level }}
           </UButton>
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             Требуемый стаж: от {{ vacancy?.work_experience }} лет
           </UButton>
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.work_schedule }}
           </UButton>
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.category }}
           </UButton>
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.country }}
           </UButton>
-          <UButton color="fuchsia" size="sm" variant="solid">
+          <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.city }}
           </UButton>
-          <UButton
+          <UButton disabled
             v-if="vacancy?.metro"
-            color="fuchsia"
+            color="rose"
             size="sm"
-            variant="solid"
+            variant="outline"
           >
             Метро: {{ vacancy?.metro }}
           </UButton>
