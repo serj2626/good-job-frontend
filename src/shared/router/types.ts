@@ -23,6 +23,7 @@ export const enum AppRoutes {
   vacanciesCreate = "vacancies-create",
 
   interviews = "interviews",
+  interviewsCreate = "interviews-create",
 
   projectsId = "projects-id",
   projectsCreate = "projects-create",
