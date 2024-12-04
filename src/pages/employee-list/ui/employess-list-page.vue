@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { IEmployee } from "../../employee-detail/model/employee.type";
 
 const config = useRuntimeConfig();
@@ -101,7 +102,8 @@ const countEmployees = [
           <div>
             <UButton
               :to="`/employees/${employee.id}`"
-              label="Подробнее"
+              label="Профиль"
+              :icon="HeroIcons.EYE_20_SOLID"
               color="gray"
               variant="solid"
               size="lg"
