@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import type { IEmployee } from "../model/employee.type";
+import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 const config = useRuntimeConfig();
-const { data, pending, error, refresh } = await useAsyncData<IEmployee>(
-  "employee",
-  () => $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
+const {
+  data: employee,
+  pending,
+  error,
+  refresh,
+} = await useAsyncData<IEmployee>("employee", () =>
+  $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
 );
 
 const showModal = ref<boolean>(false);
@@ -32,20 +37,40 @@ const deleteExperience = (id: number) => {
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-5">
     <div class="left-block flex flex-col gap-6">
-      <section id="profile" class="bg-gray-100 text-center shadow-md p-3">
+      <section
+        id="profile"
+        class="relative bg-gray-100 text-center shadow-md p-3"
+      >
+        <UButton
+          v-if="employee?.user.online"
+          class="absolute top-2 right-2"
+          color="green"
+          size="md"
+          variant="solid"
+          label="В сети"
+          disabled
+        />
+        <UButton
+          class="absolute top-2 right-2"
+          v-else
+          color="red"
+          size="md"
+          variant="solid"
+          label="Не в сети"
+          disabled
+        />
         <div class="flex justify-between items-center mb-2">
           <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
             Ищу работу
           </p>
-          <UToggle size="xl" color="teal" :model-value="true" />
         </div>
 
-        <img :src="data?.avatar" class="mt-6 rounded-sm" />
+        <img :src="employee?.avatar" class="mt-6 rounded-sm" />
         <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
-          {{ data?.first_name }} {{ data?.last_name }}
+          {{ employee?.first_name }} {{ employee?.last_name }}
         </h3>
         <p class="text-[#111418] text-base font-normal px-4 pb-2 mb-4">
-          {{ data?.position }}
+          {{ employee?.position }}
         </p>
         <div class="flex flex-col gap-2">
           <UButton
@@ -70,37 +95,46 @@ const deleteExperience = (id: number) => {
         <h4 class="text-[#111418] text-lg font-bold mb-3 pb-2">Контакты</h4>
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-between">
-            <Icon name="bi:telephone-fill" class="w-5 h-5 text-amber-800" />
+            <Icon :name="BootstrapIcons.PHONE" class="w-5 h-5 text-amber-800" />
             <p class="text-[#111418] text-base font-medium leading-normal">
-              {{ data?.phone }}
+              {{ employee?.phone }}
             </p>
           </div>
           <div class="flex items-center justify-between">
-            <UIcon name="bi:github" class="w-5 h-5" />
+            <UIcon :name="BootstrapIcons.GITHUB" class="w-5 h-5" />
             <p class="text-[#111418] text-base font-medium leading-normal">
               Github
             </p>
           </div>
           <div class="flex items-center justify-between">
-            <UIcon name="bi:gitlab" class="w-5 h-5 text-rose-600" />
+            <UIcon
+              :name="BootstrapIcons.GITLAB"
+              class="w-5 h-5 text-rose-600"
+            />
             <p class="text-[#111418] text-base font-medium leading-normal">
               Gitlab
             </p>
           </div>
           <div class="flex items-center justify-between">
-            <UIcon name="bi:envelope-at-fill" class="w-5 h-5 text-sky-500" />
+            <UIcon :name="BootstrapIcons.MAIL" class="w-5 h-5 text-sky-500" />
             <p class="text-[#111418] text-base font-medium leading-normal">
-              serj2626@mail.ru
+              {{ employee?.user.email }}
             </p>
           </div>
           <div class="flex items-center justify-between">
-            <UIcon name="bi:linkedin" class="w-5 h-5 text-sky-700" />
+            <UIcon
+              :name="BootstrapIcons.LINKEDIN"
+              class="w-5 h-5 text-sky-700"
+            />
             <p class="text-[#111418] text-base font-medium leading-normal">
               serj2626
             </p>
           </div>
           <div class="flex items-center justify-between">
-            <UIcon name="bi:telegram" class="w-5 h-5 text-sky-700" />
+            <UIcon
+              :name="BootstrapIcons.TELEGRAM"
+              class="w-5 h-5 text-sky-700"
+            />
             <p class="text-[#111418] text-base font-medium leading-normal">
               Telegram
             </p>
@@ -113,19 +147,19 @@ const deleteExperience = (id: number) => {
         </h4>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Возраст</span>
-          <p>{{ data?.age }}</p>
+          <p>{{ employee?.age }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Страна</span>
-          <p>{{ data?.country }}</p>
+          <p>{{ employee?.country }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Город</span>
-          <p>{{ data?.city }}</p>
+          <p>{{ employee?.city }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Пол</span>
-          <p>{{ data?.gender }}</p>
+          <p>{{ employee?.gender }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Опыт</span>
@@ -133,15 +167,15 @@ const deleteExperience = (id: number) => {
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Мои резюме</span>
-          <p>{{ data?.resumes.length }}</p>
+          <p>{{ employee?.resumes.length }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Проекты</span>
-          <p>{{ data?.projects.length  }}</p>
+          <p>{{ employee?.projects.length }}</p>
         </div>
         <div class="flex justify-between items-center">
           <span class="bg-slate-200 rounded-2xl px-3 py-2">Друзья</span>
-          <p>0</p>
+          <p>{{ employee?.user.count_friends }}</p>
         </div>
       </section>
     </div>
@@ -164,11 +198,11 @@ const deleteExperience = (id: number) => {
         </div>
 
         <div
-          v-if="data?.resumes.length"
+          v-if="employee?.resumes.length"
           class="grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           <NuxtLink
-            v-for="item in data?.resumes"
+            v-for="item in employee?.resumes"
             :key="item.id"
             :to="{ name: 'resumes-id', params: { id: item.id } }"
           >
@@ -205,9 +239,9 @@ const deleteExperience = (id: number) => {
             >Добавить проект</UButton
           >
         </div>
-        <div v-if="data?.projects.length" class="flex gap-3">
+        <div v-if="employee?.projects.length" class="flex gap-3">
           <NuxtLink
-            v-for="item in data?.projects"
+            v-for="item in employee?.projects"
             :key="item.id"
             :to="'/projects/' + item.id"
           >
@@ -242,10 +276,10 @@ const deleteExperience = (id: number) => {
           >
         </div>
         <div
-          v-if="data?.stacks.length"
+          v-if="employee?.stacks.length"
           class="flex items-center gap-3 flex-wrap"
         >
-          <div v-for="(stack, index) in data?.stacks" :key="index">
+          <div v-for="(stack, index) in employee?.stacks" :key="index">
             <UButton disabled color="teal" size="md" ariant="solid">
               {{ stack }}</UButton
             >
@@ -269,9 +303,9 @@ const deleteExperience = (id: number) => {
           >
         </div>
 
-        <div  v-if="data?.educations.length" class="flex flex-col gap-3">
+        <div v-if="employee?.educations.length" class="flex flex-col gap-3">
           <div
-            v-for="edu in data?.educations"
+            v-for="edu in employee?.educations"
             :key="edu.id"
             class="flex flex-col ps-3 gap-5 py-5 border-b border-slate-300"
           >
@@ -335,8 +369,8 @@ const deleteExperience = (id: number) => {
             >Добавить опыт</UButton
           >
         </div>
-        <div v-if="data?.experiences.length" class="flex flex-col gap-2">
-          <div v-for="exp in data?.experiences" :key="exp.id">
+        <div v-if="employee?.experiences.length" class="flex flex-col gap-2">
+          <div v-for="exp in employee?.experiences" :key="exp.id">
             <div class="flex flex-col gap-4 border-b border-slate-300 py-3">
               <div class="flex items-center justify-between">
                 <h4 class="ps-3">
@@ -405,17 +439,21 @@ const deleteExperience = (id: number) => {
             Обо мне
           </h3>
           <UButton
-            :icon="!data?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'"
+            :icon="!employee?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'"
             size="md"
-            :color="data?.about ? 'teal' : 'amber'"
+            :color="employee?.about ? 'teal' : 'amber'"
             variant="outline"
           >
-            {{ data?.about ? "Редактировать" : "Добавить" }}
+            {{ employee?.about ? "Редактировать" : "Добавить" }}
           </UButton>
         </div>
         <ClientOnly>
           <p class="tracking-wide about">
-            {{ data?.about ? data?.about : "Пользователь не указал информацию о себе...." }}
+            {{
+              employee?.about
+                ? employee?.about
+                : "Пользователь не указал информацию о себе...."
+            }}
           </p>
         </ClientOnly>
       </section>
