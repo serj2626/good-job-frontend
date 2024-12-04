@@ -17,6 +17,8 @@ export interface IEducation {
 export interface IUser {
   email: string;
   type: string;
+  online: boolean;
+  count_friends: number;
 }
 
 export interface IExperience {
@@ -52,11 +54,11 @@ export interface IResume {
   projects: IProject[];
   stacks: string[];
   category: string;
-  fullName: string;
+  fullName?: string;
   position: string;
   minSalary: number;
   maxSalary: number;
-  workShedule: number;
+  work_shedule: number;
   createdAt: string;
   updatedAt: string;
   avatar: string;
