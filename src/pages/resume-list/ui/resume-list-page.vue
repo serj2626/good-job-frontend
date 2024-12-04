@@ -11,85 +11,6 @@ const {
   $fetch(config.public.apiUrl + `/api/employees/resume/`)
 );
 
-const rusumeList = [
-  {
-    id: 1,
-    title: "Frontend Developer",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "SASS"],
-    description: "I am a frontend developer with 2 years of experience.",
-  },
-  {
-    id: 2,
-    title: "Backend Developer",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["Node.js", "Express", "MongoDB"],
-    description: "I am a backend developer with 2 years of experience.",
-  },
-  {
-    id: 3,
-    title: "Fullstack Developer",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["React", "Node.js", "Express", "MongoDB"],
-    description: "I am a fullstack developer with 2 years of experience.",
-  },
-  {
-    id: 4,
-    title: "UI/UX Designer",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["Figma", "Adobe XD", "Sketch"],
-    description: "I am a UI/UX designer with 2 years of experience.",
-  },
-  {
-    id: 5,
-    title: "Sales Manager",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["Sales", "Marketing", "Customer Service"],
-    description: "I am a sales manager with 2 years of experience.",
-  },
-  {
-    id: 6,
-    title: "Product Manager",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["Product Management", "Agile", "Scrum"],
-    description: "I am a product manager with 2 years of experience.",
-  },
-  {
-    id: 7,
-    title: "Project Manager",
-    fullName: "John Doe",
-    city: "New York",
-    country: "USA",
-    salary: "50000 - 10000",
-    experience: "2 years",
-    stacks: ["Project Management", "Agile", "Scrum"],
-    description: "I am a project manager with 2 years of experience.",
-  },
-];
 const options = [
   {
     value: "full",
@@ -171,7 +92,6 @@ const experience = [
         </div>
         <UButton color="teal" variant="outline" size="lg">Найти</UButton>
       </section>
-      <section id="sorting"></section>
     </div>
     <div
       class="right-block flex flex-col gap-8 shadow-md bg-gray-100 p-3 relative"
@@ -186,7 +106,9 @@ const experience = [
             :key="resume.id"
             :to="{ name: 'resumes-id', params: { id: resume.id } }"
           >
-            <UCard class="transition-all duration-200 hover:scale-105 hover:shadow-2xl">
+            <UCard
+              class="transition-all duration-200 hover:scale-105 hover:shadow-2xl"
+            >
               <template #header>
                 <NuxtImg
                   class="h-56 w-full rounded-md object-cover mx-auto"
@@ -194,7 +116,9 @@ const experience = [
                 />
               </template>
               <template #footer>
-                {{ resume.position }}
+                <div class="flex flex-col gap-2 text-black">
+                  {{ resume.position }}
+                </div>
               </template>
             </UCard>
           </NuxtLink>
