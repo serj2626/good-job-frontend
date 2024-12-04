@@ -2,6 +2,7 @@ export const enum HeroIcons {
   ADJUSTMENTS_HORIZONTAL = "i-heroicons-adjustments-horizontal",
   ARROW_DOWN = "i-heroicons-arrow-down",
   ARROW_LEFT = "i-heroicons-arrow-left",
+  ARROW_RIGHT = "i-heroicons-arrow-right",
   ARROW_RIGHT_20_SOLID = "i-heroicons-arrow-right-20-solid",
   ARROW_UP = "i-heroicons-arrow-up",
   ARROW_UTURN_LEFT = "i-heroicons-arrow-uturn-left",
