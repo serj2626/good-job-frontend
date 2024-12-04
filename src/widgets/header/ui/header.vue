@@ -22,7 +22,7 @@ const menu = [
   },
   {
     title: "Посты и события",
-    url: "/profile/list",
+    url: "/",
   },
 ];
 </script>
@@ -31,7 +31,7 @@ const menu = [
     class="flex-col items-center flex text-center p-2 rounded-lg mb-3 shadow-2xl"
   >
     <h1 class="font-bold my-4 text-teal-600 text-6xl">GJ</h1>
-    <p class="text-slate-500">Good Job - Сайт для людей из мира IT</p>
+    <p class="app-title">Good Job - Сайт для людей из мира IT</p>
 
     <menu
       class="flex justify-center flex-wrap items-center gap-3 sm:gap-10 py-3 mt-2"
@@ -54,9 +54,10 @@ const menu = [
 h1 {
   text-shadow: 8px 2px 1px rgba(0, 0, 0, 0.19);
 }
-
-p {
-  text-shadow: 0px -2px 2px rgba(0, 0, 0, 0.19);
+.app-title {
+  @apply font-bold;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(45deg, #71c09c, #07bd7b);
 }
-
 </style>
