@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { IVacancy } from "../model/vacancy.type";
 
 const config = useRuntimeConfig();
@@ -115,7 +116,11 @@ const experience = [
         <div class="vacancy" v-for="vacancy in vacancies" :key="vacancy.id">
           <div class="flex items-center justify-between">
             <h4 class="font-bold">{{ vacancy.position }}</h4>
-            <Icon name="ic:outline-favorite-border" class="w-5 h-5" />
+            <Icon
+              :name="HeroIcons.FAVORITE"
+              title="В избранное"
+              class="w-6 h-6 hover:bg-red-700"
+            />
           </div>
           <div class="flex gap-10 items-center">
             <p>
@@ -138,7 +143,9 @@ const experience = [
             </div>
           </div>
           <p>{{ vacancy.company.name }}</p>
-          <p class="text-sm text-gray-600">{{ vacancy.country }} / {{ vacancy.city }}</p>
+          <p class="text-sm text-gray-600">
+            {{ vacancy.country }} / {{ vacancy.city }}
+          </p>
           <div class="flex items-center gap-3 my-3">
             <UButton
               :to="{ name: 'vacancies-id', params: { id: vacancy.id } }"
