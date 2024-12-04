@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "nuxt-rating",
     "@nuxt/image",
     "@sidebase/nuxt-pdf",
+    "@vueuse/nuxt",
   ],
   alias: {
     "@": "./src",
