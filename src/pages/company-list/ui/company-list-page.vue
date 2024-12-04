@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { ICompany } from "../../company-detail/model/company.type";
+import CompanyDetail from "./CompanyDetail.vue";
 
 const config = useRuntimeConfig();
-const {
-  data: companies,
-  error,
-  refresh,
-} = await useAsyncData<ICompany[]>("companies", () =>
+const { data: companies } = await useAsyncData<ICompany[]>("companies", () =>
   $fetch(config.public.apiUrl + `/api/companies/`)
 );
 const hasVacancy = ["Не имеет значения", "Да", "Нет"];
@@ -71,53 +68,11 @@ const countEmployees = [
     </div>
     <div class="right-block px-5 flex flex-col gap-8 shadow-md bg-gray-100">
       <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 mb-4">Компании</h3>
-      <div class="flex flex-col gap-5">
-        <div
-          v-for="(company, index) in companies"
-          :key="index"
-          class="flex justify-between items-center"
-        >
-          <div class="flex gap-4">
-            <div
-              class="outline-double outline-offset-2 outline-green-400 relative bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
-              :style="'background-image: url(' + company.avatar + ');'"
-            ></div>
-            <div class="flex flex-col justify-center">
-              <p
-                class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em]"
-              >
-                {{ company.full_name }}
-              </p>
-              <p class="text-[#637588] text-base font-normal leading-normal">
-                {{ company.city }} / {{ company.country }}
-              </p>
-              <p class="text-[#637588] text-base font-normal leading-normal">
-                {{ company.count_vacancies }} вакансий
-              </p>
-            </div>
-          </div>
-          <div>
-            <UButton
-              :to="{ name: 'companies-id', params: { id: company.id } }"
-              label="Подробнее"
-              color="gray"
-              variant="solid"
-              size="lg"
-            />
-          </div>
-        </div>
-        <UPagination
-          size="sm"
-          :model-value="1"
-          :total="100"
-          show-last
-          show-first
-          class="flex justify-center my-2"
-        >
-        </UPagination>
-      </div>
+      <CompanyDetail
+        v-for="(company, index) in companies"
+        :key="index"
+        :company="company"
+      />
     </div>
   </div>
 </template>
-<style scoped lang="scss">
-</style>

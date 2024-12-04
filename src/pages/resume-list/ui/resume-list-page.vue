@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import type { IResume } from "../../employee-detail/model/employee.type";
+import ResumeDetail from "./ResumeDetail.vue";
 
 const config = useRuntimeConfig();
-const {
-  data: resumes,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<IResume[]>("resumes", () =>
+const { data: resumes } = await useAsyncData<IResume[]>("resumes", () =>
   $fetch(config.public.apiUrl + `/api/employees/resume/`)
 );
 
@@ -101,27 +97,11 @@ const experience = [
       </h3>
       <section id="resumes" class="bg-gray-100 p-3 rounded-md">
         <div class="grid grid-cols-3 gap-4 py-5">
-          <NuxtLink
+          <ResumeDetail
             v-for="resume in resumes"
             :key="resume.id"
-            :to="{ name: 'resumes-id', params: { id: resume.id } }"
-          >
-            <UCard
-              class="transition-all duration-200 hover:scale-105 hover:shadow-2xl"
-            >
-              <template #header>
-                <NuxtImg
-                  class="h-56 w-full rounded-md object-cover mx-auto"
-                  :src="resume.avatar"
-                />
-              </template>
-              <template #footer>
-                <div class="flex flex-col gap-2 text-black">
-                  {{ resume.position }}
-                </div>
-              </template>
-            </UCard>
-          </NuxtLink>
+            :resume="resume"
+          />
         </div>
       </section>
     </div>

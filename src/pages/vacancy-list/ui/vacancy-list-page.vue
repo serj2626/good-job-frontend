@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { IVacancy } from "../model/vacancy.type";
+import VacancyDetail from "./VacancyDetail.vue";
 
 const config = useRuntimeConfig();
-const {
-  data: vacancies,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<IVacancy[]>("vacancies", () =>
+const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancies", () =>
   $fetch(config.public.apiUrl + `/api/companies/vacancy/`)
 );
 
@@ -113,7 +109,12 @@ const experience = [
       </h3>
 
       <div class="flex flex-col gap-3">
-        <div class="vacancy" v-for="vacancy in vacancies" :key="vacancy.id">
+        <VacancyDetail
+          v-for="vacancy in vacancies"
+          :key="vacancy.id"
+          :vacancy="vacancy"
+        />
+        <!-- <div class="vacancy" v-for="vacancy in vacancies" :key="vacancy.id">
           <div class="flex items-center justify-between">
             <h4 class="font-bold">{{ vacancy.position }}</h4>
             <Icon
@@ -161,24 +162,8 @@ const experience = [
               label="Откликнуться"
             />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.vacancy {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border: 1px solid #00000014;
-  border-radius: 20px;
-  padding: 20px;
-  background-color: #fff;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.284);
-  }
-}
-</style>
