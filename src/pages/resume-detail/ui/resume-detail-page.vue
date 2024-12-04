@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 import type { IResume } from "../model/resume.type";
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 const config = useRuntimeConfig();
 const {
   data: resume,
@@ -13,6 +15,79 @@ const {
 );
 </script>
 <template>
+  <div class="px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
+    <div class="w-3/4">
+      <div class="flex justify-start items-center gap-3">
+        <div
+          class="bg-no-repeat aspect-square bg-cover bg-center rounded-full min-h-64 w-64"
+          :style="{
+            backgroundImage: 'url(' + resume?.avatar + ')',
+          }"
+        ></div>
+        <div class="flex gap-4 px-4 py-3">
+          <div class="flex flex-col gap-3 justify-center">
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.USER_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.full_name }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="BootstrapIcons.POSITION" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.position }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.CAKE_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.age }} лет
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.LOCATION_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.city }}, {{ resume?.employee?.country }}
+              </p>
+            </div>
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.PHONE_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.phone }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.MAIL_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.employee?.user.email }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="HeroIcons.MONEY" class="w-5 h-5" />
+              <p
+                v-if="resume?.max_salary"
+                class="text-[#637588] text-sm font-normal leading-normal"
+              >
+                {{ resume?.min_salary }} - {{ resume?.max_salary }}
+              </p>
+              <p
+                v-else
+                class="text-[#637588] text-sm font-normal leading-normal"
+              >
+                от {{ resume?.min_salary }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
     <div class="flex flex-col max-w-[960px]">
       <div class="flex justify-between items-center py-5">
@@ -44,11 +119,12 @@ const {
             color="gray"
             variant="solid"
             size="lg"
+            :icon="HeroIcons.DOWNLOAD"
           />
         </div>
       </div>
 
-      <div class="pb-3">
+      <!-- <div class="pb-3">
         <div class="flex border-b border-[#dce0e5] px-4 gap-8">
           <a
             class="flex flex-col items-center justify-center border-b-[3px] border-b-[#111418] text-[#111418] pb-[13px] pt-4"
@@ -121,8 +197,8 @@ const {
             </p>
           </a>
         </div>
-      </div>
-      <section id="info">
+      </div> -->
+      <section id="info" class="border-t-2 border-[#dce0e5]">
         <h2
           class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
         >
@@ -131,41 +207,48 @@ const {
         <div class="flex gap-4 bg-white px-4 py-3">
           <div class="flex flex-col gap-3 justify-center">
             <div class="flex gap-3">
-              <Icon name="ic:baseline-person" class="w-5 h-5" />
+              <Icon :name="HeroIcons.USER_SOLID" class="w-5 h-5" />
+              <p class="text-[#637588] text-sm font-normal leading-normal">
+                {{ resume?.full_name }}
+              </p>
+            </div>
+
+            <div class="flex gap-3">
+              <Icon :name="BootstrapIcons.POSITION" class="w-5 h-5" />
               <p class="text-[#637588] text-sm font-normal leading-normal">
                 {{ resume?.position }}
               </p>
             </div>
 
             <div class="flex gap-3">
-              <Icon name="material-symbols:cake" class="w-5 h-5" />
+              <Icon :name="HeroIcons.CAKE_SOLID" class="w-5 h-5" />
               <p class="text-[#637588] text-sm font-normal leading-normal">
                 {{ resume?.employee?.age }} лет
               </p>
             </div>
 
             <div class="flex gap-3">
-              <Icon name="ic:baseline-location-on" class="w-5 h-5" />
+              <Icon :name="HeroIcons.LOCATION_SOLID" class="w-5 h-5" />
               <p class="text-[#637588] text-sm font-normal leading-normal">
                 {{ resume?.employee?.city }}, {{ resume?.employee?.country }}
               </p>
             </div>
             <div class="flex gap-3">
-              <Icon name="ic:baseline-phone" class="w-5 h-5" />
+              <Icon :name="HeroIcons.PHONE_SOLID" class="w-5 h-5" />
               <p class="text-[#637588] text-sm font-normal leading-normal">
                 {{ resume?.employee?.phone }}
               </p>
             </div>
 
             <div class="flex gap-3">
-              <Icon name="ic:baseline-mail" class="w-5 h-5" />
+              <Icon :name="HeroIcons.MAIL_SOLID" class="w-5 h-5" />
               <p class="text-[#637588] text-sm font-normal leading-normal">
                 {{ resume?.employee?.user.email }}
               </p>
             </div>
 
             <div class="flex gap-3">
-              <Icon name="solar:ruble-bold" class="w-5 h-5" />
+              <Icon :name="HeroIcons.MONEY" class="w-5 h-5" />
               <p
                 v-if="resume?.max_salary"
                 class="text-[#637588] text-sm font-normal leading-normal"
@@ -305,7 +388,7 @@ const {
         </h2>
         <div class="flex items-center gap-3 flex-wrap ps-3">
           <div v-for="(stack, index) in resume?.stacks" :key="index">
-            <UButton disabled color="teal" size="md" ariant="solid">
+            <UButton disabled color="gray" size="md" variant="solid">
               {{ stack }}</UButton
             >
           </div>
@@ -346,7 +429,7 @@ const {
         <div class="flex flex-col gap-3">
           <div
             class="flex gap-4 bg-white px-4 py-3"
-            v-for="project in resume?.projects"
+            v-for="project in resume?.employee?.projects"
             :key="project.id"
           >
             <div
