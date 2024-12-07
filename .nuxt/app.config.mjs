@@ -232,6 +232,6 @@ if (import.meta.hot) {
   })
 }
 
-import cfg0 from "/home/serj2626/Projects/FullStack/Django_Nuxt/good_job/frontend/app.config.ts"
+import cfg0 from "/home/serj2626/Projects/FullStack/good-job/frontend/app.config.ts"
 
 export default /*@__PURE__*/ defuFn(cfg0, inlineConfig)
