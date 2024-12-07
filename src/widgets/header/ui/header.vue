@@ -1,30 +1,5 @@
 <script setup lang="ts">
-const menu = [
-  {
-    title: "Главная",
-    url: "/",
-  },
-  {
-    title: "Вакансии",
-    url: "/vacancies/list",
-  },
-  {
-    title: "Компании",
-    url: "/companies/list",
-  },
-  {
-    title: "Специалисты",
-    url: "/employees/list",
-  },
-  {
-    title: "Резюме",
-    url: "/resumes/list",
-  },
-  {
-    title: "Посты и события",
-    url: "/",
-  },
-];
+import { Menu } from "~/src/features/menu";
 </script>
 <template>
   <header
@@ -33,18 +8,7 @@ const menu = [
     <h1 class="font-bold my-4 text-teal-600 text-6xl">GJ</h1>
     <p class="app-title">Good Job - Сайт для людей из мира IT</p>
 
-    <menu
-      class="flex justify-center flex-wrap items-center gap-3 sm:gap-10 py-3 mt-2"
-    >
-      <NuxtLink
-        v-for="link in menu"
-        :key="link.title"
-        :to="link.url"
-        class="menu-link py-2"
-      >
-        {{ link.title }}
-      </NuxtLink>
-    </menu>
+    <Menu />
   </header>
 </template>
 <style scoped lang="scss">
@@ -58,6 +22,6 @@ h1 {
   @apply font-bold;
   color: transparent;
   background-clip: text;
-  background-image: linear-gradient(45deg, #71c09c, #07bd7b);
+  background-image: linear-gradient(45deg, #354e42, #07bd7b);
 }
 </style>

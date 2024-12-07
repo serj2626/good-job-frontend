@@ -3,7 +3,7 @@ import type { ICompany } from "../../company-detail/model/company.type";
 import CompanyDetail from "./CompanyDetail.vue";
 
 const config = useRuntimeConfig();
-const { data: companies } = await useAsyncData<ICompany[]>("companies", () =>
+const { data: companies } = await useLazyAsyncData<ICompany[]>("companies", async() =>
   $fetch(config.public.apiUrl + `/api/companies/`)
 );
 const hasVacancy = ["Не имеет значения", "Да", "Нет"];
