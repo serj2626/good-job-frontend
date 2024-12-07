@@ -1,18 +1,40 @@
 <script setup lang="ts">
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
 import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 
 const config = useRuntimeConfig();
-const {
-  data: vacancy,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<IVacancy>("vacancy", () =>
+const { data: vacancy } = await useAsyncData<IVacancy>("vacancy", () =>
   $fetch(
     config.public.apiUrl + `/api/companies/vacancy/${useRoute().params.id}/`
   )
 );
+
+const typeCurrency = computed(() => {
+  if (vacancy.value?.currency === "RUB") {
+    return MoneyIcons.RUB;
+  }
+  if (vacancy.value?.currency === "USD") {
+    return MoneyIcons.USD;
+  }
+  return MoneyIcons.EUR;
+});
+
+const salary = computed(() => {
+  if (vacancy.value?.min_salary && vacancy.value?.max_salary) {
+    return (
+      "от " + vacancy.value?.min_salary + " до " + vacancy.value?.max_salary
+    );
+  }
+  if (vacancy.value?.min_salary) {
+    return "от " + vacancy.value?.min_salary;
+  }
+  if (vacancy.value?.max_salary) {
+    return "до " + vacancy.value?.max_salary;
+  } else {
+    return "Заработная плата не указана";
+  }
+});
 
 const items = [
   [
@@ -99,9 +121,10 @@ const items = [
           </div>
         </div>
         <div class="">
-          <p class="text-[#111418] text-base font-normal leading-normal">
-            {{ vacancy?.min_salary }} - {{ vacancy?.max_salary }} ₽
-          </p>
+          <div class="text-[#111418] text-base font-normal flex items-center">
+            {{ salary }}
+            <Icon :name="typeCurrency" class="w-5 h-5" color="#111418" />
+          </div>
         </div>
       </div>
       <section id="description" class="">
@@ -147,8 +170,8 @@ const items = [
             size="md"
             ariant="solid"
           >
-            {{ skill }}</UButton
-          >
+            {{ skill }}
+          </UButton>
         </div>
       </section>
 
@@ -170,21 +193,13 @@ const items = [
             </p>
           </div>
           <div class="flex items-center gap-6 px-4">
-            <Icon
-              :name="HeroIcons.MAIL"
-              class="w-5 h-5 ps-4"
-              color="#111418"
-            />
+            <Icon :name="HeroIcons.MAIL" class="w-5 h-5 ps-4" color="#111418" />
             <p class="text-[#111418] text-base font-normal leading-normal">
               {{ vacancy?.company.user.email }}
             </p>
           </div>
           <div class="flex items-center gap-6 px-4">
-            <Icon
-              :name="HeroIcons.LINK"
-              class="w-5 h-5 ps-4"
-              color="#111418"
-            />
+            <Icon :name="HeroIcons.LINK" class="w-5 h-5 ps-4" color="#111418" />
             <p class="text-[#111418] text-base font-normal leading-normal">
               {{
                 vacancy?.company.site ? vacancy?.company.site : "Сайт не указан"
@@ -194,7 +209,7 @@ const items = [
         </div>
       </section>
       <section id="info">
-        <div class="flex flex-wrap gap-3 items-center my-10 px-4">
+        <div class="flex flex-wrap gap-3 items-center my-10 px-4 pb-20">
           <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.level }}
           </UButton>
@@ -213,7 +228,8 @@ const items = [
           <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.city }}
           </UButton>
-          <UButton disabled
+          <UButton
+            disabled
             v-if="vacancy?.metro"
             color="rose"
             size="sm"
@@ -223,7 +239,7 @@ const items = [
           </UButton>
         </div>
       </section>
-      <p class="absolute bottom-0 right-0">
+      <p class="absolute bottom-0 right-[50%] translate-x-[50%]">
         Опубликовано: {{ vacancy?.time_ago }} назад
       </p>
     </div>
