@@ -1,8 +1,36 @@
 <script setup lang="ts">
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { IVacancy } from "../model/vacancy.type";
+import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
 
-defineProps<{ vacancy: IVacancy }>();
+const { vacancy } = defineProps<{ vacancy: IVacancy }>();
+
+
+const typeCurrency = computed(() => {
+  if (vacancy.currency === "RUB") {
+    return MoneyIcons.RUB;
+  }
+  if (vacancy.currency === "USD") {
+    return MoneyIcons.USD;
+  }
+  return MoneyIcons.EUR;
+});
+
+const salary = computed(() => {
+  if (vacancy.min_salary && vacancy.max_salary) {
+    return (
+      "от " + vacancy.min_salary + " до " + vacancy.max_salary
+    );
+  }
+  if (vacancy.min_salary) {
+    return "от " + vacancy.min_salary;
+  }
+  if (vacancy.max_salary) {
+    return "до " + vacancy.max_salary;
+  } else {
+    return "Заработная плата не указана";
+  }
+});
 </script>
 <template>
   <div class="flex items-center gap-4" v-if="!vacancy">
@@ -23,10 +51,10 @@ defineProps<{ vacancy: IVacancy }>();
       />
     </div>
     <div class="flex gap-10 items-center">
-      <p>
-        {{ vacancy.min_salary }} -
-        {{ vacancy.max_salary ? vacancy.max_salary : "Не указано" }} ₽
-      </p>
+      <div class="flex items-center">
+          {{ salary }}
+        <Icon :name="typeCurrency" class="w-4 h-4" color="#111418" />
+      </div>
       <div class="flex items-center gap-2 text-sm">
         <p class="bg-slate-100 py-2 px-3 shadow-md rounded-md">
           {{ vacancy.work_schedule }}
@@ -42,7 +70,7 @@ defineProps<{ vacancy: IVacancy }>();
         </p>
       </div>
     </div>
-    <p>{{ vacancy.company.name }}</p>
+    <p>{{ vacancy.company.full_name }}</p>
     <p class="text-sm text-gray-600">
       {{ vacancy.country }} / {{ vacancy.city }}
     </p>
