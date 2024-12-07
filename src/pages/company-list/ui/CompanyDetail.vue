@@ -5,7 +5,7 @@ import type { ICompany } from "../../company-detail/model/company.type";
 defineProps<{ company: ICompany }>();
 </script>
 <template>
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-5 mb-6">
     <div class="flex justify-between items-center">
       <div class="flex gap-4">
         <div
