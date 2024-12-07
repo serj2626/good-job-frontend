@@ -1,102 +1,19 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import { Company } from "~/src/widgets/company";
+import Grid from "~/src/shared/ui/grid/Grid.vue";
 import type { ICompany } from "../model/company.type";
-import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
+import CompanyCard from "./CompanyCard.vue";
 const config = useRuntimeConfig();
 const { data: company } = await useAsyncData<ICompany>("company", () =>
   $fetch(config.public.apiUrl + `/api/companies/${useRoute().params.id}`)
 );
 </script>
 <template>
-  <div class="grid grid-cols-[minmax(0,300px),1fr]">
-    <div class="left-sidebar flex flex-col gap-8">
-      <section
-        id="profile"
-        class="relative bg-gray-100 text-center shadow-md p-3"
-      >
-        <div class="flex justify-between items-center">
-          <span v-if="company?.is_verified" class="text-green-500"
-            >Проверена
-            <Icon
-              :name="BootstrapIcons.CHECK_COMPANY"
-              class="w-6 h-6 text-green-500"
-          /></span>
-          <span v-else class="text-red-600">Не проверена</span>
-          <UButton
-            v-if="company?.user.online"
-            color="green"
-            size="md"
-            variant="solid"
-            label="В сети"
-            disabled
-          />
-          <UButton
-            v-else
-            color="red"
-            size="md"
-            variant="solid"
-            label="Не в сети"
-            disabled
-          />
-        </div>
-
-        <img
-          :src="company?.avatar"
-          :alt="company?.name"
-          class="rounded-xl mb-2 mt-3"
-        />
-        <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
-          {{ company?.full_name }}
-        </h3>
-        <div
-          class="text-[#111418] text-base font-normal mb-4 flex justify-center items-center gap-2"
-        >
-          {{ company?.user.type }}
-        </div>
-        <UButton size="xl" loading color="teal" variant="solid">
-          Подружиться
-        </UButton>
-      </section>
-      <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-3 p-3">
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Страна:</span>
-          <p>{{ company?.country }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Город:</span>
-          <p>{{ company?.city }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Почта:</span>
-          <p>{{ company?.user.email }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Телефон:</span>
-          <p>{{ company?.phone }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2"
-            >Кол-во сотрудников</span
-          >
-          <p>{{ company?.count_employees }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2"
-            >Кол-во вакансий</span
-          >
-          <p>{{ company?.vacancies.length }}</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Кол-во друзей</span>
-          <p>26</p>
-        </div>
-        <div class="flex justify-between items-center">
-          <span class="bg-slate-200 rounded-2xl px-3 py-2">Сайт</span>
-          <p>{{ company?.site || "Не указан" }}</p>
-        </div>
-      </section>
-    </div>
-    <div class="right-block ps-5 flex flex-col gap-8">
+  <Grid>
+    <template #left>
+      <Company :company="company" v-if="company" />
+    </template>
+    <template #right>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-2xl">
         <div
           class="flex flex-col sm:flex-row justify-between items-center mb-3"
@@ -136,28 +53,11 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
           >
         </div>
         <div class="grid grid-cols-4 gap-4 py-5">
-          <NuxtLink
-            v-for="item in company?.vacancies"
-            :key="item.id"
-            :to="{ name: 'vacancies-id', params: { id: item.id } }"
-          >
-            <UCard
-              class="transition-all duration-200 hover:scale-105 hover:shadow-2xl text-center"
-            >
-              <template #header>
-                <div class="flex flex-col gap-3">
-                  <h3 class="text-[#111418] text-lg font-bold">
-                    {{ item?.position }}
-                  </h3>
-                </div>
-              </template>
-              <template #default>
-                <p class="text-[#111418] text-sm">
-                  {{ item?.min_salary }} - {{ item?.max_salary }} ₽
-                </p>
-              </template>
-            </UCard>
-          </NuxtLink>
+          <CompanyCard
+            v-for="vacancy in company?.vacancies"
+            :key="vacancy.id"
+            :vacancy="vacancy"
+          />
         </div>
       </section>
 
@@ -256,6 +156,6 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
         >
         </UPagination>
       </section>
-    </div>
-  </div>
+    </template>
+  </Grid>
 </template>
