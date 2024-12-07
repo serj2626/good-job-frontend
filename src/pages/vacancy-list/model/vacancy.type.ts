@@ -20,4 +20,5 @@ export interface IVacancy {
   city: string;
   country: string;
   metro?: string;
+  currency: string;
 }
