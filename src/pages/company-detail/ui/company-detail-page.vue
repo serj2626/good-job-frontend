@@ -3,11 +3,7 @@ import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import type { ICompany } from "../model/company.type";
 import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 const config = useRuntimeConfig();
-const {
-  data: company,
-  error,
-  refresh,
-} = await useAsyncData<ICompany>("company", () =>
+const { data: company } = await useAsyncData<ICompany>("company", () =>
   $fetch(config.public.apiUrl + `/api/companies/${useRoute().params.id}`)
 );
 </script>
@@ -18,28 +14,36 @@ const {
         id="profile"
         class="relative bg-gray-100 text-center shadow-md p-3"
       >
-        <UButton
-          v-if="company?.user.online"
-          class="absolute top-2 right-2"
-          color="green"
-          size="md"
-          variant="solid"
-          label="В сети"
-          disabled
-        />
-        <UButton
-          class="absolute top-2 right-2"
-          v-else
-          color="red"
-          size="md"
-          variant="solid"
-          label="Не в сети"
-          disabled
-        />
+        <div class="flex justify-between items-center">
+          <span v-if="company?.is_verified" class="text-green-500"
+            >Проверена
+            <Icon
+              :name="BootstrapIcons.CHECK_COMPANY"
+              class="w-6 h-6 text-green-500"
+          /></span>
+          <span v-else class="text-red-600">Не проверена</span>
+          <UButton
+            v-if="company?.user.online"
+            color="green"
+            size="md"
+            variant="solid"
+            label="В сети"
+            disabled
+          />
+          <UButton
+            v-else
+            color="red"
+            size="md"
+            variant="solid"
+            label="Не в сети"
+            disabled
+          />
+        </div>
+
         <img
           :src="company?.avatar"
           :alt="company?.name"
-          class="rounded-xl mb-2 mt-9"
+          class="rounded-xl mb-2 mt-3"
         />
         <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
           {{ company?.full_name }}
@@ -48,30 +52,10 @@ const {
           class="text-[#111418] text-base font-normal mb-4 flex justify-center items-center gap-2"
         >
           {{ company?.user.type }}
-          <UTooltip
-            v-if="company?.is_verified"
-            text="Компания проверена"
-            :popper="{ placement: 'top' }"
-          >
-            <Icon
-              :name="BootstrapIcons.CHECK_COMPANY"
-              class="w-6 h-6 text-green-500"
-            />
-          </UTooltip>
-          <UTooltip
-            v-else
-            text="Компания не проверена"
-            :popper="{ placement: 'top' }"
-          >
-            <Icon
-              class="text-red-600 w-6 h-6"
-              :name="BootstrapIcons.X_CHECK_COMPANY"
-            />
-          </UTooltip>
         </div>
-        <UButton size="xl" loading color="teal" variant="solid"
-          >Подружиться</UButton
-        >
+        <UButton size="xl" loading color="teal" variant="solid">
+          Подружиться
+        </UButton>
       </section>
       <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-3 p-3">
         <div class="flex justify-between items-center">
