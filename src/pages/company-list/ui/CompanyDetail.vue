@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
-import type { ICompany } from "../../company-detail/model/company.type";
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+
+import type { ICompany } from '../../company-detail/model/company.type';
 
 defineProps<{ company: ICompany }>();
 </script>
