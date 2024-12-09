@@ -113,6 +113,9 @@
       "#image/*": [
         "../node_modules/@nuxt/image/dist/runtime/*"
       ],
+      "#primevue-style": [
+        "./primevue-style.mjs"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -188,6 +191,8 @@
     "../node_modules/@nuxt/image/dist/runtime",
     "../node_modules/@sidebase/nuxt-pdf/runtime",
     "../node_modules/@sidebase/nuxt-pdf/dist/runtime",
+    "../node_modules/@primevue/nuxt-module/runtime",
+    "../node_modules/@primevue/nuxt-module/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -220,6 +225,8 @@
     "../node_modules/@nuxt/image/dist/runtime/server",
     "../node_modules/@sidebase/nuxt-pdf/runtime/server",
     "../node_modules/@sidebase/nuxt-pdf/dist/runtime/server",
+    "../node_modules/@primevue/nuxt-module/runtime/server",
+    "../node_modules/@primevue/nuxt-module/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
