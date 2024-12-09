@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
-import type { IVacancy } from "../model/vacancy.type";
-import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+import { MoneyIcons } from '~/src/shared/types/icons/money-icons';
+
+import type { IVacancy } from '../model/vacancy.type';
 
 const { vacancy } = defineProps<{ vacancy: IVacancy }>();
-
 
 const typeCurrency = computed(() => {
   if (vacancy.currency === "RUB") {
@@ -18,9 +18,7 @@ const typeCurrency = computed(() => {
 
 const salary = computed(() => {
   if (vacancy.min_salary && vacancy.max_salary) {
-    return (
-      "от " + vacancy.min_salary + " до " + vacancy.max_salary
-    );
+    return "от " + vacancy.min_salary + " до " + vacancy.max_salary;
   }
   if (vacancy.min_salary) {
     return "от " + vacancy.min_salary;
@@ -33,15 +31,7 @@ const salary = computed(() => {
 });
 </script>
 <template>
-  <div class="flex items-center gap-4" v-if="!vacancy">
-    <USkeleton class="h-12 w-12 rounded-full" />
-    <div class="grid gap-2">
-      <USkeleton class="h-4 w-[250px]" />
-      <USkeleton class="h-4 w-[200px]" />
-    </div>
-  </div>
-
-  <div class="vacancy" v-else>
+  <div class="vacancy dark:text-black dark:shadow-2xl">
     <div class="relative flex items-center justify-between">
       <h4 class="font-bold">{{ vacancy.position }}</h4>
       <Icon
@@ -52,7 +42,7 @@ const salary = computed(() => {
     </div>
     <div class="flex gap-10 items-center">
       <div class="flex items-center">
-          {{ salary }}
+        {{ salary }}
         <Icon :name="typeCurrency" class="w-4 h-4" color="#111418" />
       </div>
       <div class="flex items-center gap-2 text-sm">
@@ -81,8 +71,15 @@ const salary = computed(() => {
         size="md"
         variant="solid"
         label="Подробнее"
+        class="dark:bg-indigo-700 dark:text-white"
       />
-      <UButton color="sky" size="md" variant="solid" label="Откликнуться" />
+      <UButton
+        color="sky"
+        size="md"
+        variant="solid"
+        label="Откликнуться"
+        class="dark:bg-sky-600 dark:text-white"
+      />
     </div>
   </div>
 </template>
