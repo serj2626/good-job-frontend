@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
-import type { IEmployee } from "../../employee-detail/model/employee.type";
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+
+import type { IEmployee } from '../../employee-detail/model/employee.type';
 
 defineProps<{ employee: IEmployee }>();
+
 </script>
 <template>
   <div class="flex flex-col gap-5 mb-6">
@@ -18,7 +20,7 @@ defineProps<{ employee: IEmployee }>();
           <p class="text-[#637588] text-base font-normal leading-normal">
             {{ employee.position }}
           </p>
-          <p class="text-[#73808d] text-base font-normal leading-normal">
+          <p class="text-[#919ba3] text-base font-normal leading-normal">
             {{ employee.city }} / {{ employee.country }}
           </p>
         </div>
