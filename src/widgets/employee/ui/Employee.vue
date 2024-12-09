@@ -1,5 +1,7 @@
 <script lang="ts" setup>
- import type { IEmployee } from '~/src/pages/employee-detail/model/employee.type';
+import type {
+  IEmployee,
+} from '~/src/pages/employee-detail/model/employee.type';
 import { BootstrapIcons } from '~/src/shared/types/icons/bootstrap-icons';
 
 const { employee } = defineProps<{ employee: IEmployee }>();
@@ -34,7 +36,7 @@ const { employee } = defineProps<{ employee: IEmployee }>();
           </p>
         </div>
 
-        <img :src="employee?.avatar" class="mt-6 rounded-sm" />
+        <img :src="employee?.avatar ? employee?.avatar : '/image/user_none.png'" class="mt-6 rounded-sm" />
         <h3 class="text-[#111418] text-2xl font-bold px-4 pb-2 pt-4 mb-3">
           {{ employee?.first_name }} {{ employee?.last_name }}
         </h3>
