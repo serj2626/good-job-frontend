@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { IResume } from "../model/employee.type";
+import type { IResume } from '../model/employee.type';
 
 defineProps<{ resume: IResume }>();
 </script>
