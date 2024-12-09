@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import Editor from 'primevue/editor';
-import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
-import Grid from '~/src/shared/ui/grid/Grid.vue';
-import { Employee } from '~/src/widgets/employee';
+import Editor from "primevue/editor";
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import Grid from "~/src/shared/ui/grid/Grid.vue";
+import { Employee } from "~/src/widgets/employee";
 
-import type { IEmployee } from '../model/employee.type';
-import ResumeCard from './ResumeCard.vue';
+import type { IEmployee } from "../model/employee.type";
+import ResumeCard from "./ResumeCard.vue";
+import EducationCard from "./EducationCard.vue";
+import ExperienceCard from "./ExperienceCard.vue";
 
 const config = useRuntimeConfig();
 const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
@@ -24,10 +26,6 @@ const setDescription = (data: string) => {
   alert(data);
   showModal.value = true;
   selectRequir.value = data;
-};
-
-const deleteEducation = (id: number) => {
-  showModal.value = true;
 };
 
 const deleteExperience = (id: number) => {
@@ -150,55 +148,13 @@ const showEditor = ref<boolean>(false);
           >
         </div>
 
-        <div v-if="employee?.educations.length" class="flex flex-col gap-3">
-          <div
-            v-for="edu in employee?.educations"
-            :key="edu.id"
-            class="flex flex-col ps-3 gap-5 py-5 border-b border-slate-300"
-          >
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4">Тип: </span>
-              {{ edu.type }}
-            </p>
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Учебное заведение:
-              </span>
-              {{ edu.university }}
-            </p>
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Специализация:
-              </span>
-              {{ edu.specialization }}
-            </p>
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Начало обучения:
-              </span>
-              {{ edu.start_date }}
-            </p>
-            <p>
-              <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                >Окончание:
-              </span>
-              {{ edu.end_date ? edu.end_date : "по настоящее время" }}
-            </p>
-            <div class="flex gap-3 ps-3">
-              <Icon
-                name="i-heroicons-pencil-square"
-                class="cursor-pointer text-green-600"
-                size="24"
-              />
-              <Icon
-                @click="deleteEducation(edu.id)"
-                name="i-heroicons-trash"
-                class="cursor-pointer text-red-600"
-                size="24"
-              />
-            </div>
-          </div>
-        </div>
+        <EducationCard
+          v-if="employee?.educations.length"
+          v-for="edu in employee?.educations"
+          :key="edu.id"
+          :education="edu"
+        />
+
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
@@ -213,69 +169,18 @@ const showEditor = ref<boolean>(false);
             size="md"
             color="amber"
             variant="outline"
-            >Добавить опыт</UButton
           >
+            Добавить опыт
+          </UButton>
         </div>
-        <div v-if="employee?.experiences.length" class="flex flex-col gap-2">
-          <div v-for="exp in employee?.experiences" :key="exp.id">
-            <div class="flex flex-col gap-4 border-b border-slate-300 py-3">
-              <div class="flex items-center justify-between">
-                <h4 class="ps-3">
-                  <span class="font-bold">{{ exp.company }}</span> -
-                  {{ exp.position }}
-                </h4>
-                <div class="flex gap-2">
-                  <UButton
-                    @click="setRequirements(exp.requirements)"
-                    size="md"
-                    color="red"
-                    variant="outline"
-                    >Требования
-                  </UButton>
-                  <UButton
-                    @click="setDescription(exp.description)"
-                    size="md"
-                    color="indigo"
-                    variant="outline"
-                    >Описание
-                  </UButton>
-                </div>
-              </div>
-              <p>
-                <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                  >Начало работы:
-                </span>
-                {{ exp.start_date }}
-              </p>
-              <p>
-                <span class="bg-slate-200 rounded-2xl px-3 py-2 me-4"
-                  >Окончание:
-                </span>
-                {{ exp.end_date ? exp.end_date : "по настоящее время" }}
-              </p>
-              <div class="flex items-center gap-3 flex-wrap">
-                <div v-for="(stack, index) in exp.stacks" :key="index">
-                  <UButton disabled color="cyan" size="md" ariant="solid">
-                    {{ stack }}
-                  </UButton>
-                </div>
-              </div>
-              <div class="flex gap-3 ps-3 mt-4">
-                <Icon
-                  name="i-heroicons-pencil-square"
-                  class="cursor-pointer text-green-600"
-                  size="24"
-                />
-                <Icon
-                  @click="deleteExperience(exp.id)"
-                  name="i-heroicons-trash"
-                  class="cursor-pointer text-red-600"
-                  size="24"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <ExperienceCard
+          v-if="employee?.experiences.length"
+          v-for="exp in employee?.experiences"
+          :key="exp.id"
+          :exp="exp"
+        />
+
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="about" class="bg-gray-100 rounded-md shadow-md">
