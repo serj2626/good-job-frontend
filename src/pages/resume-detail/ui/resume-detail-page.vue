@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
-import type { IResume } from "../model/resume.type";
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import { BootstrapIcons } from '~/src/shared/types/icons/bootstrap-icons';
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+
+import type { IResume } from '../model/resume.type';
+
 const config = useRuntimeConfig();
 const {
   data: resume,
@@ -17,7 +19,7 @@ const {
 <template>
   <div class="relative px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
     <Icon :name="HeroIcons.FAVORITE" class="w-6 h-6 absolute top-3 right-4" />
-    <div class="flex flex-col max-w-[960px]">
+    <div class="flex flex-col w-3/4 mx-auto">
       <div class="flex justify-between items-center py-5">
         <div class="flex gap-4">
           <div
