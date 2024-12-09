@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
   padding: 0 calc(20px - (100vw - 100%)) 0 0;
   margin: 0;
@@ -22,6 +24,7 @@ body {
 }
 
 .active-link {
+  @apply dark:border-b-4 dark:border-teal-400;
   border-bottom: 4px solid rgb(23, 160, 160);
 }
 
