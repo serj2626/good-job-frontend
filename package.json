@@ -16,7 +16,7 @@
     "@nuxt/ui": "^2.19.2",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@pinia/nuxt": "^0.7.0",
-    "@primevue/nuxt-module": "^4.2.2",
+    "@primevue/nuxt-module": "^4.2.4",
     "@samk-dev/nuxt-vcalendar": "^1.0.4",
     "@sidebase/nuxt-pdf": "^1.0.0-alpha.0",
     "autoprefixer": "^10.4.20",
@@ -26,12 +26,13 @@
     "tailwindcss": "^3.4.15"
   },
   "dependencies": {
-    "@primevue/themes": "^4.2.2",
+    "@primevue/themes": "^4.2.4",
     "@vueuse/core": "^11.3.0",
     "@vueuse/nuxt": "^11.3.0",
     "nuxt-rating": "^0.1.5",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.2.6",
-    "primevue": "^4.2.2"
+    "primevue": "^4.2.4",
+    "quill": "^2.0.3"
   }
 }
