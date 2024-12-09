@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { IProject } from "../model/project.type";
+import type { IProject } from '../model/project.type';
+
 const config = useRuntimeConfig();
 const {
   data: project,
