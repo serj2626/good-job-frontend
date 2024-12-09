@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
-import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
-import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+import { MoneyIcons } from '~/src/shared/types/icons/money-icons';
+
+import type { IVacancy } from '../../vacancy-list/model/vacancy.type';
 
 const config = useRuntimeConfig();
 const { data: vacancy } = await useAsyncData<IVacancy>("vacancy", () =>
