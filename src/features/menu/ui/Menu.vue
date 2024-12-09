@@ -1,5 +1,15 @@
 <script lang="ts" setup>
-import { MenuLinks } from "../model/menu.data";
+import { MenuLinks } from '../model/menu.data';
+
+const colorMode = useColorMode();
+const isDark = computed({
+  get() {
+    return colorMode.value === "dark";
+  },
+  set() {
+    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+  },
+});
 </script>
 
 <template>
@@ -14,6 +24,20 @@ import { MenuLinks } from "../model/menu.data";
     >
       {{ link.title }}
     </NuxtLink>
+    <ClientOnly>
+      <UButton
+        :icon="
+          isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'
+        "
+        color="gray"
+        variant="ghost"
+        aria-label="Theme"
+        @click="isDark = !isDark"
+      />
+      <template #fallback>
+        <div class="w-8 h-8" />
+      </template>
+    </ClientOnly>
   </menu>
 </template>
 
