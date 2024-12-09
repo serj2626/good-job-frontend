@@ -1,6 +1,11 @@
+import Aura from '@primevue/themes/aura';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  colorMode: {
+    preference: "light",
+  },
   modules: [
     "@nuxt/ui",
     "@vueuse/nuxt",
@@ -13,7 +18,15 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@sidebase/nuxt-pdf",
     "@vueuse/nuxt",
+    "@primevue/nuxt-module",
   ],
+  primevue: {
+    options: {
+      theme: {
+        preset: Aura,
+      },
+    },
+  },
   alias: {
     "@": "./src",
   },
