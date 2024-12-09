@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { Employee } from "~/src/widgets/employee";
-import type { IEmployee } from "../model/employee.type";
-import Grid from "~/src/shared/ui/grid/Grid.vue";
-import ResumeCard from "./ResumeCard.vue";
+import Editor from 'primevue/editor';
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+import Grid from '~/src/shared/ui/grid/Grid.vue';
+import { Employee } from '~/src/widgets/employee';
+
+import type { IEmployee } from '../model/employee.type';
+import ResumeCard from './ResumeCard.vue';
+
 const config = useRuntimeConfig();
 const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
   $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
@@ -29,6 +33,9 @@ const deleteEducation = (id: number) => {
 const deleteExperience = (id: number) => {
   showModal.value = true;
 };
+
+const about = ref<string>("");
+const showEditor = ref<boolean>(false);
 </script>
 <template>
   <Grid>
@@ -196,7 +203,7 @@ const deleteExperience = (id: number) => {
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
         <div
-          class="flex flex-col sm:flex-row justify-between items-center mb-3"
+          class="flex flex-col sm:flex-row justify-between items-center mb-8"
         >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Опыт работы
@@ -271,32 +278,77 @@ const deleteExperience = (id: number) => {
         </div>
         <div v-else>Данные отсутствуют....</div>
       </section>
-      <section id="about" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div
-          class="flex flex-col sm:flex-row justify-between items-center mb-3"
-        >
-          <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
-            Обо мне
-          </h3>
-          <UButton
-            :icon="!employee?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'"
-            size="md"
-            :color="employee?.about ? 'teal' : 'amber'"
-            variant="outline"
+      <section id="about" class="bg-gray-100 rounded-md shadow-md">
+        <Transition name="fade" mode="out-in">
+          <Editor
+            v-if="showEditor"
+            v-model="about"
+            editorStyle="height: 320px"
+            :autoResize="true"
+          />
+        </Transition>
+        <div class="p-3">
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center mb-3"
           >
-            {{ employee?.about ? "Редактировать" : "Добавить" }}
-          </UButton>
+            <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
+              Обо мне
+            </h3>
+            <UButton
+              v-if="!showEditor"
+              @click="showEditor = !showEditor"
+              :icon="
+                !employee?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'
+              "
+              size="md"
+              :color="employee?.about ? 'teal' : 'amber'"
+              variant="outline"
+            >
+              {{ employee?.about ? "Редактировать" : "Добавить" }}
+            </UButton>
+            <div v-else class="flex gap-3">
+              <UButton
+                @click="showEditor = !showEditor"
+                :icon="HeroIcons.CHECK"
+                size="md"
+                color="green"
+                variant="outline"
+              >
+                Сохранить
+              </UButton>
+              <UButton
+                @click="showEditor = !showEditor"
+                :icon="HeroIcons.X_MARK"
+                size="md"
+                color="red"
+                variant="outline"
+              >
+                Закрыть
+              </UButton>
+            </div>
+          </div>
+          <ClientOnly>
+            <p class="tracking-wide about">
+              {{
+                employee?.about
+                  ? employee?.about
+                  : "Пользователь не указал информацию о себе...."
+              }}
+            </p>
+          </ClientOnly>
         </div>
-        <ClientOnly>
-          <p class="tracking-wide about">
-            {{
-              employee?.about
-                ? employee?.about
-                : "Пользователь не указал информацию о себе...."
-            }}
-          </p>
-        </ClientOnly>
       </section>
     </template>
   </Grid>
 </template>
+<style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { Company } from "~/src/widgets/company";
-import Grid from "~/src/shared/ui/grid/Grid.vue";
-import type { ICompany } from "../model/company.type";
-import CompanyCard from "./CompanyCard.vue";
+import Editor from 'primevue/editor';
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+import Grid from '~/src/shared/ui/grid/Grid.vue';
+import { Company } from '~/src/widgets/company';
+
+import type { ICompany } from '../model/company.type';
+import CompanyCard from './CompanyCard.vue';
+
 const config = useRuntimeConfig();
 const { data: company } = await useAsyncData<ICompany>("company", () =>
   $fetch(config.public.apiUrl + `/api/companies/${useRoute().params.id}`)
 );
+
+const about = ref<string>("");
+const showEditor = ref<boolean>(false);
 </script>
 <template>
   <Grid>
@@ -14,6 +21,14 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
       <Company :company="company" v-if="company" />
     </template>
     <template #right>
+      <Transition name="fade" mode="out-in">
+        <Editor
+          v-if="showEditor"
+          v-model="about"
+          editorStyle="height: 320px"
+          :autoResize="true"
+        />
+      </Transition>
       <section id="about" class="bg-gray-100 p-3 rounded-md shadow-2xl">
         <div
           class="flex flex-col sm:flex-row justify-between items-center mb-3"
@@ -22,6 +37,8 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
             О компании
           </h3>
           <UButton
+            v-if="!showEditor"
+            @click="showEditor = !showEditor"
             :icon="!company?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'"
             size="md"
             :color="company?.about ? 'teal' : 'amber'"
@@ -29,6 +46,26 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
           >
             {{ company?.about ? "Редактировать" : "Добавить" }}
           </UButton>
+          <div v-else class="flex gap-3">
+            <UButton
+              @click="showEditor = !showEditor"
+              :icon="HeroIcons.CHECK"
+              size="md"
+              color="green"
+              variant="outline"
+            >
+              Сохранить
+            </UButton>
+            <UButton
+              @click="showEditor = !showEditor"
+              :icon="HeroIcons.X_MARK"
+              size="md"
+              color="red"
+              variant="outline"
+            >
+              Закрыть
+            </UButton>
+          </div>
         </div>
 
         <ClientOnly>
@@ -159,3 +196,14 @@ const { data: company } = await useAsyncData<ICompany>("company", () =>
     </template>
   </Grid>
 </template>
+<style scoped lang="scss">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
