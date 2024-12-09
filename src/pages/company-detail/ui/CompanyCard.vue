@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
+import type { IVacancy } from '../../vacancy-list/model/vacancy.type';
+
 defineProps<{ vacancy: IVacancy }>();
 </script>
 
