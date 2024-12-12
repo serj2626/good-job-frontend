@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
-import { MoneyIcons } from '~/src/shared/types/icons/money-icons';
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
 
-import type { IVacancy } from '../model/vacancy.type';
+import type { IVacancy } from "../model/vacancy.type";
 
 const { vacancy } = defineProps<{ vacancy: IVacancy }>();
 
@@ -31,7 +31,9 @@ const salary = computed(() => {
 });
 </script>
 <template>
-  <div class="vacancy dark:text-black dark:shadow-2xl">
+  <div
+    class="vacancy dark:text-black hover:shadow-[0_0_10px_5px_rgba(0,0,0,0.284)] hover:dark:scale-105 hover:dark:shadow-[0_0_10px_rgba(0,0,0,0.284)]"
+  >
     <div class="relative flex items-center justify-between">
       <h4 class="font-bold">{{ vacancy.position }}</h4>
       <Icon
@@ -93,9 +95,5 @@ const salary = computed(() => {
   padding: 20px;
   background-color: #fff;
   transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.284);
-  }
 }
 </style>

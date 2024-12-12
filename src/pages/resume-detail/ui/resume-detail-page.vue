@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { BootstrapIcons } from '~/src/shared/types/icons/bootstrap-icons';
-import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
+import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 
-import type { IResume } from '../model/resume.type';
+import type { IResume } from "../model/resume.type";
+import { SelectAction } from "~/src/features/select-action";
 
 const config = useRuntimeConfig();
-const {
-  data: resume,
-  pending,
-  error,
-  refresh,
-} = await useAsyncData<IResume>("resume", () =>
+const { data: resume } = await useAsyncData<IResume>("resume", () =>
   $fetch(
     config.public.apiUrl + `/api/employees/resume/${useRoute().params.id}/`
   )
 );
 </script>
 <template>
-  <div class="relative px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md">
-    <Icon :name="HeroIcons.FAVORITE" class="w-6 h-6 absolute top-3 right-4" />
+  <div
+    class="relative px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md"
+  >
+    <!-- <Icon :name="HeroIcons.FAVORITE" class="w-6 h-6 absolute top-3 right-4" /> -->
     <div class="flex flex-col w-3/4 mx-auto">
       <div class="flex justify-between items-center py-5">
         <div class="flex gap-4">
@@ -44,90 +42,9 @@ const {
           </div>
         </div>
         <div>
-          <UButton
-            label="Скачать резюме"
-            color="gray"
-            variant="solid"
-            size="lg"
-            :icon="HeroIcons.DOWNLOAD"
-          />
+          <SelectAction action="resume" />
         </div>
       </div>
-
-      <!-- <div class="pb-3">
-        <div class="flex border-b border-[#dce0e5] px-4 gap-8">
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-[#111418] text-[#111418] pb-[13px] pt-4"
-            href="#"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Личная информация
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="experience"
-          >
-            <p
-              class="text-[#111418] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Опыт работы
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="education"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Образование
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="skills"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Стек
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="projects"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Проекты
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="links"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              Ссылки
-            </p>
-          </a>
-          <a
-            class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#637588] pb-[13px] pt-4"
-            href="about"
-          >
-            <p
-              class="text-[#637588] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              О себе
-            </p>
-          </a>
-        </div>
-      </div> -->
       <section id="info" class="border-t-2 border-[#dce0e5]">
         <h2
           class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"

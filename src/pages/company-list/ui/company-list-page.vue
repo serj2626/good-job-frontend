@@ -4,6 +4,7 @@ import Grid from '~/src/shared/ui/grid/Grid.vue';
 
 import type { ICompany } from '../../company-detail/model/company.type';
 import CompanyDetail from './CompanyDetail.vue';
+import Typography from '~/src/shared/ui/typography/Typography.vue';
 
 const config = useRuntimeConfig();
 const { data: companies } = await useLazyAsyncData<ICompany[]>(
@@ -19,9 +20,12 @@ const { data: companies } = await useLazyAsyncData<ICompany[]>(
     </template>
     <template #right>
       <div>
-        <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 mb-4">
-          Компании
-        </h3>
+        <Typography
+          class="text-[#111418] text-lg font-bold px-4 pb-2 mb-4"
+          tag="h3"
+        >
+        Компании
+        </Typography>
         <CompanyDetail
           v-for="(company, index) in companies"
           :key="index"

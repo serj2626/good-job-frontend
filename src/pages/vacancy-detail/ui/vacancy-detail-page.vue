@@ -77,6 +77,7 @@ const items = [
           <UButton
             color="sky"
             size="md"
+            class='dark:bg-fuchsia-600 dark:text-white'
             label="Откликнуться"
             trailing-icon="i-heroicons-chevron-down-20-solid"
           />
@@ -162,7 +163,7 @@ const items = [
         >
           Необходимые навыки
         </h3>
-        <div class="flex flex-wrap items-center gap-x-2 px-4">
+        <div class="flex flex-wrap items-center gap-2 px-4">
           <UButton
             v-for="(skill, index) in vacancy?.stacks"
             :key="index"

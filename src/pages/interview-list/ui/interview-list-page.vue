@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "#imports";
+import { SelectAction } from "~/src/features/select-action";
 const date = ref(new Date());
 
 const interviews = [
@@ -42,20 +43,20 @@ const attrs = ref([
 
 const columns = [
   {
-    key: "name",
-    label: "Name",
+    key: "Компания",
+    label: "Компания",
   },
   {
-    key: "title",
-    label: "Title",
+    key: "Специалист",
+    label: "Специалист",
   },
   {
-    key: "email",
-    label: "Email",
+    key: "Отклик",
+    label: "Отклик",
   },
   {
-    key: "role",
-    label: "Role",
+    key: "Вакансия",
+    label: "Вакансия",
   },
   {
     key: "actions",
@@ -141,7 +142,7 @@ const selected = ref([people[1]]);
 </script>
 
 <template>
-  <div class="shadow-2xl px-3 py-5 rounded-md">
+  <div class="px-3 py-5 rounded-md">
     <div
       class="text-center flex flex-col items-center gap-2 justify-center mb-10"
     >
@@ -171,13 +172,14 @@ const selected = ref([people[1]]);
         </template>
 
         <template #actions-data="{ row }">
-          <UDropdown :items="items(row)">
+          <SelectAction action="interview" />
+          <!-- <UDropdown :items="items(row)">
             <UButton
               color="gray"
               variant="ghost"
               icon="i-heroicons-ellipsis-horizontal-20-solid"
             />
-          </UDropdown>
+          </UDropdown> -->
         </template>
       </UTable>
     </div>

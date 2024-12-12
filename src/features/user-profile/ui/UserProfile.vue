@@ -10,7 +10,10 @@ const { employee, company } = defineProps<{
 </script>
 
 <template>
-  <section id="profile" class="relative bg-gray-100 text-center shadow-md p-3">
+  <section id="profile" class="relative
+   bg-gray-100
+    dark:bg-gray-300 
+    rounded-lg text-center p-3">
     <div v-if="employee">
       <div class="flex justify-between items-center mb-2">
         <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
@@ -131,3 +134,9 @@ const { employee, company } = defineProps<{
     </div>
   </section>
 </template>
+<style scoped lang="scss">
+#profile {
+  // @apply dark:outline-4 dark:outline-white dark:outline-none dark:outline-offset-0;
+  @apply shadow-2xl dark:shadow-[0_0_10px_10px_rgba(0,140,128,0.8)];
+}
+</style>

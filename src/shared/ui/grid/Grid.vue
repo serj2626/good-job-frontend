@@ -1,13 +1,13 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-3">
-    <div class="left-block flex flex-col gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-[minmax(0,300px),1fr] gap-6">
+    <div class="left-block flex flex-col gap-16 mt-5">
       <slot name="left"></slot>
     </div>
-    <main
+    <div
       id="right"
-      class="right-block flex flex-col gap-6 shadow-md bg-gray-100 p-3 pb-8 dark:bg-white"
+      class="right-block flex flex-col gap-10 mt-5"
     >
       <slot name="right"></slot>
-    </main>
+    </div>
   </div>
 </template>

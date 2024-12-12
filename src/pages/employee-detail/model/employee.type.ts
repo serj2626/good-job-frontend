@@ -50,17 +50,19 @@ export interface IProject {
 }
 
 export interface IResume {
-  id: number;
+  id: string;
   projects: IProject[];
   stacks: string[];
   category: string;
-  fullName?: string;
+  full_name?: string;
   position: string;
   minSalary: number;
   maxSalary: number;
   work_shedule: number;
   createdAt: string;
   updatedAt: string;
+  city: string;
+  country: string;
   avatar: string;
   about: string;
   visibility: boolean;

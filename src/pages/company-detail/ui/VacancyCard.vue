@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { IVacancy } from '../../vacancy-list/model/vacancy.type';
+import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 
 defineProps<{ vacancy: IVacancy }>();
 </script>
@@ -7,7 +7,7 @@ defineProps<{ vacancy: IVacancy }>();
 <template>
   <NuxtLink :to="{ name: 'vacancies-id', params: { id: vacancy.id } }">
     <UCard
-      class="card transition-all duration-200 hover:scale-105 hover:shadow-2xl text-center"
+      class="dark:bg-slate-200   transition-all duration-200 hover:scale-105 hover:shadow-2xl text-center"
     >
       <template #header>
         <div class="flex flex-col gap-3">
@@ -25,12 +25,4 @@ defineProps<{ vacancy: IVacancy }>();
   </NuxtLink>
 </template>
 
-<style lang="scss" scoped>
-.card {
-  background: linear-gradient(
-    90deg,
-    rgba(17, 167, 100, 0.374) 0%,
-    rgba(57, 11, 11, 0.1) 100%
-  );
-}
-</style>
+<style lang="scss" scoped></style>

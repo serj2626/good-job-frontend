@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Editor from "primevue/editor";
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import Grid from "~/src/shared/ui/grid/Grid.vue";
 import { Employee } from "~/src/widgets/employee";
 
@@ -8,32 +6,15 @@ import type { IEmployee } from "../model/employee.type";
 import ResumeCard from "./ResumeCard.vue";
 import EducationCard from "./EducationCard.vue";
 import ExperienceCard from "./ExperienceCard.vue";
+import { AddSection } from "~/src/features/add-section";
+import { EditAboutSection } from "~/src/features/edit-about-section";
 
 const config = useRuntimeConfig();
 const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
   $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
 );
 
-const showModal = ref<boolean>(false);
-const selectRequir = ref<string>("");
-
-const setRequirements = (data: string) => {
-  alert(data);
-  showModal.value = true;
-  selectRequir.value = data;
-};
-const setDescription = (data: string) => {
-  alert(data);
-  showModal.value = true;
-  selectRequir.value = data;
-};
-
-const deleteExperience = (id: number) => {
-  showModal.value = true;
-};
-
 const about = ref<string>("");
-const showEditor = ref<boolean>(false);
 </script>
 <template>
   <Grid>
@@ -41,8 +22,9 @@ const showEditor = ref<boolean>(false);
       <Employee :employee="employee" v-if="employee" />
     </template>
     <template #right>
-      <section id="resumes" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div
+      <section id="resumes" class="bg-gray-100 px-3 pb-8 rounded-md shadow-2xl">
+        <AddSection type="employee" section="resumes" />
+        <!-- <div
           class="flex flex-col sm:flex-row justify-between items-center mb-3"
         >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
@@ -56,7 +38,7 @@ const showEditor = ref<boolean>(false);
             variant="outline"
             >Добавить резюме</UButton
           >
-        </div>
+        </div> -->
 
         <div
           v-if="employee?.resumes.length"
@@ -71,7 +53,8 @@ const showEditor = ref<boolean>(false);
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
-        <div class="flex flex-col sm:flex-row justify-between items-center">
+        <AddSection type="employee" section="projects" />
+        <!-- <div class="flex flex-col sm:flex-row justify-between items-center">
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
             Мои проекты
           </h3>
@@ -83,7 +66,7 @@ const showEditor = ref<boolean>(false);
             variant="outline"
             >Добавить проект
           </UButton>
-        </div>
+        </div> -->
         <div v-if="employee?.projects.length" class="flex gap-3">
           <NuxtLink
             v-for="item in employee?.projects"
@@ -106,7 +89,8 @@ const showEditor = ref<boolean>(false);
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div
+        <AddSection type="employee" section="stacks" />
+        <!-- <div
           class="flex flex-col sm:flex-row justify-between items-center mb-8 sm:mb-3"
         >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
@@ -119,21 +103,22 @@ const showEditor = ref<boolean>(false);
             variant="outline"
             >Добавить навык</UButton
           >
-        </div>
+        </div> -->
         <div
           v-if="employee?.stacks.length"
           class="flex items-center gap-3 flex-wrap"
         >
           <div v-for="(stack, index) in employee?.stacks" :key="index">
-            <UButton disabled color="teal" size="md" ariant="solid">
-              {{ stack }}</UButton
-            >
+            <UButton disabled class="dark:text-white" size="md" ariant="solid">
+              {{ stack }}
+            </UButton>
           </div>
         </div>
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="education" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div
+        <AddSection type="employee" section="education" />
+        <!-- <div
           class="flex flex-col sm:flex-row justify-between items-center mb-3"
         >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-3">
@@ -146,7 +131,7 @@ const showEditor = ref<boolean>(false);
             variant="outline"
             >Добавить образование</UButton
           >
-        </div>
+        </div> -->
 
         <EducationCard
           v-if="employee?.educations.length"
@@ -158,7 +143,8 @@ const showEditor = ref<boolean>(false);
         <div v-else>Данные отсутствуют....</div>
       </section>
       <section id="experience" class="bg-gray-100 p-3 rounded-md shadow-md">
-        <div
+        <AddSection type="employee" section="experience" />
+        <!-- <div
           class="flex flex-col sm:flex-row justify-between items-center mb-8"
         >
           <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
@@ -172,7 +158,7 @@ const showEditor = ref<boolean>(false);
           >
             Добавить опыт
           </UButton>
-        </div>
+        </div> -->
 
         <ExperienceCard
           v-if="employee?.experiences.length"
@@ -183,70 +169,17 @@ const showEditor = ref<boolean>(false);
 
         <div v-else>Данные отсутствуют....</div>
       </section>
-      <section id="about" class="bg-gray-100 rounded-md shadow-md">
-        <Transition name="fade" mode="out-in">
-          <Editor
-            v-if="showEditor"
-            v-model="about"
-            editorStyle="height: 320px"
-            :autoResize="true"
-          />
-        </Transition>
-        <div class="p-3">
-          <div
-            class="flex flex-col sm:flex-row justify-between items-center mb-3"
-          >
-            <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
-              Обо мне
-            </h3>
-            <UButton
-              v-if="!showEditor"
-              @click="showEditor = !showEditor"
-              :icon="
-                !employee?.about ? 'i-heroicons-plus' : 'i-heroicons-pencil'
-              "
-              size="md"
-              :color="employee?.about ? 'teal' : 'amber'"
-              variant="outline"
-            >
-              {{ employee?.about ? "Редактировать" : "Добавить" }}
-            </UButton>
-            <div v-else class="flex gap-3">
-              <UButton
-                @click="showEditor = !showEditor"
-                :icon="HeroIcons.CHECK"
-                size="md"
-                color="green"
-                variant="outline"
-              >
-                Сохранить
-              </UButton>
-              <UButton
-                @click="showEditor = !showEditor"
-                :icon="HeroIcons.X_MARK"
-                size="md"
-                color="red"
-                variant="outline"
-              >
-                Закрыть
-              </UButton>
-            </div>
-          </div>
-          <ClientOnly>
-            <p class="tracking-wide about">
-              {{
-                employee?.about
-                  ? employee?.about
-                  : "Пользователь не указал информацию о себе...."
-              }}
-            </p>
-          </ClientOnly>
-        </div>
+      <section id="about" class="bg-gray-100 rounded-md p-3 shadow-md">
+        <EditAboutSection
+          v-if="employee"
+          :employee="employee"
+          v-model="about"
+        />
       </section>
     </template>
   </Grid>
 </template>
-<style scoped lang="scss">
+<style lang="scss">
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease-in;
@@ -255,5 +188,9 @@ const showEditor = ref<boolean>(false);
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+section {
+  @apply dark:bg-transparent dark:shadow-[5px_5px_14px_rgb(248,254,247)];
 }
 </style>

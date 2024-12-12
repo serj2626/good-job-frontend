@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 const { data: categories } = await useFetch(
   config.public.apiUrl + "/api/category"
 );
@@ -26,7 +27,7 @@ const { data: categories } = await useFetch(
       class="dark:bg-teal-400 dark:hover:bg-teal-500"
     >
       <template #trailing>
-        <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
+        <UIcon :name="HeroIcons.ARROW_RIGHT_20_SOLID" class="w-5 h-5" />
       </template>
     </UButton>
   </div>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { IResume } from '../model/employee.type';
+import type { IResume } from "../model/employee.type";
 
 defineProps<{ resume: IResume }>();
 </script>
@@ -7,7 +7,8 @@ defineProps<{ resume: IResume }>();
 <template>
   <NuxtLink :to="{ name: 'resumes-id', params: { id: resume.id } }">
     <UCard
-      class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in"
+      class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in 
+      dark:shadow-[15px_5px_10px_2px_rgba(0,140,128,0.8)]"
     >
       <template #header>
         <img

@@ -4,10 +4,12 @@ import Grid from '~/src/shared/ui/grid/Grid.vue';
 
 import type { IResume } from '../../employee-detail/model/employee.type';
 import ResumeDetail from './ResumeDetail.vue';
+import Typography from '~/src/shared/ui/typography/Typography.vue';
 
 const config = useRuntimeConfig();
 const { data: resumes } = await useAsyncData<IResume[]>("resumes", () =>
-  $fetch(config.public.apiUrl + `/api/employees/resume/`)
+  $fetch(config.public.apiUrl + `/api/employees/resume/`,{
+  })
 );
 </script>
 
@@ -18,11 +20,14 @@ const { data: resumes } = await useAsyncData<IResume[]>("resumes", () =>
     </template>
     <template #right>
       <div>
-        <h3 class="text-[#111418] text-lg text-center font-bold px-4 pb-2 mb-4">
+        <Typography
+          class="text-[#111418] dark:text-white text-lg font-bold px-4 pb-2 mb-4"
+          tag="h3"
+        >
           Резюме
-        </h3>
-        <section id="resumes" class="bg-gray-100 p-3 rounded-md">
-          <div class="grid grid-cols-3 gap-4 py-5">
+        </Typography>
+        <section id="resumes" class="p-3 rounded-md">
+          <div class="">
             <ResumeDetail
               v-for="resume in resumes"
               :key="resume.id"

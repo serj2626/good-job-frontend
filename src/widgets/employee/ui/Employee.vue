@@ -8,7 +8,10 @@ const { employee } = defineProps<{ employee: IEmployee }>();
 
 <template>
   <UserProfile :employee="employee" />
-  <section id="contacts" class="bg-gray-100 shadow-md p-3">
+  <section
+    id="contacts"
+    class="bg-gray-100 rounded-lg dark:bg-gray-300 shadow-2xl p-3"
+  >
     <h4 class="text-[#111418] text-lg font-bold mb-3 pb-2">Контакты</h4>
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
@@ -18,7 +21,7 @@ const { employee } = defineProps<{ employee: IEmployee }>();
         </p>
       </div>
       <div class="flex items-center justify-between">
-        <UIcon :name="BootstrapIcons.GITHUB" class="w-5 h-5" />
+        <UIcon :name="BootstrapIcons.GITHUB" class="w-5 h-5 dark:text-black" />
         <p class="text-[#111418] text-base font-medium leading-normal">
           Github
         </p>
@@ -49,39 +52,77 @@ const { employee } = defineProps<{ employee: IEmployee }>();
       </div>
     </div>
   </section>
-  <section id="info" class="bg-gray-100 shadow-md flex flex-col gap-2 p-3">
+  <section
+    id="info"
+    class="bg-gray-100 dark:bg-gray-300 rounded-lg shadow-2xl flex flex-col gap-2 p-3"
+  >
     <h4 class="text-[#111418] text-lg font-bold pb-2 mb-3">Доп. информация</h4>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Возраст</span>
-      <p>{{ employee?.age }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Возраст</span
+      >
+      <p class="info__data">{{ employee?.age }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Страна</span>
-      <p>{{ employee?.country }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Страна</span
+      >
+      <p class="info__data">{{ employee?.country }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Город</span>
-      <p>{{ employee?.city }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Город</span
+      >
+      <p class="info__data">{{ employee?.city }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Пол</span>
-      <p>{{ employee?.gender }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Пол</span
+      >
+      <p class="info__data">{{ employee?.gender }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Опыт</span>
-      <p>3 года</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Опыт</span
+      >
+      <p class="info__data">3 года</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Мои резюме</span>
-      <p>{{ employee?.resumes.length }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Мои резюме</span
+      >
+      <p class="info__data">{{ employee?.resumes.length }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Проекты</span>
-      <p>{{ employee?.projects.length }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Проекты</span
+      >
+      <p class="info__data">{{ employee?.projects.length }}</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="bg-slate-200 rounded-2xl px-3 py-2">Друзья</span>
-      <p>{{ employee?.user.count_friends }}</p>
+      <span
+        class="bg-slate-200 dark:bg-black dark:text-white rounded-2xl px-3 py-2"
+        >Друзья</span
+      >
+      <p class="info__data">{{ employee?.user.count_friends }}</p>
     </div>
   </section>
 </template>
+<style scoped lang="scss">
+.info__data {
+  @apply text-black;
+}
+
+#info,
+#contacts {
+  // @apply dark:outline-4 dark:outline-white dark:outline-none;
+  @apply dark:shadow-[0_0_10px_10px_rgba(0,140,128,0.8)];
+}
+</style>
