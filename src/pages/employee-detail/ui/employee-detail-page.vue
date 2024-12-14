@@ -24,23 +24,34 @@ const about = ref<string>("");
     <template #right>
       <section id="resumes" class="bg-gray-100 px-3 pb-8 rounded-md shadow-2xl">
         <AddSection type="employee" section="resumes" />
-        <!-- <div
-          class="flex flex-col sm:flex-row justify-between items-center mb-3"
-        >
-          <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
-            Мои резюме
-          </h3>
-          <UButton
-            icon="i-heroicons-plus"
-            size="md"
-            :to="'/resumes/create'"
-            color="amber"
-            variant="outline"
-            >Добавить резюме</UButton
-          >
-        </div> -->
 
-        <div
+        <UCarousel
+          :arrows="employee?.resumes.length > 3"
+          v-if="employee?.resumes.length"
+          :items="employee?.resumes"
+          v-slot="{ item: resume }"
+          :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3'}"
+          class="rounded-lg overflow-hidden"
+          
+        >
+          <NuxtLink :to="{ name: 'resumes-id', params: { id: resume.id } }">
+            <UCard
+              class="cursor-pointer ease-in
+              dark:shadow-[5px_5px_10px_2px_rgba(0,140,128,0.8)] mx-1"
+            >
+              <template #header>
+                <img
+                  class="rounded-md inline-block h-52 object-center w-full"
+                  :src="resume.avatar"
+                />
+              </template>
+              <template #footer>
+                <p class="text-center">{{ resume.position }}</p>
+              </template>
+            </UCard>
+          </NuxtLink>
+        </UCarousel>
+        <!-- <div
           v-if="employee?.resumes.length"
           class="grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
@@ -50,24 +61,40 @@ const about = ref<string>("");
             :resume="item"
           />
         </div>
-        <div v-else>Данные отсутствуют....</div>
+        <div v-else>Данные отсутствуют....</div> -->
       </section>
       <section id="projects" class="bg-gray-100 p-3 rounded-md shadow-2xl">
         <AddSection type="employee" section="projects" />
-        <!-- <div class="flex flex-col sm:flex-row justify-between items-center">
-          <h3 class="text-[#111418] text-lg font-bold px-4 pb-2 pt-4 mb-4">
-            Мои проекты
-          </h3>
-          <UButton
-            icon="i-heroicons-plus"
-            size="md"
-            :to="'/projects/create'"
-            color="amber"
-            variant="outline"
-            >Добавить проект
-          </UButton>
-        </div> -->
-        <div v-if="employee?.projects.length" class="flex gap-3">
+
+        <UCarousel
+          :arrows="employee?.projects.length > 3"
+          v-if="employee?.projects.length"
+          :items="employee?.projects"
+          v-slot="{ item: project }"
+          :ui="{ item: 'basis-full md:basis-1/2 lg:basis-1/3'}"
+          class="rounded-lg overflow-hidden"
+          
+        >
+          <NuxtLink :to="{ name: 'projects-id', params: { id: project.id } }">
+            <UCard
+              class="cursor-pointer ease-in
+              dark:shadow-[5px_5px_10px_2px_rgba(0,140,128,0.8)] mx-1"
+            >
+              <template #header>
+                <img
+                  class="rounded-md inline-block h-52 object-center w-full"
+                  :src="project.image"
+                />
+              </template>
+              <template #footer>
+                <p class="text-center">{{ project.title }}</p>
+              </template>
+            </UCard>
+          </NuxtLink>
+        </UCarousel>
+
+
+        <!-- <div v-if="employee?.projects.length" class="flex gap-3">
           <NuxtLink
             v-for="item in employee?.projects"
             :key="item.id"
@@ -86,7 +113,7 @@ const about = ref<string>("");
             </UCard>
           </NuxtLink>
         </div>
-        <div v-else>Данные отсутствуют....</div>
+        <div v-else>Данные отсутствуют....</div> -->
       </section>
       <section id="stacks" class="bg-gray-100 p-3 rounded-md shadow-md">
         <AddSection type="employee" section="stacks" />
