@@ -4,4 +4,5 @@
       <NuxtPage />
     </NuxtLayout>
   </UContainer>
+  <UModals />
 </template>
