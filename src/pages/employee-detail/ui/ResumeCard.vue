@@ -8,7 +8,7 @@ defineProps<{ resume: IResume }>();
   <NuxtLink :to="{ name: 'resumes-id', params: { id: resume.id } }">
     <UCard
       class="hover:scale-105 transition-all duration-200 cursor-pointer ease-in 
-      dark:shadow-[15px_5px_10px_2px_rgba(0,140,128,0.8)]"
+      dark:shadow-[5px_5px_10px_2px_rgba(0,140,128,0.8)]"
     >
       <template #header>
         <img
