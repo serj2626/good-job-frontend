@@ -137,6 +137,6 @@ const { employee, company } = defineProps<{
 <style scoped lang="scss">
 #profile {
   // @apply dark:outline-4 dark:outline-white dark:outline-none dark:outline-offset-0;
-  @apply shadow-2xl dark:shadow-[0_0_10px_10px_rgba(0,140,128,0.8)];
+  @apply shadow-2xl dark:shadow-[0_0_15px_10px_rgba(251,251,251,0.4)];
 }
 </style>
