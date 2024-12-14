@@ -37,7 +37,7 @@ console.log("resume", resume);
       class="resume__avatar"
     />
 
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between w-full">
       <div class="flex flex-col gap-3 text-black">
         <div class="flex justify-between items-center">
           <div class="flex gap-2 items-center dark:text-white">
@@ -94,12 +94,7 @@ console.log("resume", resume);
           size="sm"
           color="gray"
         />
-        <UButton
-          disabled
-          :label="countStacks"
-          size="sm"
-          color="gray"
-        />
+        <UButton disabled :label="countStacks" size="sm" color="gray" />
       </div>
     </div>
   </div>
@@ -107,8 +102,7 @@ console.log("resume", resume);
 <style scoped lang="scss">
 .resume {
   display: flex;
-  column-gap: 20px;
-  width: 100%;
+  column-gap: 50px;
   padding: 20px 30px;
 
   @media (max-width: 768px) {
