@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "#imports";
 import { SelectAction } from "~/src/features/select-action";
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 const date = ref(new Date());
 
 const interviews = [
@@ -172,14 +173,14 @@ const selected = ref([people[1]]);
         </template>
 
         <template #actions-data="{ row }">
-          <SelectAction action="interview" />
-          <!-- <UDropdown :items="items(row)">
-            <UButton
-              color="gray"
-              variant="ghost"
-              icon="i-heroicons-ellipsis-horizontal-20-solid"
+          <div class="flex gap-2 items-center">
+            <Icon
+              title="Включить камеру"
+              :name="HeroIcons.CAMERA_SOLID"
+              class="w-5 h-5 dark:text-white hover:scale-125 cursor-pointer transition-all duration-200 ease-in"
             />
-          </UDropdown> -->
+            <SelectAction action="resume" />
+          </div>
         </template>
       </UTable>
     </div>
