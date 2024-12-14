@@ -123,6 +123,6 @@ const { employee } = defineProps<{ employee: IEmployee }>();
 #info,
 #contacts {
   // @apply dark:outline-4 dark:outline-white dark:outline-none;
-  @apply dark:shadow-[0_0_10px_10px_rgba(0,140,128,0.8)];
+  @apply dark:shadow-[0_0_10px_10px_rgba(251,251,251,0.9)];
 }
 </style>
