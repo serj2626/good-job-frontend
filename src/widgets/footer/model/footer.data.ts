@@ -93,8 +93,8 @@ export const footerContacts: IFooterContacts[] = [
         url: "/resume",
       },
       {
-        title: "Подписаться на новости",
-        url: "/projects",
+        title: "FAQ",
+        url: "/",
       },
       {
         title: "Служба поддержки",
