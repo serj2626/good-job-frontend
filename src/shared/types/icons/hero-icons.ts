@@ -1,11 +1,10 @@
 export const enum HeroIcons {
-
-  ARROW_TURN_DOWN_LEFT ="i-heroicons-arrow-turn-down-left",
   ADJUSTMENTS_HORIZONTAL = "i-heroicons-adjustments-horizontal",
   ARROW_DOWN = "i-heroicons-arrow-down",
   ARROW_LEFT = "i-heroicons-arrow-left",
   ARROW_RIGHT = "i-heroicons-arrow-right",
   ARROW_RIGHT_20_SOLID = "i-heroicons-arrow-right-20-solid",
+  ARROW_TURN_DOWN_LEFT = "i-heroicons-arrow-turn-down-left",
   ARROW_UP = "i-heroicons-arrow-up",
   ARROW_UTURN_LEFT = "i-heroicons-arrow-uturn-left",
   BARS_3_SOLID = "i-heroicons-bars-3-solid",
@@ -40,6 +39,7 @@ export const enum HeroIcons {
   MENU = "i-heroicons-menu",
   MINUS = "i-heroicons-minus",
   MONEY = "solar:ruble-bold",
+  MOON_20_SOLID = "i-heroicons-moon-20-solid",
   PAPER_AIRPLANE = "i-heroicons-paper-airplane",
   PAPER_CLIP = "i-heroicons-paper-clip",
   PHONE = "i-heroicons-phone",
@@ -50,6 +50,7 @@ export const enum HeroIcons {
   SMILE = "i-heroicons-face-smile",
   STAR = "i-heroicons-star",
   SUN = "i-heroicons-sun",
+  SUN_20_SOLID = "i-heroicons-sun-20-solid",
   USER = "i-heroicons-user",
   USER_SOLID = "i-heroicons-user-solid",
   VIDEO_CAMERA = "i-heroicons-video-camera",
@@ -57,5 +58,11 @@ export const enum HeroIcons {
   WRENCH = "i-heroicons-wrench",
   X_CIRCLE = "i-heroicons-x-circle",
   X_MARK = "i-heroicons-x-mark",
-
+  RELOAD = "i-heroicons-arrow-path",
+  SETTINGS = "i-heroicons-cog-8-tooth",
+  SETTINGS_SOLID = "i-heroicons-cog-8-tooth-solid",
+  CHAT_BUBBLE_LEFT_RIGHT = "i-heroicons-chat-bubble-left-right",
+  RESPONSES = "i-heroicons-clipboard-document-list",
+  LOGIN = "i-heroicons-arrow-right-on-rectangle",
+  LOGOUT = "i-heroicons-arrow-left-on-rectangle",
 }
