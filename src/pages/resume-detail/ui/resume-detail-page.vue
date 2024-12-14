@@ -16,7 +16,6 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
   <div
     class="relative px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md"
   >
-    <!-- <Icon :name="HeroIcons.FAVORITE" class="w-6 h-6 absolute top-3 right-4" /> -->
     <div class="flex flex-col w-3/4 mx-auto">
       <div class="flex justify-between items-center py-5">
         <div class="flex gap-4">
