@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 import { SelectAction } from "~/src/features/select-action";
 </script>
 <template>
   <div>
-    <h1 class="text-[#1C160C] text-center text-[32px] mt-3 mb-12 font-bold">
+    <h1 class="text-[#1C160C] dark:text-white text-center text-[32px] mt-3 mb-12 font-bold">
       Отклики
     </h1>
     <div class="flex justify-center gap-5 mb-8">
@@ -42,7 +41,7 @@ import { SelectAction } from "~/src/features/select-action";
         </p>
         <p class="flex justify-between items-center">
           <UButton variant="link" color="indigo" label="Ссылка на вакансию" />
-          <UButton variant="solid" size="xl" color="indigo" label="Чат" />
+          <UButton variant="solid" class="dark:text-white" size="xl" color="indigo" label="Чат" />
         </p>
       </div>
       <div class="response flex flex-col gap-3 px-3 py-2">
@@ -111,11 +110,17 @@ import { SelectAction } from "~/src/features/select-action";
 <style scoped lang="scss">
 .response {
   width: 100%;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15),
+    -5px -5px 10px rgba(0, 0, 0, 0.15);
   border: 1px solid #00000014;
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15),
+      -5px -5px 10px rgba(200, 200, 0, 0.15);
+  }
 }
 </style>
