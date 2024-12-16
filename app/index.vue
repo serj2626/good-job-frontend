@@ -1,8 +1,6 @@
 <template>
-  <UContainer>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </UContainer>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
   <UModals />
 </template>

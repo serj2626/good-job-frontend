@@ -3,7 +3,6 @@ export const enum HeroIcons {
   ARROW_DOWN = "i-heroicons-arrow-down",
   ARROW_LEFT = "i-heroicons-arrow-left",
   ARROW_RIGHT = "i-heroicons-arrow-right",
-  ARROW_RIGHT_20_SOLID = "i-heroicons-arrow-right-20-solid",
   ARROW_TURN_DOWN_LEFT = "i-heroicons-arrow-turn-down-left",
   ARROW_UP = "i-heroicons-arrow-up",
   ARROW_UTURN_LEFT = "i-heroicons-arrow-uturn-left",
@@ -65,4 +64,6 @@ export const enum HeroIcons {
   RESPONSES = "i-heroicons-clipboard-document-list",
   LOGIN = "i-heroicons-arrow-right-on-rectangle",
   LOGOUT = "i-heroicons-arrow-left-on-rectangle",
+  ARROW_LEFT_20_SOLID = "i-heroicons-arrow-left-20-solid",
+  ARROW_RIGHT_20_SOLID = "i-heroicons-arrow-right-20-solid",
 }

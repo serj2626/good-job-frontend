@@ -7,7 +7,7 @@ import EmployeeDetail from './EmployeeDetail.vue';
 import Typography from '~/src/shared/ui/typography/Typography.vue';
 
 const config = useRuntimeConfig();
-const { data: employees } = await useAsyncData<IEmployee[]>("employees", () =>
+const { data: employees } = await useLazyAsyncData<IEmployee[]>("employees", () =>
   $fetch(config.public.apiUrl + `/api/employees/`)
 );
 </script>

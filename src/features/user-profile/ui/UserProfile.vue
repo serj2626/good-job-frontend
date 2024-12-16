@@ -10,10 +10,10 @@ const { employee, company } = defineProps<{
 </script>
 
 <template>
-  <section id="profile" class="relative
-   bg-gray-100
-    dark:bg-gray-300 
-    rounded-lg text-center p-3">
+  <section
+    id="profile"
+    class="relative bg-gray-100 dark:bg-gray-300 rounded-lg text-center p-3"
+  >
     <div v-if="employee">
       <div class="flex justify-between items-center mb-2">
         <p class="text-base font-bold px-4 pb-2 text-start text-teal-500">
@@ -121,6 +121,9 @@ const { employee, company } = defineProps<{
         class="text-[#111418] text-base font-normal mb-4 flex justify-center items-center gap-2"
       >
         {{ company?.user.type }}
+      </div>
+      <div class="mt-2 mb-5">
+        <NuxtRating :ratingSize="20" :read-only="false" :rating-value="3.5" />
       </div>
       <UButton
         size="xl"

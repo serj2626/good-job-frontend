@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
 import { MoneyIcons } from '~/src/shared/types/icons/money-icons';
-
+import { SelectAction } from '~/src/features/select-action';
 import type { IVacancy } from '../../vacancy-list/model/vacancy.type';
 
 const config = useRuntimeConfig();
@@ -69,19 +69,8 @@ const items = [
         >
           {{ vacancy?.position }}
         </p>
-        <UDropdown
-          :items="items"
-          mode="click"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="sky"
-            size="md"
-            class='dark:bg-fuchsia-600 dark:text-white'
-            label="Откликнуться"
-            trailing-icon="i-heroicons-chevron-down-20-solid"
-          />
-        </UDropdown>
+        <SelectAction action="resume" />
+      
       </div>
       <div
         class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between"
@@ -211,7 +200,7 @@ const items = [
         </div>
       </section>
       <section id="info">
-        <div class="flex flex-wrap gap-3 items-center my-10 px-4 pb-20">
+        <div class="flex flex-wrap gap-3 items-center my-10 px-4 pb-10">
           <UButton disabled color="rose" size="sm" variant="outline">
             {{ vacancy?.level }}
           </UButton>
@@ -241,6 +230,19 @@ const items = [
           </UButton>
         </div>
       </section>
+      <UDropdown
+          :items="items"
+          mode="click"
+          :popper="{ placement: 'bottom-start' }"
+        >
+          <UButton
+            color="sky"
+            size="md"
+            class='dark:bg-fuchsia-600 dark:text-white'
+            label="Откликнуться"
+            trailing-icon="i-heroicons-chevron-down-20-solid"
+          />
+        </UDropdown>
       <p class="absolute bottom-0 right-[50%] translate-x-[50%]">
         Опубликовано: {{ vacancy?.time_ago }} назад
       </p>

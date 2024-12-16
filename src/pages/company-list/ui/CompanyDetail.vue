@@ -13,10 +13,14 @@ const avatar = computed(() =>
   <div class="flex flex-col gap-5 mb-6">
     <div class="flex justify-between items-center">
       <div class="flex gap-4">
-        <div
-          class="outline-double outline-offset-2 outline-green-400 relative bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24"
-          :style="'background-image: url(' + avatar + ');'"
-        ></div>
+        <UAvatar
+          chip-color="emerald"
+          chip-text="В сети"
+          chip-position="top-right"
+          size="3xl"
+          :src="avatar"
+          :alt="company.full_name"
+        />
         <div class="flex flex-col justify-center">
           <p
             class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]"

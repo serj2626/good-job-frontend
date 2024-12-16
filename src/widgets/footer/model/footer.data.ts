@@ -90,15 +90,15 @@ export const footerContacts: IFooterContacts[] = [
     links: [
       {
         title: "О нас",
-        url: "/resume",
-      },
-      {
-        title: "FAQ",
         url: "/",
       },
       {
+        title: "FAQ",
+        url: "/faq",
+      },
+      {
         title: "Служба поддержки",
-        url: "/resume",
+        url: "/",
       },
     ],
   },

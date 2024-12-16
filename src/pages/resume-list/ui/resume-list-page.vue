@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { Search } from '~/src/features/search';
-import Grid from '~/src/shared/ui/grid/Grid.vue';
+import { Search } from "~/src/features/search";
+import Grid from "~/src/shared/ui/grid/Grid.vue";
 
-import type { IResume } from '../../employee-detail/model/employee.type';
-import ResumeDetail from './ResumeDetail.vue';
-import Typography from '~/src/shared/ui/typography/Typography.vue';
+import type { IResume } from "../../employee-detail/model/employee.type";
+import ResumeDetail from "./ResumeDetail.vue";
+import Typography from "~/src/shared/ui/typography/Typography.vue";
 
 const config = useRuntimeConfig();
-const { data: resumes } = await useAsyncData<IResume[]>("resumes", () =>
-  $fetch(config.public.apiUrl + `/api/employees/resume/`,{
-  })
+const { data: resumes } = await useLazyAsyncData<IResume[]>("resumes", () =>
+  $fetch(config.public.apiUrl + `/api/employees/resume/`, {})
 );
 </script>
 

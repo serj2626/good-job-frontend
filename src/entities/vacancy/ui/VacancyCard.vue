@@ -1,10 +1,30 @@
 <script lang="ts" setup>
-import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
+import { Card } from "primevue";
+import type { IVacancy } from "../../../pages/vacancy-list/model/vacancy.type";
 
 defineProps<{ vacancy: IVacancy }>();
 </script>
 
 <template>
+  <!-- <Card>
+    <template #title>{{ vacancy?.position }}</template>
+    <template #subtitle>
+      {{ vacancy?.min_salary }} - {{ vacancy?.max_salary }} ₽</template
+    >
+    <template #content>
+      <p class="m-0">{{ vacancy.city }} / {{ vacancy.country }}</p>
+    </template>
+    <template #footer>
+      <div class="flex gap-4 mt-1">
+        <UButton label="Cancel" severity="secondary" outlined />
+        <UButton
+          :to="{ name: 'vacancies-id', params: { id: vacancy.id } }"
+          label="Смотреть"
+        />
+      </div>
+    </template>
+  </Card> -->
+
   <NuxtLink :to="{ name: 'vacancies-id', params: { id: vacancy.id } }">
     <UCard class="box-1">
       <template #header>
