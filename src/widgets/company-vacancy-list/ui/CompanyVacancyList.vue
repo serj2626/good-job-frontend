@@ -40,7 +40,7 @@ const { vacancies } = defineProps<{ vacancies: IVacancy[] }>();
     >
       <NuxtLink :to="{ name: 'vacancies-id', params: { id: vacancy.id } }">
         <UCard
-          class="w-[500px] cursor-pointer ease-in dark:shadow-[5px_5px_10px_2px_rgba(0,140,128,0.8)] mx-1"
+          class="w-[300px] cursor-pointer ease-in dark:shadow-[5px_5px_10px_2px_rgba(0,140,128,0.8)] mx-1"
         >
           <template #header>
             <p class="text-center">{{ vacancy.position }}</p>
