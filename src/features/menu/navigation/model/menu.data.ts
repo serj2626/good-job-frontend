@@ -25,7 +25,11 @@ export const MenuLinks: IMenuItem[] = [
     url: "/resumes/list",
   },
   {
-    title: "Посты и события",
+    title: "Посты",
+    url: "/",
+  },
+  {
+    title: "События",
     url: "/",
   },
 ];
