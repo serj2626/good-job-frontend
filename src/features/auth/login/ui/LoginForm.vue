@@ -12,8 +12,8 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 const state = reactive({
-  email: undefined,
-  password: undefined,
+  email: '',
+  password: '',
 });
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
@@ -36,7 +36,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
       <UFormGroup label="Пароль" name="password">
         <PasswordInput v-model="state.password" initType="password" />
-        <!-- <UInput v-model="state.password" type="password" /> -->
       </UFormGroup>
 
       <UButton size="lg" type="submit"> Войти </UButton>

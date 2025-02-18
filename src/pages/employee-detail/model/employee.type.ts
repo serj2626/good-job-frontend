@@ -9,9 +9,8 @@ export interface IEducation {
   type: string;
   university: string;
   specialization: string;
-  start_date: Date;
-  end_date: Date;
   employee: 2;
+  full_data: string;
 }
 
 export interface IUser {
@@ -28,9 +27,8 @@ export interface IExperience {
   company: string;
   position: string;
   requirements: string;
+  full_data: string;
   description: string;
-  start_date: string;
-  end_date: string;
   employee: number;
 }
 

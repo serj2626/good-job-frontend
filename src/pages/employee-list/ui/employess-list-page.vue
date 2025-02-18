@@ -14,7 +14,7 @@ const { data: employees } = await useLazyAsyncData<IEmployee[]>("employees", () 
 <template>
   <Grid>
     <template #left>
-      <Search />
+      <Search type="employee" />
     </template>
     <template #right>
       <div>

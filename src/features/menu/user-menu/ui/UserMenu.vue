@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { userMenuLins } from "../model/user.menu.data";
+import { LoginForm } from "~/src/features/auth/login";
+
+const modal = useModal();
+
+function openModal() {
+  modal.open(LoginForm, {});
+}
 </script>
 <template>
   <UDropdown
@@ -23,7 +30,9 @@ import { userMenuLins } from "../model/user.menu.data";
     </template>
 
     <template #item="{ item }">
-      <span class="truncate">{{ item.label }}</span>
+      <span @click="item.label === 'Войти' && openModal()" class="truncate">{{
+        item.label
+      }}</span>
 
       <UIcon
         :name="item.icon"

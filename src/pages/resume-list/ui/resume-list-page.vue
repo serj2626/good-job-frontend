@@ -8,14 +8,14 @@ import Typography from "~/src/shared/ui/typography/Typography.vue";
 
 const config = useRuntimeConfig();
 const { data: resumes } = await useLazyAsyncData<IResume[]>("resumes", () =>
-  $fetch(config.public.apiUrl + `/api/employees/resume/`, {})
+  $fetch(config.public.apiUrl + `/api/employees/resume/list/`, {})
 );
 </script>
 
 <template>
   <Grid>
     <template #left>
-      <Search />
+      <Search type="resume" />
     </template>
     <template #right>
       <div>

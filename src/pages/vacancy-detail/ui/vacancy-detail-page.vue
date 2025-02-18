@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { HeroIcons } from '~/src/shared/types/icons/hero-icons';
-import { MoneyIcons } from '~/src/shared/types/icons/money-icons';
-import { SelectAction } from '~/src/features/select-action';
-import type { IVacancy } from '../../vacancy-list/model/vacancy.type';
+import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
+import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
+import { SelectAction } from "~/src/features/select-action";
+import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 
 const config = useRuntimeConfig();
 const { data: vacancy } = await useAsyncData<IVacancy>("vacancy", () =>
@@ -61,7 +61,7 @@ const items = [
 ];
 </script>
 <template>
-  <div class="px-3 py-8 shadow-2xl">
+  <div class="px-3 py-8 rounded-md shadow-2xl dark:bg-white">
     <div class="flex flex-col w-3/4 mx-auto relative">
       <div class="flex justify-between items-center gap-3 p-4">
         <p
@@ -70,7 +70,6 @@ const items = [
           {{ vacancy?.position }}
         </p>
         <SelectAction action="resume" />
-      
       </div>
       <div
         class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between"
@@ -118,7 +117,7 @@ const items = [
           </div>
         </div>
       </div>
-      <section id="description" class="">
+      <section id="description">
         <h3
           class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4"
         >
@@ -174,23 +173,19 @@ const items = [
         </h3>
         <div class="flex flex-col gap-3">
           <div class="flex items-center gap-6 px-4">
-            <Icon
-              :name="HeroIcons.PHONE"
-              class="w-5 h-5 ps-4"
-              color="#111418"
-            />
+            <Icon :name="HeroIcons.PHONE" class="w-5 h-5 ps-4" />
             <p class="text-[#111418] text-base font-normal leading-normal">
               {{ vacancy?.company.phone }}
             </p>
           </div>
           <div class="flex items-center gap-6 px-4">
-            <Icon :name="HeroIcons.MAIL" class="w-5 h-5 ps-4" color="#111418" />
+            <Icon :name="HeroIcons.MAIL" class="w-5 h-5 ps-4" />
             <p class="text-[#111418] text-base font-normal leading-normal">
               {{ vacancy?.company.user.email }}
             </p>
           </div>
           <div class="flex items-center gap-6 px-4">
-            <Icon :name="HeroIcons.LINK" class="w-5 h-5 ps-4" color="#111418" />
+            <Icon :name="HeroIcons.LINK" class="w-5 h-5 ps-4" />
             <p class="text-[#111418] text-base font-normal leading-normal">
               {{
                 vacancy?.company.site ? vacancy?.company.site : "Сайт не указан"
@@ -201,22 +196,58 @@ const items = [
       </section>
       <section id="info">
         <div class="flex flex-wrap gap-3 items-center my-10 px-4 pb-10">
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.level"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             {{ vacancy?.level }}
           </UButton>
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.work_experience"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             Требуемый стаж: от {{ vacancy?.work_experience }} лет
           </UButton>
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.work_schedule"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             {{ vacancy?.work_schedule }}
           </UButton>
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.category"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             {{ vacancy?.category }}
           </UButton>
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.country"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             {{ vacancy?.country }}
           </UButton>
-          <UButton disabled color="rose" size="sm" variant="outline">
+          <UButton
+            v-if="vacancy?.city"
+            disabled
+            color="rose"
+            size="sm"
+            variant="outline"
+          >
             {{ vacancy?.city }}
           </UButton>
           <UButton
@@ -231,18 +262,18 @@ const items = [
         </div>
       </section>
       <UDropdown
-          :items="items"
-          mode="click"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="sky"
-            size="md"
-            class='dark:bg-fuchsia-600 dark:text-white'
-            label="Откликнуться"
-            trailing-icon="i-heroicons-chevron-down-20-solid"
-          />
-        </UDropdown>
+        :items="items"
+        mode="click"
+        :popper="{ placement: 'bottom-start' }"
+      >
+        <UButton
+          color="sky"
+          size="md"
+          class="dark:text-white"
+          label="Откликнуться"
+          :trailing-icon="HeroIcons.CHEVRON_DOWN"
+        />
+      </UDropdown>
       <p class="absolute bottom-0 right-[50%] translate-x-[50%]">
         Опубликовано: {{ vacancy?.time_ago }} назад
       </p>

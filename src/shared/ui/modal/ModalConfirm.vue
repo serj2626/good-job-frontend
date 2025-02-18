@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import BaseModal from "./BaseModal.vue";
 </script>
 <template>
-  <div>
- 
-  </div>
+  <BaseModal><slot /></BaseModal>
 </template>
 <style scoped lang="scss"></style>

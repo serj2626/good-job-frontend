@@ -1,5 +1,4 @@
 export const enum HeroIcons {
-
   ADJUSTMENTS_HORIZONTAL = "i-heroicons-adjustments-horizontal",
   ARROW_DOWN = "i-heroicons-arrow-down",
   ARROW_LEFT = "i-heroicons-arrow-left",
@@ -69,4 +68,5 @@ export const enum HeroIcons {
   WRENCH = "i-heroicons-wrench",
   X_CIRCLE = "i-heroicons-x-circle",
   X_MARK = "i-heroicons-x-mark",
+  CHEVRON_DOWN = "i-heroicons-chevron-down-20-solid",
 }

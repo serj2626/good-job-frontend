@@ -15,6 +15,10 @@ const resumeActions: IAction[][] = [
       label: "В избранное",
       icon: HeroIcons.HEART,
     },
+    {
+      label: "Редактировать",
+      icon: HeroIcons.EDIT,
+    },
   ],
 ];
 

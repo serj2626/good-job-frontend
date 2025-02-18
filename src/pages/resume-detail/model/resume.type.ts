@@ -20,7 +20,6 @@ export interface IResume {
   projects: IProject[];
   stacks: string[];
   category: string;
-  full_name: string;
   position: string;
   min_salary: number;
   max_salary: number;

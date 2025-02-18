@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { AppRoutes } from "~/src/shared/router/types";
 import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 
@@ -7,12 +8,13 @@ interface IEmployee {
   city: string;
   country: string;
   age: number;
+  first_name: string;
+  last_name: string;
 }
 
 interface IResume {
   id: string;
   avatar: string;
-  full_name: string;
   position: string;
   employee: IEmployee;
   stacks: string[];
@@ -41,15 +43,16 @@ console.log("resume", resume);
       <div class="flex flex-col gap-3 text-black">
         <div class="flex justify-between items-center">
           <div class="flex gap-2 items-center dark:text-white">
-            <Icon :name="HeroIcons.USER_SOLID" /> {{ resume.full_name }}
+            <Icon :name="HeroIcons.USER_SOLID" />
+            {{ resume.employee.first_name }} {{ resume.employee.last_name }}
           </div>
           <UButton
             label="Подробнее"
-            :to="{ name: 'resumes-id', params: { id: resume.id } }"
+            :to="{ name: AppRoutes.resumesId, params: { id: resume.id } }"
             size="md"
             color="gray"
             variant="solid"
-            class="dark:bg-teal-400 dark:hover:bg-teal-500 dark:text-black"
+            class="dark:bg-teal-600 dark:hover:bg-teal-500 dark:text-white"
           >
             <template #trailing>
               <UIcon :name="HeroIcons.ARROW_RIGHT_20_SOLID" class="w-5 h-5" />

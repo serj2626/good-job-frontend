@@ -22,7 +22,7 @@ export const userMenuLins: IMenuItem[][] = [
     },
     {
       label: "Настройки",
-      icon: HeroIcons.SETTINGS,
+      icon: HeroIcons.SETTINGS_SOLID,
     },
   ],
   [
@@ -36,7 +36,7 @@ export const userMenuLins: IMenuItem[][] = [
     },
     {
       label: "Сообщения",
-      icon: HeroIcons.MAIL,
+      icon: HeroIcons.MAIL_SOLID,
     },
     {
       label: "Обратная связь",

@@ -16,7 +16,7 @@ const { data: companies } = await useLazyAsyncData<ICompany[]>(
 <template>
   <Grid>
     <template #left>
-      <Search />
+      <Search type="company" />
     </template>
     <template #right>
       <div>

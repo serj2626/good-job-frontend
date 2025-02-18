@@ -36,7 +36,7 @@ const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
     </template>
   </Grid>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease-in;
@@ -48,6 +48,7 @@ const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
 }
 
 section {
-  @apply dark:bg-transparent dark:shadow-[5px_5px_14px_rgb(248,254,247)];
+  // @apply dark:bg-transparent dark:shadow-[5px_5px_14px_rgb(248,254,247)];
+  @apply dark:bg-transparent;
 }
 </style>

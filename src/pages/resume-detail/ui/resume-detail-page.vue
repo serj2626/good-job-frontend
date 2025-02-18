@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
-import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
-
 import type { IResume } from "../model/resume.type";
 import { SelectAction } from "~/src/features/select-action";
+import InfoData from "./InfoData.vue";
 
 const config = useRuntimeConfig();
 const { data: resume } = await useAsyncData<IResume>("resume", () =>
@@ -13,9 +11,7 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
 );
 </script>
 <template>
-  <div
-    class="relative px-3 flex flex-1 justify-center pb-5 shadow-2xl rounded-md"
-  >
+  <div class="relative px-3 pb-5 rounded-md shadow-2xl dark:bg-slate-50">
     <div class="flex flex-col w-3/4 mx-auto">
       <div class="flex justify-between items-center py-5">
         <div class="flex gap-4">
@@ -33,9 +29,10 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
               }"
               class="text-[#111418] hover:text-emerald-600 transition-colors duration-200 cursor-pointer ease-in text-[22px] font-bold leading-tight tracking-[-0.015em]"
             >
-              {{ resume?.full_name }}
+              {{ resume?.employee?.first_name }}
+              {{ resume?.employee?.last_name }}
             </NuxtLink>
-            <p class="text-[#637588] text-base font-normal leading-normal">
+            <p class="text-[#637588] text-base font-normal">
               {{ resume?.position }}
             </p>
           </div>
@@ -44,194 +41,126 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
           <SelectAction action="resume" />
         </div>
       </div>
-      <section id="info" class="border-t-2 border-[#dce0e5]">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Личная информация
-        </h2>
+      <section id="info">
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Личная информация
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon
+              name="i-heroicons:identification-solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
         <div class="flex gap-4 bg-white px-4 py-3">
           <div class="flex flex-col gap-3 justify-center">
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.USER_SOLID" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.full_name }}
-              </p>
-            </div>
-
-            <div class="flex gap-3">
-              <Icon :name="BootstrapIcons.POSITION" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.position }}
-              </p>
-            </div>
-
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.CAKE_SOLID" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.employee?.age }} лет
-              </p>
-            </div>
-
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.LOCATION_SOLID" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.employee?.city }}, {{ resume?.employee?.country }}
-              </p>
-            </div>
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.PHONE_SOLID" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.employee?.phone }}
-              </p>
-            </div>
-
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.MAIL_SOLID" class="w-5 h-5" />
-              <p class="text-[#637588] text-sm font-normal leading-normal">
-                {{ resume?.employee?.user.email }}
-              </p>
-            </div>
-
-            <div class="flex gap-3">
-              <Icon :name="HeroIcons.MONEY" class="w-5 h-5" />
-              <p
-                v-if="resume?.max_salary"
-                class="text-[#637588] text-sm font-normal leading-normal"
-              >
-                {{ resume?.min_salary }} - {{ resume?.max_salary }}
-              </p>
-              <p
-                v-else
-                class="text-[#637588] text-sm font-normal leading-normal"
-              >
-                от {{ resume?.min_salary }}
-              </p>
-            </div>
+            <InfoData v-if="resume" :resume="resume" view="fullname" />
           </div>
         </div>
       </section>
 
       <section id="experience">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Опыт работы
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Опыт работы
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class="p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon
+              name="i-heroicons:building-office-solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
         <div
           v-for="exp in resume?.employee?.experiences"
           :key="exp.id"
-          class="flex gap-4 bg-white px-4 py-3"
+          class="flex gap-8 tems-start bg-white px-4 py-3 mb-5"
         >
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/e0bd9c1b-4226-429a-a9ca-6725d1a2fc96.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
-              {{ exp.position }}
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              {{ exp.company }}
-            </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              {{ exp.start_date }} - {{ exp.end_date || "По настоящее время" }}
-            </p>
-          </div>
-        </div>
-
-        <div class="flex px-4 py-3 justify-start">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
-          >
-            <div
-              class="text-[#111418]"
-              data-icon="Plus"
-              data-size="20px"
-              data-weight="regular"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
-                ></path>
-              </svg>
+          <p class="text-[#637588] w-2/12 text-sm font-normal">
+            {{ exp.full_data }}
+          </p>
+          <div class="flex flex-col gap-y-4 w-10/12">
+            <div class="flex flex-1 flex-col justify-center">
+              <p class="text-[#111418] text-base font-medium">
+                {{ exp.position }}
+              </p>
+              <p class="text-[#637588] text-sm font-normal">
+                {{ exp.company }}
+              </p>
             </div>
-            <span class="truncate">Добавить опыт</span>
-          </button>
+            <div>
+              {{ exp.description }}
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="education">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Образование
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Образование
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon
+              name="i-heroicons:academic-cap-solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
 
         <div
           v-for="edu in resume?.employee?.educations"
           :key="edu.id"
-          class="flex gap-4 bg-white px-4 py-3"
+         class="flex gap-8 tems-start bg-white px-4 py-3 mb-5"
         >
-          <div
-            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-            style="
-              background-image: url('https://cdn.usegalileo.ai/sdxl10/807f4e8d-759d-4e00-9fff-c7819f880405.png');
-            "
-          ></div>
-          <div class="flex flex-1 flex-col justify-center">
-            <p class="text-[#111418] text-base font-medium leading-normal">
+          <p class="text-[#637588] w-2/12 text-sm font-normal">
+            {{ edu.full_data }}
+          </p>
+          <div class="flex flex-col gap-y-4 w-10/12">
+            <p class="text-[#111418] text-base font-medium">
               {{ edu.university }}
             </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
+            <p class="text-[#637588] text-sm font-normal">
               {{ edu.specialization }}
             </p>
-            <p class="text-[#637588] text-sm font-normal leading-normal">
-              {{ edu.start_date }} - {{ edu.end_date || "По настоящее время" }}
-            </p>
           </div>
-        </div>
-        <div class="flex px-4 py-3 justify-start">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
-          >
-            <div
-              class="text-[#111418]"
-              data-icon="Plus"
-              data-size="20px"
-              data-weight="regular"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
-                ></path>
-              </svg>
-            </div>
-            <span class="truncate">Добавить образование</span>
-          </button>
         </div>
       </section>
 
       <section id="skills" class="pb-5">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Стек
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Стек
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon
+              name="i-heroicons:identification-solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
+
         <div class="flex items-center gap-3 flex-wrap ps-3">
           <div v-for="(stack, index) in resume?.stacks" :key="index">
             <UButton disabled color="gray" size="md" variant="solid">
@@ -239,9 +168,9 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             >
           </div>
         </div>
-        <div class="flex px-4 py-3 justify-start my-3">
+        <!-- <div class="flex px-4 py-3 justify-start my-3">
           <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold  tracking-[0.015em]"
           >
             <div
               class="text-[#111418]"
@@ -263,15 +192,27 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </div>
             <span class="truncate">Добавить навык</span>
           </button>
-        </div>
+        </div> -->
       </section>
 
       <section id="projects">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Проекты
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Проекты
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon
+              name="i-heroicons:identification-solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
+
         <div class="flex flex-col gap-3">
           <div
             class="flex gap-4 bg-white px-4 py-3"
@@ -283,28 +224,35 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
               :style="'background-image: url(' + project.image + ');'"
             ></div>
             <div class="flex flex-1 flex-col gap-1 justify-center">
-              <p class="text-[#111418] text-base font-medium leading-normal">
+              <p class="text-[#111418] text-base font-medium">
                 {{ project.title }}
               </p>
-              <p class="text-[#637588] text-sm font-normal leading-normal">
+              <p class="text-[#637588] text-sm font-normal">
                 {{ project.description.slice(0, 60) + "..." }}
               </p>
-              <a
-                class="text-[#637588] text-sm font-normal leading-normal"
-                href=""
-                >{{ project.link }}</a
-              >
+              <a class="text-[#637588] text-sm font-normal" href="">{{
+                project.link
+              }}</a>
             </div>
           </div>
         </div>
       </section>
 
       <section id="links">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          Ссылки
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2
+            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+          >
+            Ссылки
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-sky-600" />
+          <div
+            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
+          >
+            <Icon name="i-heroicons:link-solid" class="w-6 h-6 text-sky-600" />
+          </div>
+        </div>
+
         <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
           <div
             class="text-[#111418] flex items-center justify-center rounded-lg bg-[#f0f2f4] shrink-0 size-12"
@@ -325,14 +273,10 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p
-              class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
-            >
+            <p class="text-[#111418] text-base font-medium line-clamp-1">
               LinkedIn
             </p>
-            <p
-              class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
-            >
+            <p class="text-[#637588] text-sm font-normal line-clamp-2">
               linkedin.com/in/john-smith
             </p>
           </div>
@@ -357,14 +301,10 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p
-              class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
-            >
+            <p class="text-[#111418] text-base font-medium line-clamp-1">
               GitHub
             </p>
-            <p
-              class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
-            >
+            <p class="text-[#637588] text-sm font-normal line-clamp-2">
               github.com/johnsmith
             </p>
           </div>
@@ -389,14 +329,10 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p
-              class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
-            >
+            <p class="text-[#111418] text-base font-medium line-clamp-1">
               CodeSandbox
             </p>
-            <p
-              class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
-            >
+            <p class="text-[#637588] text-sm font-normal line-clamp-2">
               codesandbox.io/u/johnsmith
             </p>
           </div>
@@ -421,21 +357,17 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p
-              class="text-[#111418] text-base font-medium leading-normal line-clamp-1"
-            >
+            <p class="text-[#111418] text-base font-medium line-clamp-1">
               Dribbble
             </p>
-            <p
-              class="text-[#637588] text-sm font-normal leading-normal line-clamp-2"
-            >
+            <p class="text-[#637588] text-sm font-normal line-clamp-2">
               dribbble.com/johnsmith
             </p>
           </div>
         </div>
-        <div class="flex px-4 py-3 justify-start">
+        <!-- <div class="flex px-4 py-3 justify-start">
           <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold leading-normal tracking-[0.015em]"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold  tracking-[0.015em]"
           >
             <div
               class="text-[#111418]"
@@ -457,15 +389,24 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
             </div>
             <span class="truncate">Добавить ссылку</span>
           </button>
-        </div>
+        </div> -->
       </section>
 
       <section id="about">
-        <h2
-          class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-        >
-          О себе
-        </h2>
+        <div class="flex items-center gap-2">
+          <h2 class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4">
+            О себе
+          </h2>
+          <hr class="flex-grow h-1 border-2 border-[#1673e6]" />
+          <div
+            class=" p-3 rounded-full border-2 border-[#1673e6] flex items-center"
+          >
+            <Icon
+              name="i-heroicons:information--solid"
+              class="w-6 h-6 text-sky-600"
+            />
+          </div>
+        </div>
         <div class="px-4 py-3">
           {{ resume?.about ? resume.about : "Данные отсутствуют" }}
         </div>
