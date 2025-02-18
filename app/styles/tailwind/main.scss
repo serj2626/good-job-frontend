@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "../normalize";
+
+body {
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.menu-link {
+  border-bottom: 4px solid transparent;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    color: teal;
+  }
+}
+
+.active-link {
+  @apply dark:border-b-4 dark:border-teal-400;
+  border-bottom: 4px solid rgb(23, 160, 160);
+}
+
