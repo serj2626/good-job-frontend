@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { FeedbackForm } from "~/src/features/feedback";
 import { footerContacts, footerIcons } from "../model/footer.data";
+const modal = useModal();
+
+function openModal() {
+  modal.open(FeedbackForm, {});
+}
 </script>
 <template>
   <footer class="bg-white dark:bg-transparent">
@@ -29,7 +35,11 @@ import { footerContacts, footerIcons } from "../model/footer.data";
                 {{ item.title }}
               </h2>
               <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-2" v-for="contact in item.links">
+                <li
+                  @click="contact.title === 'Служба поддержки' && openModal()"
+                  class="mb-2"
+                  v-for="contact in item.links"
+                >
                   <NuxtLink :to="contact.url" class="hover:underline text-sm">
                     {{ contact.title }}
                   </NuxtLink>
