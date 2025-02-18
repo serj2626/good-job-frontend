@@ -54,7 +54,7 @@ export interface IResume {
   projects: IProject[];
   stacks: string[];
   category: string;
-  full_name?: string;
+  full_name?: string | null;
   position: string;
   minSalary: number;
   maxSalary: number;
