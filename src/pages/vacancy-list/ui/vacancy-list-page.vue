@@ -6,16 +6,21 @@ import Typography from "~/src/shared/ui/typography/Typography.vue";
 import type { IVacancy } from "../model/vacancy.type";
 import VacancyDetail from "./VacancyDetail.vue";
 
-const config = useRuntimeConfig();
-const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancies", () =>
-  $fetch(config.public.apiUrl + `/api/companies/vacancy/`)
+const { apiUrl } = useRuntimeConfig().public;
+const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancies",
+  getListVacancies
 );
+
+async function getListVacancies(): Promise<IVacancy[]> {
+  const response = await $fetch<IVacancy[]>(apiUrl + `/api/companies/vacancy/`);
+  return response;
+}
 </script>
 
 <template>
   <Grid>
     <template #left>
-      <Search />
+      <Search type="vacancy" />
     </template>
     <template #right>
       <div>
