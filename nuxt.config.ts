@@ -17,7 +17,6 @@ export default defineNuxtConfig({
     "nuxt-rating",
     "@nuxt/image",
     "@sidebase/nuxt-pdf",
-    "@vueuse/nuxt",
     "@primevue/nuxt-module",
   ],
   primevue: {
@@ -48,7 +47,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["~/app/styles/tailwind/index.scss"],
+  css: ["~/app/styles/tailwind/main.scss"],
   dir: {
     layouts: "./app/layouts",
     pages: "./app/routes",
@@ -62,7 +61,7 @@ export default defineNuxtConfig({
   router: {
     options: {
       // linkActiveClass: "active-link",
-      linkExactActiveClass: "active-link",
+      // linkExactActiveClass: "active-link",
     },
   },
   compatibilityDate: "2024-11-10",
