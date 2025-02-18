@@ -3,11 +3,11 @@ interface Props {
   tag: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
   class: string;
 }
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>
 
 <template>
-  <component :class="props.class" :is="props.tag">
+  <component :class="class" :is="tag">
     <slot />
   </component>
 </template>
