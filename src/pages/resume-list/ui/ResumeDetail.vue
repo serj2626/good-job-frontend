@@ -26,7 +26,6 @@ const countStacks = computed(() => {
     return "+ " + (resume.stacks.length - 3);
   }
 });
-console.log("resume", resume);
 </script>
 <template>
   <div
