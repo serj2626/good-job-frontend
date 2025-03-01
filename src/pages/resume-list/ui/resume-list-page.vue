@@ -9,8 +9,8 @@ import { APIRoutes } from "~/src/shared/router/types";
 
 const { $apiFetch } = useNuxtApp();
 
-const { data: resumes } = await useAsyncData<IResume[]>(
-  "resumes-page-data", () => $apiFetch(APIRoutes.resumes.list)
+const { data: resumes } = await useAsyncData("resumes-page-data", () =>
+  $apiFetch(APIRoutes.resumes.list)
 );
 </script>
 
@@ -27,15 +27,15 @@ const { data: resumes } = await useAsyncData<IResume[]>(
         >
           Резюме
         </Typography>
-        <!-- <section id="resumes" class="p-3 rounded-md">
-          <div class="">
+        <section id="resumes" class="p-3 rounded-md">
+          <div>
             <ResumeDetail
               v-for="resume in resumes"
               :key="resume.id"
               :resume="resume"
             />
           </div>
-        </section> -->
+        </section>
       </div>
     </template>
   </Grid>
