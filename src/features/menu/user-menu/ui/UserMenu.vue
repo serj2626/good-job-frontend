@@ -30,14 +30,16 @@ function openModal() {
     </template>
 
     <template #item="{ item }">
-      <span @click="item.label === 'Войти' && openModal()" class="truncate">{{
-        item.label
-      }}</span>
+      <div @click="item.label === 'Войти' && openModal()"  class="w-full flex items-center justify-between">
+        <span class="truncate">{{
+          item.label
+        }}</span>
 
-      <UIcon
-        :name="item.icon"
-        class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500 ms-auto"
-      />
+        <UIcon
+          :name="item.icon"
+          class="flex-shrink-0 h-5 w-5 text-gray-400 dark:text-gray-500 ms-auto"
+        />
+      </div>
     </template>
   </UDropdown>
 </template>
