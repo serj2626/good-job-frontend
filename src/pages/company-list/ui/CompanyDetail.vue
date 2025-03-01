@@ -3,6 +3,8 @@ import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 
 import type { ICompany } from "../../company-detail/model/company.type";
 
+import { AppPaths } from "~/src/shared/router/types";
+
 const { company } = defineProps<{ company: ICompany }>();
 
 const avatar = computed(() =>
@@ -37,7 +39,7 @@ const avatar = computed(() =>
       </div>
       <div>
         <UButton
-          :to="{ name: 'companies-id', params: { id: company.id } }"
+          :to="{ name: AppPaths.companiesId, params: { id: company.id } }"
           label="Подробнее"
           :icon="HeroIcons.EYE_20_SOLID"
           class="dark:bg-white dark:text-gray-800 dark:hover:bg-gray-200"
