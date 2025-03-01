@@ -47,33 +47,33 @@ export const APIRoutes = {
 export const enum AppPaths {
   about = "about",
   
-  authLogin = "auth-login",
-  authLogout = "auth-logout",
-  authRegistration = "auth/register",
-  authReset = "auth-reset",
+  authLogin = "/auth-login",
+  authLogout = "/auth-logout",
+  authRegistration = "/auth/register",
+  authReset = "/auth-reset",
   
-  companiesId = "companies-id",
-  companiesList = "companies/list",
+  companiesId = "/companies-id",
+  companiesList = "/companies/list",
 
-  employeesId = "employees-id",
-  employeesList = "employees/list",
+  employeesId = "/employees-id",
+  employeesList = "/employees/list",
   
-  faq = "faq",
+  faq = "/faq",
 
   index = "/",
   
-  interviews = "interviews",
-  interviewsCreate = "interviews/create",
+  interviews = "/interviews",
+  interviewsCreate = "/interviews/create",
   
-  projectsCreate = "projects/create",
-  projectsId = "projects-id",
+  projectsCreate = "/projects/create",
+  projectsId = "/projects-id",
   
-  resumesCreate = "resumes/create",
-  resumesId = "resumes-id",
-  resumesList = "resumes/list",
+  resumesCreate = "/resumes/create",
+  resumesId = "/resumes-id",
+  resumesList = "/resumes/list",
   
-  vacanciesCreate = "vacancies/create",
-  vacanciesId = "vacancies-id",
-  vacanciesList = "vacancies/list",
+  vacanciesCreate = "/vacancies/create",
+  vacanciesId = "/vacancies-id",
+  vacanciesList = "/vacancies/list",
 
 }
