@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig()
   const apiFetch = $fetch.create({
-    baseURL: config.apiUrl,
+    baseURL: config.public.apiUrl,
     onRequest({ request, options, response, error }) {
       // options.baseURL = import.meta.server ? config.ssrApiUrl : config.public.browserApiUrl
       if (config.public.debug) {
