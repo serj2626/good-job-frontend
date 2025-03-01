@@ -7,7 +7,7 @@ import ResumeDetail from "./ResumeDetail.vue";
 import Typography from "~/src/shared/ui/typography/Typography.vue";
 
 const config = useRuntimeConfig();
-const { data: resumes } = await useLazyAsyncData<IResume[]>("resumes", () =>
+const { data: resumes } = await useLazyAsyncData("resumes-list", () =>
   $fetch(config.public.apiUrl + `/api/employees/resume/list/`, {})
 );
 </script>
