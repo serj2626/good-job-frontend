@@ -1,3 +1,4 @@
+import { AppPaths } from '~/src/shared/router/types';
 import { BootstrapIcons } from '~/src/shared/types/icons/bootstrap-icons';
 
 interface IFooterLink {
@@ -90,11 +91,11 @@ export const footerContacts: IFooterContacts[] = [
     links: [
       {
         title: "О нас",
-        url: "/",
+        url: AppPaths.about,
       },
       {
         title: "FAQ",
-        url: "/faq",
+        url: AppPaths.faq,
       },
       {
         title: "Служба поддержки",
