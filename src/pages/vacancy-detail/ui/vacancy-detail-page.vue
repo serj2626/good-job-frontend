@@ -4,11 +4,20 @@ import { MoneyIcons } from "~/src/shared/types/icons/money-icons";
 import { SelectAction } from "~/src/features/select-action";
 import type { IVacancy } from "../../vacancy-list/model/vacancy.type";
 
+import { APIRoutes } from "~/src/shared/router/types";
+
+const { $apiFetch } = useNuxtApp();
+
 const config = useRuntimeConfig();
-const { data: vacancy } = await useAsyncData<IVacancy>("vacancy", () =>
-  $fetch(
-    config.public.apiUrl + `/api/companies/vacancy/${useRoute().params.id}/`
-  )
+// const { data: vacancy } = await useAsyncData<IVacancy>("vacancy", () =>
+//   $fetch(
+//     config.public.apiUrl + `/api/companies/vacancy/${useRoute().params.id}/`
+//   )
+// );
+
+const { data: vacancy } = await useAsyncData<IVacancy>(
+  "vacancy-detail-page-data",
+  () => $apiFetch(APIRoutes.vacancies.getVacancy(useRoute().params.id as string))
 );
 
 const typeCurrency = computed(() => {
