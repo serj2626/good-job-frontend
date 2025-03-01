@@ -6,7 +6,7 @@ import cfg0 from "../../app.config"
 declare const inlineConfig = {
   "nuxt": {},
   "icon": {
-    "provider": "iconify",
+    "provider": "server",
     "class": "",
     "aliases": {},
     "iconifyApiEndpoint": "https://api.iconify.design",
