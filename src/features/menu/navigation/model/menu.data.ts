@@ -8,7 +8,7 @@ interface IMenuItem {
 export const MenuLinks: IMenuItem[] = [
   {
     title: "Главная",
-    url: AppPaths.index,
+    url: AppPaths.home,
   },
   {
     title: "Вакансии",
@@ -28,10 +28,10 @@ export const MenuLinks: IMenuItem[] = [
   },
   {
     title: "Посты",
-    url: AppPaths.index,
+    url: AppPaths.home,
   },
   {
     title: "События",
-    url: AppPaths.index,
+    url: AppPaths.home,
   },
 ];
