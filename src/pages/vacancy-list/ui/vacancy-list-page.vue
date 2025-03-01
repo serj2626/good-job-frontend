@@ -6,15 +6,13 @@ import Typography from "~/src/shared/ui/typography/Typography.vue";
 import type { IVacancy } from "../model/vacancy.type";
 import VacancyDetail from "./VacancyDetail.vue";
 
-const { apiUrl } = useRuntimeConfig().public;
-const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancies",
-  getListVacancies
-);
+import { APIRoutes } from "~/src/shared/router/types";
 
-async function getListVacancies(): Promise<IVacancy[]> {
-  const response = await $fetch<IVacancy[]>(apiUrl + `/api/companies/vacancy/`);
-  return response;
-}
+const {$apiFetch} = useNuxtApp();
+
+const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancy-list",
+  () => $apiFetch(APIRoutes.vacancies.all)
+);
 </script>
 
 <template>
