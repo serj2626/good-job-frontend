@@ -1,3 +1,5 @@
+import { APIRoutes, AppPaths } from "~/src/shared/router/types";
+
 interface IMenuItem {
   title: string;
   url: string;
@@ -6,30 +8,30 @@ interface IMenuItem {
 export const MenuLinks: IMenuItem[] = [
   {
     title: "Главная",
-    url: "/",
+    url: AppPaths.index,
   },
   {
     title: "Вакансии",
-    url: "/vacancies/list",
+    url: AppPaths.vacanciesList,
   },
   {
     title: "Компании",
-    url: "/companies/list",
+    url: AppPaths.companiesList,
   },
   {
     title: "Специалисты",
-    url: "/employees/list",
+    url: AppPaths.employeesList,
   },
   {
     title: "Резюме",
-    url: "/resumes/list",
+    url: AppPaths.resumesList,
   },
   {
     title: "Посты",
-    url: "/",
+    url: AppPaths.index,
   },
   {
     title: "События",
-    url: "/",
+    url: AppPaths.index,
   },
 ];
