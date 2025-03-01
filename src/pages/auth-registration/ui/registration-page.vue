@@ -1,8 +1,5 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
-    <h1>auth-registration</h1>
-    <slot></slot>
-  </div>
+    <h1>Регистрация</h1>
 </template>
 <style scoped lang="scss"></style>
