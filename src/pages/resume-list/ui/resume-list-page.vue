@@ -5,10 +5,12 @@ import Grid from "~/src/shared/ui/grid/Grid.vue";
 import type { IResume } from "../../employee-detail/model/employee.type";
 import ResumeDetail from "./ResumeDetail.vue";
 import Typography from "~/src/shared/ui/typography/Typography.vue";
+import { APIRoutes } from "~/src/shared/router/types";
 
-const config = useRuntimeConfig();
-const { data: resumes } = await useLazyAsyncData("resumes-list", () =>
-  $fetch(config.public.apiUrl + `/api/employees/resume/list/`, {})
+const { $apiFetch } = useNuxtApp();
+
+const { data: resumes } = await useAsyncData<IResume[]>(
+  "resumes-page-data", () => $apiFetch(APIRoutes.resumes.list)
 );
 </script>
 
@@ -25,7 +27,7 @@ const { data: resumes } = await useLazyAsyncData("resumes-list", () =>
         >
           Резюме
         </Typography>
-        <section id="resumes" class="p-3 rounded-md">
+        <!-- <section id="resumes" class="p-3 rounded-md">
           <div class="">
             <ResumeDetail
               v-for="resume in resumes"
@@ -33,7 +35,7 @@ const { data: resumes } = await useLazyAsyncData("resumes-list", () =>
               :resume="resume"
             />
           </div>
-        </section>
+        </section> -->
       </div>
     </template>
   </Grid>

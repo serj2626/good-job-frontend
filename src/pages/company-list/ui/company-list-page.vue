@@ -11,7 +11,7 @@ import { APIRoutes } from "~/src/shared/router/types";
 const { $apiFetch } = useNuxtApp();
 
 const { data: companies } = await useAsyncData<ICompany[]>(
-  "companies-list-data", () => $apiFetch(APIRoutes.companies.list)
+  "companies-page-data", () => $apiFetch(APIRoutes.companies.list)
 );
 
 console.log(useNuxtApp());

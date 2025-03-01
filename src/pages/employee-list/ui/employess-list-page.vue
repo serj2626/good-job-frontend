@@ -5,10 +5,12 @@ import Grid from '~/src/shared/ui/grid/Grid.vue';
 import type { IEmployee } from '../../employee-detail/model/employee.type';
 import EmployeeDetail from './EmployeeDetail.vue';
 import Typography from '~/src/shared/ui/typography/Typography.vue';
+import { APIRoutes } from '~/src/shared/router/types';
 
-const config = useRuntimeConfig();
-const { data: employees } = await useLazyAsyncData<IEmployee[]>("employees", () =>
-  $fetch(config.public.apiUrl + `/api/employees/`)
+const { $apiFetch } = useNuxtApp();
+
+const { data: employees } = await useAsyncData<IEmployee[]>(
+  "employees-page-data", () => $apiFetch(APIRoutes.employees.list)
 );
 </script>
 <template>
