@@ -7,13 +7,16 @@ import ResumeEducationList from "./ResumeEducationList.vue";
 import ResumeProjectList from "./ResumeProjectList.vue";
 import ResumeTitleSection from "./ResumeTitleSection.vue";
 
-const config = useRuntimeConfig();
-const { data: resume } = await useAsyncData<IResume>("resume", () =>
-  $fetch(
-    config.public.apiUrl + `/api/employees/resume/${useRoute().params.id}/`
-  )
+import { APIRoutes } from "~/src/shared/router/types";
+
+const { $apiFetch } = useNuxtApp();
+
+const { data: resume } = await useAsyncData<IResume>(
+  "resume-detail-page-data",
+  () => $apiFetch(APIRoutes.resumes.getResume(useRoute().params.id as string))
 );
 </script>
+
 <template>
   <div class="relative px-3 pb-5 rounded-md shadow-2xl dark:bg-slate-50">
     <div class="flex flex-col w-3/4 mx-auto">
