@@ -10,7 +10,7 @@ import { APIRoutes } from "~/src/shared/router/types";
 
 const {$apiFetch} = useNuxtApp();
 
-const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancy-list",
+const { data: vacancies } = await useAsyncData<IVacancy[]>("vacancies-page-data",
   () => $apiFetch(APIRoutes.vacancies.list)
 );
 </script>
