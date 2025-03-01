@@ -10,9 +10,14 @@ import { EmployeeEducationList } from "~/src/widgets/employee-education-list";
 import { EmployeeExperienceList } from "~/src/widgets/employee-experience-list";
 import { AboutSection } from "~/src/widgets/about-section";
 
-const config = useRuntimeConfig();
-const { data: employee } = await useAsyncData<IEmployee>("employee", () =>
-  $fetch(config.public.apiUrl + `/api/employees/${useRoute().params.id}/`)
+import { APIRoutes } from "~/src/shared/router/types";
+
+const { $apiFetch } = useNuxtApp();
+
+const { data: employee } = await useAsyncData<IEmployee>(
+  "employee-detail-page-data",
+  () =>
+    $apiFetch(APIRoutes.employees.getEmployee(useRoute().params.id as string))
 );
 </script>
 <template>
