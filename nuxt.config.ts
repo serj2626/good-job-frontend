@@ -52,7 +52,6 @@ export default defineNuxtConfig({
     layouts: "./app/layouts",
     pages: "./app/routes",
   },
-  ssr: false,
   runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
