@@ -20,16 +20,16 @@ export const APIRoutes = {
   resumes: {
     list: "/employees/resume/list/", //Возвращает список всех резюме
     add: "/employees/resume/list", //Добавляет резюме
-    getResume: (id: string) => `/employees/resumes/${id}/`, //Возвращает информацию о резюме
-    deleteResume: (id: string) => `/employees/resumes/${id}/`, //Удаляет резюме
-    updateResume: (id: string) => `/employees/resumes/${id}/`, //Обновляет резюме
+    getResume: (id: string) => `/employees/resume/${id}/`, //Возвращает информацию о резюме
+    deleteResume: (id: string) => `/employees/resume/${id}/`, //Удаляет резюме
+    updateResume: (id: string) => `/employees/resume/${id}/`, //Обновляет резюме
   },
   vacancies: {
     list: "/companies/vacancy/", //Возвращает список всех вакансий
     add: "/companies/vacancy/", //Добавляет вакансию
-    getVacancy: (id: string) => `/companies/vacancies/${id}/`, //Возвращает информацию о вакансии
-    deleteVacancy: (id: string) => `/companies/vacancies/${id}/`, //Удаляет вакансию
-    updateVacancy: (id: string) => `/companies/vacancies/${id}/`, //Обновляет вакансию
+    getVacancy: (id: string) => `/companies/vacancy/${id}/`, //Возвращает информацию о вакансии
+    deleteVacancy: (id: string) => `/companies/vacancy/${id}/`, //Удаляет вакансию
+    updateVacancy: (id: string) => `/companies/vacancy/${id}/`, //Обновляет вакансию
   },
   projects: {
     list: "/employees/projects/", //Возвращает список всех проектов
@@ -43,37 +43,35 @@ export const APIRoutes = {
   },
 };
 
-
 export const enum AppPaths {
   about = "about",
-  
-  authLogin = "/auth-login",
-  authLogout = "/auth-logout",
-  authRegistration = "/auth/register",
-  authReset = "/auth-reset",
-  
-  companiesId = "/companies-id",
-  companiesList = "/companies/list",
 
-  employeesId = "/employees-id",
-  employeesList = "/employees/list",
-  
-  faq = "/faq",
+  authLogin = "auth-login",
+  authLogout = "auth-logout",
+  authRegistration = "auth-register",
+  authReset = "auth-reset",
 
-  index = "/",
-  
-  interviews = "/interviews",
-  interviewsCreate = "/interviews/create",
-  
-  projectsCreate = "/projects/create",
-  projectsId = "/projects-id",
-  
-  resumesCreate = "/resumes/create",
-  resumesId = "/resumes-id",
-  resumesList = "/resumes/list",
-  
-  vacanciesCreate = "/vacancies/create",
-  vacanciesId = "/vacancies-id",
-  vacanciesList = "/vacancies/list",
+  companiesId = "companies-id",
+  companiesList = "companies-list",
 
+  employeesId = "employees-id",
+  employeesList = "employees-list",
+
+  faq = "faq",
+
+  home = "index",
+
+  interviewsList = "interviews-list",
+  interviewsCreate = "interviews-create",
+
+  projectsCreate = "projects-create",
+  projectsId = "projects-id",
+
+  resumesCreate = "resumes-create",
+  resumesId = "resumes-id",
+  resumesList = "resumes-list",
+
+  vacanciesCreate = "vacancies-create",
+  vacanciesId = "vacancies-id",
+  vacanciesList = "vacancies-list",
 }
