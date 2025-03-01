@@ -7,9 +7,14 @@ import { AboutSection } from "~/src/widgets/about-section";
 import { CompanyVacancyList } from "~/src/widgets/company-vacancy-list";
 import { CompanyReviewList } from "~/src/widgets/company-review-list";
 
-const config = useRuntimeConfig();
-const { data: company } = await useAsyncData<ICompany>("company", () =>
-  $fetch(config.public.apiUrl + `/api/companies/${useRoute().params.id}`)
+import { APIRoutes } from "~/src/shared/router/types";
+
+const { $apiFetch } = useNuxtApp();
+
+const { data: company } = await useAsyncData<ICompany>(
+  "company-detail-page-data",
+  () =>
+    $apiFetch(APIRoutes.companies.getCompany(useRoute().params.id as string))
 );
 </script>
 <template>
