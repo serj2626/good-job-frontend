@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { IResume } from "../model/resume.type";
 import { SelectAction } from "~/src/features/select-action";
-import InfoData from "./InfoData.vue";
+import ResumeInfoData from "./ResumeInfoData.vue";
+import ResumeExperienceList from "./ResumeExperienceList.vue";
+import ResumeEducationList from "./ResumeEducationList.vue";
+import ResumeProjectList from "./ResumeProjectList.vue";
+import ResumeTitleSection from "./ResumeTitleSection.vue";
 
 const config = useRuntimeConfig();
 const { data: resume } = await useAsyncData<IResume>("resume", () =>
@@ -42,216 +46,65 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
         </div>
       </div>
       <section id="info">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
-          >
-            Личная информация
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon
-              name="i-heroicons:identification-solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
-        </div>
+        <ResumeTitleSection type="info" title="Личная информация" />
         <div class="flex gap-4 bg-white px-4 py-3">
           <div class="flex flex-col gap-3 justify-center">
-            <InfoData v-if="resume" :resume="resume" view="fullname" />
+            <ResumeInfoData v-if="resume" :resume="resume" />
           </div>
         </div>
       </section>
 
       <section id="experience">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
-          >
-            Опыт работы
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class="p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon
-              name="i-heroicons:building-office-solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
-        </div>
-        <div
+        <ResumeTitleSection type="experiences" title="Опыт работы" />
+        <ResumeExperienceList
+          class="px-4 py-3"
           v-for="exp in resume?.employee?.experiences"
+          :exp="exp"
           :key="exp.id"
-          class="flex gap-8 tems-start bg-white px-4 py-3 mb-5"
-        >
-          <p class="text-[#637588] w-2/12 text-sm font-normal">
-            {{ exp.full_data }}
-          </p>
-          <div class="flex flex-col gap-y-4 w-10/12">
-            <div class="flex flex-1 flex-col justify-center">
-              <p class="text-[#111418] text-base font-medium">
-                {{ exp.position }}
-              </p>
-              <p class="text-[#637588] text-sm font-normal">
-                {{ exp.company }}
-              </p>
-            </div>
-            <div>
-              {{ exp.description }}
-            </div>
-          </div>
-        </div>
+        />
       </section>
 
       <section id="education">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
-          >
-            Образование
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon
-              name="i-heroicons:academic-cap-solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
-        </div>
+        <ResumeTitleSection type="educations" title="Образование" />
 
-        <div
+        <ResumeEducationList
+          class="bg-white px-4 py-3"
           v-for="edu in resume?.employee?.educations"
+          :edu="edu"
           :key="edu.id"
-         class="flex gap-8 tems-start bg-white px-4 py-3 mb-5"
-        >
-          <p class="text-[#637588] w-2/12 text-sm font-normal">
-            {{ edu.full_data }}
-          </p>
-          <div class="flex flex-col gap-y-4 w-10/12">
-            <p class="text-[#111418] text-base font-medium">
-              {{ edu.university }}
-            </p>
-            <p class="text-[#637588] text-sm font-normal">
-              {{ edu.specialization }}
-            </p>
-          </div>
-        </div>
+        />
       </section>
 
       <section id="skills" class="pb-5">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
+        <ResumeTitleSection type="skills" title="Технологии" />
+        <div class="flex items-center gap-3 flex-wrap px-4 py-5">
+          <UButton
+            v-for="(stack, index) in resume?.stacks"
+            :key="index"
+            disabled
+            color="gray"
+            size="md"
+            variant="solid"
           >
-            Стек
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon
-              name="i-heroicons:identification-solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
+            {{ stack }}
+          </UButton>
         </div>
-
-        <div class="flex items-center gap-3 flex-wrap ps-3">
-          <div v-for="(stack, index) in resume?.stacks" :key="index">
-            <UButton disabled color="gray" size="md" variant="solid">
-              {{ stack }}</UButton
-            >
-          </div>
-        </div>
-        <!-- <div class="flex px-4 py-3 justify-start my-3">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f0f2f4] text-[#111418] gap-2 pl-4 text-sm font-bold  tracking-[0.015em]"
-          >
-            <div
-              class="text-[#111418]"
-              data-icon="Plus"
-              data-size="20px"
-              data-weight="regular"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <path
-                  d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"
-                ></path>
-              </svg>
-            </div>
-            <span class="truncate">Добавить навык</span>
-          </button>
-        </div> -->
       </section>
 
       <section id="projects">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
-          >
-            Проекты
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon
-              name="i-heroicons:identification-solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
-        </div>
+        <ResumeTitleSection type="projects" title="Проекты" />
 
         <div class="flex flex-col gap-3">
-          <div
-            class="flex gap-4 bg-white px-4 py-3"
+          <ResumeProjectList
+            class="bg-white px-4 py-3"
             v-for="project in resume?.employee?.projects"
+            :project="project"
             :key="project.id"
-          >
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
-              :style="'background-image: url(' + project.image + ');'"
-            ></div>
-            <div class="flex flex-1 flex-col gap-1 justify-center">
-              <p class="text-[#111418] text-base font-medium">
-                {{ project.title }}
-              </p>
-              <p class="text-[#637588] text-sm font-normal">
-                {{ project.description.slice(0, 60) + "..." }}
-              </p>
-              <a class="text-[#637588] text-sm font-normal" href="">{{
-                project.link
-              }}</a>
-            </div>
-          </div>
+          />
         </div>
       </section>
-
       <section id="links">
-        <div class="flex items-center gap-2">
-          <h2
-            class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4 pb-3"
-          >
-            Ссылки
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-sky-600" />
-          <div
-            class=" p-3 rounded-full border-2 border-sky-600 flex items-center"
-          >
-            <Icon name="i-heroicons:link-solid" class="w-6 h-6 text-sky-600" />
-          </div>
-        </div>
+        <ResumeTitleSection type="links" title="Ссылки" />
 
         <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
           <div
@@ -393,21 +246,10 @@ const { data: resume } = await useAsyncData<IResume>("resume", () =>
       </section>
 
       <section id="about">
-        <div class="flex items-center gap-2">
-          <h2 class="text-[#111418] flex-shrink-0 text-[22px] font-bold px-4">
-            О себе
-          </h2>
-          <hr class="flex-grow h-1 border-2 border-[#1673e6]" />
-          <div
-            class=" p-3 rounded-full border-2 border-[#1673e6] flex items-center"
-          >
-            <Icon
-              name="i-heroicons:information--solid"
-              class="w-6 h-6 text-sky-600"
-            />
-          </div>
-        </div>
-        <div class="px-4 py-3">
+        <ResumeTitleSection type="about" title="Обо мне" />
+        <div
+          class="px-4 py-5 text-gray-600 text-base leading-normal before:pl-8"
+        >
           {{ resume?.about ? resume.about : "Данные отсутствуют" }}
         </div>
       </section>
