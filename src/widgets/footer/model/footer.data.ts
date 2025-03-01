@@ -1,5 +1,5 @@
-import { AppPaths } from '~/src/shared/router/types';
-import { BootstrapIcons } from '~/src/shared/types/icons/bootstrap-icons';
+import { AppPaths } from "~/src/shared/router/types";
+import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 
 interface IFooterLink {
   title: string;
@@ -12,22 +12,6 @@ interface IFooterIcon {
   link: string;
   class?: string;
 }
-
-export const footerLinks: IFooterLink[] = [
-  {
-    title: "О нас",
-    url: "/about",
-  },
-  {
-    title: "Контакты",
-    url: "/contacts",
-  },
-  {
-    title: "Политика конфиденциальности",
-    url: "/privacy",
-  },
-];
-
 export const footerIcons: IFooterIcon[] = [
   {
     title: "Github",
@@ -65,12 +49,12 @@ export const footerContacts: IFooterContacts[] = [
     links: [
       {
         title: "Специалисты",
-        url: "/employees/list",
+        url: AppPaths.employeesList,
       },
       {
         title: "Список резюме",
-        url: "/resumes/list",
-      }
+        url: AppPaths.resumesList,
+      },
     ],
   },
   {
@@ -78,11 +62,11 @@ export const footerContacts: IFooterContacts[] = [
     links: [
       {
         title: "Вакансии",
-        url: "/vacancies/list",
+        url: AppPaths.vacanciesList,
       },
       {
         title: "Компании",
-        url: "/companies/list",
+        url: AppPaths.companiesList,
       },
     ],
   },
