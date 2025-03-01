@@ -2,6 +2,7 @@
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 
 import type { IEmployee } from "../../employee-detail/model/employee.type";
+import { AppPaths } from "~/src/shared/router/types";
 
 const { employee } = defineProps<{ employee: IEmployee }>();
 
@@ -37,7 +38,7 @@ const avatar = computed(() =>
       </div>
       <div>
         <UButton
-          :to="`/employees/${employee.id}`"
+          :to="{name: AppPaths.employeesId, params: { id: employee.id }}"
           label="Профиль"
           :icon="HeroIcons.EYE_20_SOLID"
           class="dark:bg-white dark:text-gray-800 dark:hover:bg-gray-200"
