@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppRoutes } from "~/src/shared/router/types";
+import { APIRoutes, AppPaths } from "~/src/shared/router/types";
 import { BootstrapIcons } from "~/src/shared/types/icons/bootstrap-icons";
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 
@@ -47,7 +47,7 @@ const countStacks = computed(() => {
           </div>
           <UButton
             label="Подробнее"
-            :to="{ name: AppRoutes.resumesId, params: { id: resume.id } }"
+            :to="{name: AppPaths.resumesId, params: { id: resume.id }}"
             size="md"
             color="gray"
             variant="solid"
