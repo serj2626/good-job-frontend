@@ -30,7 +30,7 @@ defineProps<{
   >
     <Icon
       :name="HeroIcons.ELLIPSIS_VERTICAL"
-      class="dark:bg-black w-7 h-7 hover:scale-125 transition-all duration-200 ease-in"
+      class="dark:text-black w-7 h-7 hover:scale-125 transition-all duration-200 ease-in"
     />
   </UDropdown>
 </template>
