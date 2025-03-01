@@ -20,7 +20,7 @@ const isDark = computed({
     <NuxtLink
       v-for="link in MenuLinks"
       :key="link.title"
-      :to="link.url"
+      :to="{name: link.url}"
       class="menu-link py-2"
     >
       {{ link.title }}
