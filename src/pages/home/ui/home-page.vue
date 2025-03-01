@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const config = useRuntimeConfig();
+import { AppPaths } from "~/src/shared/router/types";
 import { HeroIcons } from "~/src/shared/types/icons/hero-icons";
 const { data: categories } = await useFetch(
   config.public.apiUrl + "/api/category"
@@ -13,13 +14,15 @@ const { data: categories } = await useFetch(
       >
         Найди свою работу мечты
       </p>
-      <p class="text-[#637588] dark:text-white text-sm font-normal leading-normal">
+      <p
+        class="text-[#637588] dark:text-white text-sm font-normal leading-normal"
+      >
         Просмотри сотни тысяч объявлений о вакансиях, чтобы найти идеальную
         работу для себя
       </p>
     </div>
     <UButton
-      :to="'/vacancies/list'"
+      :to="{ name: AppPaths.home }"
       label="Найти работу"
       size="xl"
       color="teal"
