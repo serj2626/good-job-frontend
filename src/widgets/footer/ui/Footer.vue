@@ -58,7 +58,7 @@ function openModal() {
           <div class="flex gap-5 mt-4 sm:justify-center sm:mt-0">
             <Icon
               v-for="icon in footerIcons"
-              :to="icon.link"
+              :to="{name: icon.link}"
               :title="icon.title"
               :key="icon.title"
               :name="icon.icon"
