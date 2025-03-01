@@ -3,6 +3,7 @@ import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import BaseModal from "~/src/shared/ui/modal/BaseModal.vue";
 import PasswordInput from "~/src/shared/ui/form-field/PasswordInput.vue";
+import { ApiRoutes } from "~/src/shared/router/types";
 
 const schema = z.object({
   email: z.string().email("Некорректный email"),
@@ -12,8 +13,8 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 const state = reactive({
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 });
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
@@ -39,6 +40,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </UFormGroup>
 
       <UButton size="lg" type="submit"> Войти </UButton>
+      <!-- <p class="text-sm text-end">
+        Не зарегистрированы?
+        <NuxtLink 
+          :to="ApiRoutes.auth.registration"
+          class="text-blue-600 hover:underline ml-2"
+          >Создать аккаунт</NuxtLink>
+      </p> -->
     </UForm>
   </BaseModal>
 </template>
