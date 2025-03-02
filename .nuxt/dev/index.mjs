@@ -579,7 +579,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "apiUrl": "http://localhost:8000/api/",
+    "apiUrl": "http://localhost:8000/api",
     "vcalendar": "",
     "pdf": {
       "defaultDocOptions": {
