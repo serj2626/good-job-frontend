@@ -22,7 +22,7 @@ const { data: categories } = await useFetch(
       </p>
     </div>
     <UButton
-      :to="{ name: AppPaths.home }"
+      :to="{ name: AppPaths.vacanciesList }"
       label="Найти работу"
       size="xl"
       color="teal"
